@@ -26,5 +26,11 @@ namespace GoldenPet.Models
         }
     
         public virtual DbSet<tb_Menu> tb_Menu { get; set; }
+        public virtual DbSet<tb_Advertisement> tb_Advertisement { get; set; }
+        public virtual DbSet<tb_Contact> tb_Contact { get; set; }
+        public virtual DbSet<tb_Product> tb_Product { get; set; }
+        public virtual DbSet<tb_ProductCategory> tb_ProductCategory { get; set; }
+        public virtual DbSet<tb_Service> tb_Service { get; set; }
+        public virtual DbSet<tb_Img> tb_Img { get; set; }
     }
 }

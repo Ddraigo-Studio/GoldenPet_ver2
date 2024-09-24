@@ -3,7 +3,15 @@
 <div class="navbar-nav mr-auto py-0">
     @foreach (var i in Model)
     {
-        <a href="@Url.Action(i.name, "Home")" class="nav-item nav-link active">@i.name</a>
+        if (i.name != "Home")
+        {
+            <a href="@Url.Action(i.name, "Home")" class="nav-item nav-link active">@i.name</a>
+        }
+        else
+        {
+            <a href="/Home" class="nav-item nav-link active">@i.name</a>
+        }
+
     }
 
 </div>
