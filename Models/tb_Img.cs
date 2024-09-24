@@ -17,6 +17,8 @@ namespace GoldenPet.Models
         public int id { get; set; }
         public string link { get; set; }
         public string type { get; set; }
+        public string title { get; set; }
+        public string description { get; set; }
         public string meta { get; set; }
         public Nullable<bool> hide { get; set; }
         public Nullable<int> order { get; set; }
@@ -24,7 +26,5 @@ namespace GoldenPet.Models
         public string createdBy { get; set; }
         public Nullable<System.DateTime> modifidedDate { get; set; }
         public string modifidedBy { get; set; }
-        public string title { get; set; }
-        public string description { get; set; }
     }
 }

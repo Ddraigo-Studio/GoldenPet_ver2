@@ -255,8 +255,8 @@
     </Content>
     <Content Include="Models\Model1.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Model1.cs</LastGenOutput>
       <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
@@ -397,15 +397,15 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Package.cshtml" />
     <Content Include="Views\Home\Service.cshtml" />
     <Content Include="Views\Menu\GetMenu.cshtml" />
     <Content Include="Views\Default\Index.cshtml" />
-    <Content Include="Views\Product\Product.cshtml" />
     <Content Include="Views\Default\getAbout.cshtml" />
     <Content Include="Views\Default\getImg.cshtml" />
-	<Content Include="Views\Product\Detail.cshtml" />
+    <Content Include="Views\Product\Detail.cshtml" />
+    <Content Include="Views\Product\Index.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

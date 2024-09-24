@@ -1,4 +1,4 @@
-CREATE DATABASE goldenpet
+﻿CREATE DATABASE goldenpet
 GO
 USE goldenpet
 
@@ -137,6 +137,29 @@ CREATE TABLE dbo.tb_PackageFeature (
     FOREIGN KEY (packageId) REFERENCES tb_Package(id) --ON DELETE CASCADE
 );
 GO
+
+drop table dbo.tb_Img
+CREATE TABLE dbo.tb_Img (
+    id INT IDENTITY(1,1) NOT NULL PRIMARY KEY, 
+	link NVARCHAR(100) NOT NULL,
+    type NVARCHAR(100) NOT NULL,
+	title NVARCHAR(150) NULL,
+    description NTEXT NULL,
+	meta NVARCHAR(MAX) NULL,             
+    hide BIT NULL,                       
+    [order] INT NULL,                    
+    createdDate SMALLDATETIME DEFAULT CURRENT_TIMESTAMP,    
+	createdBy NVARCHAR(150) NULL,
+	modifidedDate SMALLDATETIME NULL,
+	modifidedBy NVARCHAR(150) NULL,
+);
+GO
+
+INSERT INTO dbo.tb_Img (link, type, title, description, meta, hide, [order], createdBy, modifidedDate, modifidedBy)
+VALUES
+
+('team-1.jpg', 'team', 'Huy Dương', 'CEO', null, 1, 1, 'Huy', NULL, NULL),
+('carousel-1.jpg', 'carousel', 'HHA', 'Huy dep trai vai o', null, 1, 1, 'User1', NULL, NULL)
 
 /*
 
