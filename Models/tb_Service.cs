@@ -12,14 +12,24 @@ namespace GoldenPet.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class tb_Menu
+    public partial class tb_Service
     {
         public int id { get; set; }
         public string name { get; set; }
+        public string description { get; set; }
+        public Nullable<decimal> price { get; set; }
+        public Nullable<int> duration { get; set; }
+        public string img { get; set; }
+        public string img2 { get; set; }
+        public string img3 { get; set; }
+        public string img4 { get; set; }
         public string link { get; set; }
         public string meta { get; set; }
         public Nullable<bool> hide { get; set; }
         public Nullable<int> order { get; set; }
-        public Nullable<System.DateTime> datebegin { get; set; }
+        public Nullable<System.DateTime> createdDate { get; set; }
+        public string createdBy { get; set; }
+        public Nullable<System.DateTime> modifidedDate { get; set; }
+        public string modifidedBy { get; set; }
     }
 }

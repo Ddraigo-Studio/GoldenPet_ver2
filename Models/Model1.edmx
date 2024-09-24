@@ -4,7 +4,40 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="GoldenPetModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="GoldenPetModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tb_Advertisement">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="title" Type="nvarchar" MaxLength="150" />
+          <Property Name="description" Type="ntext" />
+          <Property Name="img" Type="nvarchar" MaxLength="100" />
+          <Property Name="img2" Type="nvarchar" MaxLength="100" />
+          <Property Name="img3" Type="nvarchar" MaxLength="100" />
+          <Property Name="meta" Type="nvarchar(max)" />
+          <Property Name="hide" Type="bit" />
+          <Property Name="order" Type="int" />
+          <Property Name="createdDate" Type="smalldatetime" />
+          <Property Name="createdBy" Type="nvarchar" MaxLength="150" />
+          <Property Name="modifidedDate" Type="smalldatetime" />
+          <Property Name="modifidedBy" Type="nvarchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="tb_Contact">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="150" />
+          <Property Name="email" Type="nvarchar" MaxLength="150" />
+          <Property Name="subject" Type="nvarchar(max)" />
+          <Property Name="message" Type="ntext" />
+          <Property Name="isRead" Type="bit" />
+          <Property Name="createdDate" Type="smalldatetime" />
+          <Property Name="createdBy" Type="nvarchar" MaxLength="150" />
+          <Property Name="modifidedDate" Type="smalldatetime" />
+          <Property Name="modifidedBy" Type="nvarchar" MaxLength="150" />
+        </EntityType>
         <EntityType Name="tb_Menu">
           <Key>
             <PropertyRef Name="id" />
@@ -17,11 +50,126 @@
           <Property Name="order" Type="int" />
           <Property Name="datebegin" Type="smalldatetime" />
         </EntityType>
+        <EntityType Name="tb_Package">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="price" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="description" Type="ntext" />
+          <Property Name="duration" Type="varchar" MaxLength="50" />
+          <Property Name="createdAt" Type="smalldatetime" />
+          <Property Name="updatedAt" Type="smalldatetime" />
+        </EntityType>
+        <EntityType Name="tb_PackageFeature">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="packageId" Type="int" />
+          <Property Name="featureName" Type="nvarchar" MaxLength="150" />
+          <Property Name="isIncluded" Type="bit" />
+          <Property Name="createdAt" Type="smalldatetime" />
+        </EntityType>
+        <EntityType Name="tb_Product">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="150" />
+          <Property Name="price" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="priceSale" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="img" Type="nvarchar" MaxLength="100" />
+          <Property Name="img2" Type="nvarchar" MaxLength="100" />
+          <Property Name="img3" Type="nvarchar" MaxLength="100" />
+          <Property Name="img4" Type="nvarchar" MaxLength="100" />
+          <Property Name="categoryID" Type="int" />
+          <Property Name="description" Type="ntext" />
+          <Property Name="link" Type="nvarchar(max)" />
+          <Property Name="meta" Type="nvarchar(max)" />
+          <Property Name="hide" Type="bit" />
+          <Property Name="order" Type="int" />
+          <Property Name="createdDate" Type="smalldatetime" />
+        </EntityType>
+        <EntityType Name="tb_ProductCategory">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="150" />
+          <Property Name="description" Type="ntext" />
+          <Property Name="link" Type="nvarchar(max)" />
+          <Property Name="meta" Type="nvarchar(max)" />
+          <Property Name="hide" Type="bit" />
+          <Property Name="order" Type="int" />
+          <Property Name="createdDate" Type="smalldatetime" />
+        </EntityType>
+        <EntityType Name="tb_Service">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="150" />
+          <Property Name="description" Type="ntext" />
+          <Property Name="price" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="duration" Type="int" />
+          <Property Name="img" Type="nvarchar" MaxLength="100" />
+          <Property Name="img2" Type="nvarchar" MaxLength="100" />
+          <Property Name="img3" Type="nvarchar" MaxLength="100" />
+          <Property Name="img4" Type="nvarchar" MaxLength="100" />
+          <Property Name="link" Type="nvarchar(max)" />
+          <Property Name="meta" Type="nvarchar(max)" />
+          <Property Name="hide" Type="bit" />
+          <Property Name="order" Type="int" />
+          <Property Name="createdDate" Type="smalldatetime" />
+          <Property Name="createdBy" Type="nvarchar" MaxLength="150" />
+          <Property Name="modifidedDate" Type="smalldatetime" />
+          <Property Name="modifidedBy" Type="nvarchar" MaxLength="150" />
+        </EntityType>
+        <Association Name="FK__tb_Packag__packa__17F790F9">
+          <End Role="tb_Package" Type="Self.tb_Package" Multiplicity="0..1" />
+          <End Role="tb_PackageFeature" Type="Self.tb_PackageFeature" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_Package">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tb_PackageFeature">
+              <PropertyRef Name="packageId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_Produc__categ__0A9D95DB">
+          <End Role="tb_ProductCategory" Type="Self.tb_ProductCategory" Multiplicity="0..1" />
+          <End Role="tb_Product" Type="Self.tb_Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_ProductCategory">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tb_Product">
+              <PropertyRef Name="categoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="GoldenPetModelStoreContainer">
+          <EntitySet Name="tb_Advertisement" EntityType="Self.tb_Advertisement" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_Contact" EntityType="Self.tb_Contact" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tb_Menu" EntityType="Self.tb_Menu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_Package" EntityType="Self.tb_Package" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_PackageFeature" EntityType="Self.tb_PackageFeature" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_Product" EntityType="Self.tb_Product" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_ProductCategory" EntityType="Self.tb_ProductCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_Service" EntityType="Self.tb_Service" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__tb_Packag__packa__17F790F9" Association="Self.FK__tb_Packag__packa__17F790F9">
+            <End Role="tb_Package" EntitySet="tb_Package" />
+            <End Role="tb_PackageFeature" EntitySet="tb_PackageFeature" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_Produc__categ__0A9D95DB" Association="Self.FK__tb_Produc__categ__0A9D95DB">
+            <End Role="tb_ProductCategory" EntitySet="tb_ProductCategory" />
+            <End Role="tb_Product" EntitySet="tb_Product" />
+          </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="GoldenPetModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -39,7 +187,160 @@
         </EntityType>
         <EntityContainer Name="GoldenPetEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="tb_Menu" EntityType="Self.tb_Menu" />
+          <EntitySet Name="tb_Advertisement" EntityType="GoldenPetModel.tb_Advertisement" />
+          <EntitySet Name="tb_Contact" EntityType="GoldenPetModel.tb_Contact" />
+          <EntitySet Name="tb_Package" EntityType="GoldenPetModel.tb_Package" />
+          <EntitySet Name="tb_PackageFeature" EntityType="GoldenPetModel.tb_PackageFeature" />
+          <EntitySet Name="tb_Product" EntityType="GoldenPetModel.tb_Product" />
+          <EntitySet Name="tb_ProductCategory" EntityType="GoldenPetModel.tb_ProductCategory" />
+          <EntitySet Name="tb_Service" EntityType="GoldenPetModel.tb_Service" />
+          <AssociationSet Name="FK__tb_Packag__packa__17F790F9" Association="GoldenPetModel.FK__tb_Packag__packa__17F790F9">
+            <End Role="tb_Package" EntitySet="tb_Package" />
+            <End Role="tb_PackageFeature" EntitySet="tb_PackageFeature" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_Produc__categ__0A9D95DB" Association="GoldenPetModel.FK__tb_Produc__categ__0A9D95DB">
+            <End Role="tb_ProductCategory" EntitySet="tb_ProductCategory" />
+            <End Role="tb_Product" EntitySet="tb_Product" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="tb_Advertisement">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="title" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="img" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="img2" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="img3" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="meta" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="hide" Type="Boolean" />
+          <Property Name="order" Type="Int32" />
+          <Property Name="createdDate" Type="DateTime" Precision="0" />
+          <Property Name="createdBy" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="modifidedDate" Type="DateTime" Precision="0" />
+          <Property Name="modifidedBy" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tb_Contact">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="subject" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="message" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="isRead" Type="Boolean" />
+          <Property Name="createdDate" Type="DateTime" Precision="0" />
+          <Property Name="createdBy" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="modifidedDate" Type="DateTime" Precision="0" />
+          <Property Name="modifidedBy" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tb_Package">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="price" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="duration" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="createdAt" Type="DateTime" Precision="0" />
+          <Property Name="updatedAt" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="tb_PackageFeature" Relationship="GoldenPetModel.FK__tb_Packag__packa__17F790F9" FromRole="tb_Package" ToRole="tb_PackageFeature" />
+        </EntityType>
+        <EntityType Name="tb_PackageFeature">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="packageId" Type="Int32" />
+          <Property Name="featureName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="isIncluded" Type="Boolean" />
+          <Property Name="createdAt" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="tb_Package" Relationship="GoldenPetModel.FK__tb_Packag__packa__17F790F9" FromRole="tb_PackageFeature" ToRole="tb_Package" />
+        </EntityType>
+        <EntityType Name="tb_Product">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="price" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="priceSale" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="img" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="img2" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="img3" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="img4" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="categoryID" Type="Int32" />
+          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="link" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="meta" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="hide" Type="Boolean" />
+          <Property Name="order" Type="Int32" />
+          <Property Name="createdDate" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="tb_ProductCategory" Relationship="GoldenPetModel.FK__tb_Produc__categ__0A9D95DB" FromRole="tb_Product" ToRole="tb_ProductCategory" />
+        </EntityType>
+        <EntityType Name="tb_ProductCategory">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="link" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="meta" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="hide" Type="Boolean" />
+          <Property Name="order" Type="Int32" />
+          <Property Name="createdDate" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="tb_Product" Relationship="GoldenPetModel.FK__tb_Produc__categ__0A9D95DB" FromRole="tb_ProductCategory" ToRole="tb_Product" />
+        </EntityType>
+        <EntityType Name="tb_Service">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="price" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="duration" Type="Int32" />
+          <Property Name="img" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="img2" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="img3" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="img4" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="link" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="meta" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="hide" Type="Boolean" />
+          <Property Name="order" Type="Int32" />
+          <Property Name="createdDate" Type="DateTime" Precision="0" />
+          <Property Name="createdBy" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="modifidedDate" Type="DateTime" Precision="0" />
+          <Property Name="modifidedBy" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK__tb_Packag__packa__17F790F9">
+          <End Type="GoldenPetModel.tb_Package" Role="tb_Package" Multiplicity="0..1" />
+          <End Type="GoldenPetModel.tb_PackageFeature" Role="tb_PackageFeature" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_Package">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tb_PackageFeature">
+              <PropertyRef Name="packageId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_Produc__categ__0A9D95DB">
+          <End Type="GoldenPetModel.tb_ProductCategory" Role="tb_ProductCategory" Multiplicity="0..1" />
+          <End Type="GoldenPetModel.tb_Product" Role="tb_Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_ProductCategory">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tb_Product">
+              <PropertyRef Name="categoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -56,6 +357,123 @@
                 <ScalarProperty Name="hide" ColumnName="hide" />
                 <ScalarProperty Name="order" ColumnName="order" />
                 <ScalarProperty Name="datebegin" ColumnName="datebegin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_Advertisement">
+            <EntityTypeMapping TypeName="GoldenPetModel.tb_Advertisement">
+              <MappingFragment StoreEntitySet="tb_Advertisement">
+                <ScalarProperty Name="modifidedBy" ColumnName="modifidedBy" />
+                <ScalarProperty Name="modifidedDate" ColumnName="modifidedDate" />
+                <ScalarProperty Name="createdBy" ColumnName="createdBy" />
+                <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+                <ScalarProperty Name="order" ColumnName="order" />
+                <ScalarProperty Name="hide" ColumnName="hide" />
+                <ScalarProperty Name="meta" ColumnName="meta" />
+                <ScalarProperty Name="img3" ColumnName="img3" />
+                <ScalarProperty Name="img2" ColumnName="img2" />
+                <ScalarProperty Name="img" ColumnName="img" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_Contact">
+            <EntityTypeMapping TypeName="GoldenPetModel.tb_Contact">
+              <MappingFragment StoreEntitySet="tb_Contact">
+                <ScalarProperty Name="modifidedBy" ColumnName="modifidedBy" />
+                <ScalarProperty Name="modifidedDate" ColumnName="modifidedDate" />
+                <ScalarProperty Name="createdBy" ColumnName="createdBy" />
+                <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+                <ScalarProperty Name="isRead" ColumnName="isRead" />
+                <ScalarProperty Name="message" ColumnName="message" />
+                <ScalarProperty Name="subject" ColumnName="subject" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_Package">
+            <EntityTypeMapping TypeName="GoldenPetModel.tb_Package">
+              <MappingFragment StoreEntitySet="tb_Package">
+                <ScalarProperty Name="updatedAt" ColumnName="updatedAt" />
+                <ScalarProperty Name="createdAt" ColumnName="createdAt" />
+                <ScalarProperty Name="duration" ColumnName="duration" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_PackageFeature">
+            <EntityTypeMapping TypeName="GoldenPetModel.tb_PackageFeature">
+              <MappingFragment StoreEntitySet="tb_PackageFeature">
+                <ScalarProperty Name="createdAt" ColumnName="createdAt" />
+                <ScalarProperty Name="isIncluded" ColumnName="isIncluded" />
+                <ScalarProperty Name="featureName" ColumnName="featureName" />
+                <ScalarProperty Name="packageId" ColumnName="packageId" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_Product">
+            <EntityTypeMapping TypeName="GoldenPetModel.tb_Product">
+              <MappingFragment StoreEntitySet="tb_Product">
+                <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+                <ScalarProperty Name="order" ColumnName="order" />
+                <ScalarProperty Name="hide" ColumnName="hide" />
+                <ScalarProperty Name="meta" ColumnName="meta" />
+                <ScalarProperty Name="link" ColumnName="link" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="categoryID" ColumnName="categoryID" />
+                <ScalarProperty Name="img4" ColumnName="img4" />
+                <ScalarProperty Name="img3" ColumnName="img3" />
+                <ScalarProperty Name="img2" ColumnName="img2" />
+                <ScalarProperty Name="img" ColumnName="img" />
+                <ScalarProperty Name="priceSale" ColumnName="priceSale" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_ProductCategory">
+            <EntityTypeMapping TypeName="GoldenPetModel.tb_ProductCategory">
+              <MappingFragment StoreEntitySet="tb_ProductCategory">
+                <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+                <ScalarProperty Name="order" ColumnName="order" />
+                <ScalarProperty Name="hide" ColumnName="hide" />
+                <ScalarProperty Name="meta" ColumnName="meta" />
+                <ScalarProperty Name="link" ColumnName="link" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_Service">
+            <EntityTypeMapping TypeName="GoldenPetModel.tb_Service">
+              <MappingFragment StoreEntitySet="tb_Service">
+                <ScalarProperty Name="modifidedBy" ColumnName="modifidedBy" />
+                <ScalarProperty Name="modifidedDate" ColumnName="modifidedDate" />
+                <ScalarProperty Name="createdBy" ColumnName="createdBy" />
+                <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+                <ScalarProperty Name="order" ColumnName="order" />
+                <ScalarProperty Name="hide" ColumnName="hide" />
+                <ScalarProperty Name="meta" ColumnName="meta" />
+                <ScalarProperty Name="link" ColumnName="link" />
+                <ScalarProperty Name="img4" ColumnName="img4" />
+                <ScalarProperty Name="img3" ColumnName="img3" />
+                <ScalarProperty Name="img2" ColumnName="img2" />
+                <ScalarProperty Name="img" ColumnName="img" />
+                <ScalarProperty Name="duration" ColumnName="duration" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

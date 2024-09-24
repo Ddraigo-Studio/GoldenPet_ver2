@@ -5,6 +5,9 @@
  * Copyright 2011-2020 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
+
+
+
 :root {
   --blue: #007bff;
   --indigo: #6610f2;
@@ -4570,17 +4573,39 @@ input[type="button"].btn-block {
   border-radius: calc(0.25rem - 1px);
 }
 
+/* Tu them */
+.card-img-top {
+    object-fit: cover;
+    height: 255px;
+    width: 100%;
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.team-text {
+    margin-top: 20px;
+}
+/* Tu them */
+
 .card-img,
 .card-img-top,
 .card-img-bottom {
   flex-shrink: 0;
   width: 100%;
+  
 }
+
+
 
 .card-img,
 .card-img-top {
-  border-top-left-radius: calc(0.25rem - 1px);
-  border-top-right-radius: calc(0.25rem - 1px);
+    border-top-left-radius: calc(0.25rem - 1px);
+    border-top-right-radius: calc(0.25rem - 1px);
+    
 }
 
 .card-img,

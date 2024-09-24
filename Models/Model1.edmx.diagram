@@ -6,6 +6,15 @@
     <edmx:Diagrams>
       <Diagram DiagramId="08ad856e5d634f1480bb891f65ce59f5" Name="Diagram1">
         <EntityTypeShape EntityType="GoldenPetModel.tb_Menu" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GoldenPetModel.tb_Advertisement" Width="1.5" PointX="5.75" PointY="6.5" />
+        <EntityTypeShape EntityType="GoldenPetModel.tb_Contact" Width="1.5" PointX="7.75" PointY="6.75" />
+        <EntityTypeShape EntityType="GoldenPetModel.tb_Package" Width="1.5" PointX="0.75" PointY="7" />
+        <EntityTypeShape EntityType="GoldenPetModel.tb_PackageFeature" Width="1.5" PointX="3" PointY="7.125" />
+        <EntityTypeShape EntityType="GoldenPetModel.tb_Product" Width="1.5" PointX="6" PointY="1" />
+        <EntityTypeShape EntityType="GoldenPetModel.tb_ProductCategory" Width="1.5" PointX="3.75" PointY="1.75" />
+        <EntityTypeShape EntityType="GoldenPetModel.tb_Service" Width="1.5" PointX="8.75" PointY="0.75" />
+        <AssociationConnector Association="GoldenPetModel.FK__tb_Packag__packa__17F790F9" />
+        <AssociationConnector Association="GoldenPetModel.FK__tb_Produc__categ__0A9D95DB" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

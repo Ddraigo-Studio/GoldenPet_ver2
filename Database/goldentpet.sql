@@ -117,7 +117,8 @@ GO
 CREATE TABLE dbo.tb_Package (
     id INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
     name VARCHAR(100) NOT NULL,           -- Name of the package (e.g., Basic, Standard, Premium)
-    price DECIMAL(18, 2) NOT NULL,        -- Package price
+    price DECIMAL(18, 2) NULL,        -- Package price
+	description NTEXT NULL,
     duration VARCHAR(50),                 -- Duration of the package (e.g., per month)                       -- List of services included in the package
     createdAt SMALLDATETIME DEFAULT CURRENT_TIMESTAMP,
     updatedAt SMALLDATETIME DEFAULT NULL,
@@ -128,7 +129,7 @@ GO
 CREATE TABLE dbo.tb_PackageFeature (
     id INT IDENTITY(1,1) NOT NULL PRIMARY KEY, 
     packageId INT,
-    feature_name VARCHAR(100) NOT NULL,
+    featureName NVARCHAR(150) NULL,
     isIncluded BIT NULL,
     createdAt SMALLDATETIME DEFAULT CURRENT_TIMESTAMP,
     
@@ -139,37 +140,35 @@ GO
 
 /*
 
-INSERT INTO dbo.tb_Package (name, price, duration)
+INSERT INTO dbo.tb_Package (name, price, description, duration, createdAt)
 VALUES
-('Basic', 49.00, '/ Mo', 'Feeding, Boarding'),
-('Standard', 99.00, '/ Mo', 'Feeding, Boarding, Spa & Grooming'),
-('Premium', 149.00, '/ Mo', 'Feeding, Boarding, Spa & Grooming, Veterinary Medicine');
-GO
+    ('Basic', 49.00, 'Basic pet care services including feeding and boarding.', 'Per Month', GETDATE()),
+    ('Standard', 99.00, 'Standard pet care services including feeding, boarding, and spa & grooming.', 'Per Month', GETDATE()),
+    ('Premium', 149.00, 'Premium pet care services including feeding, boarding, spa & grooming, and veterinary medicine.', 'Per Month', GETDATE());
 
-INSERT INTO dbo.tb_PackageFeature (packageId, feature_name, isIncluded)
+-- Insert data for 'Basic' package
+INSERT INTO dbo.tb_PackageFeature (packageId, featureName, isIncluded, createdAt)
 VALUES
-(1, 'Feeding', TRUE),
-(1, 'Boarding', TRUE),
-(1, 'Spa & Grooming', FALSE),
-(1, 'Veterinary Medicine', FALSE);
-GO
+    (1, 'Feeding', 1, GETDATE()),
+    (1, 'Boarding', 1, GETDATE()),
+    (1, 'Spa & Grooming', 0, GETDATE()),
+    (1, 'Veterinary Medicine', 0, GETDATE());
 
-INSERT INTO dbo.tb_PackageFeature (packageId, feature_name, isIncluded)
+-- Insert data for 'Standard' package
+INSERT INTO dbo.tb_PackageFeature (packageId, featureName, isIncluded, createdAt)
 VALUES
-(2, 'Feeding', TRUE),
-(2, 'Boarding', TRUE),
-(2, 'Spa & Grooming', TRUE),
-(2, 'Veterinary Medicine', FALSE);
-GO
+    (2, 'Feeding', 1, GETDATE()),
+    (2, 'Boarding', 1, GETDATE()),
+    (2, 'Spa & Grooming', 1, GETDATE()),
+    (2, 'Veterinary Medicine', 0, GETDATE());
 
-
-INSERT INTO dbo.tb_PackageFeature (packageId, feature_name, isIncluded)
+-- Insert data for 'Premium' package
+INSERT INTO dbo.tb_PackageFeature (packageId, featureName, isIncluded, createdAt)
 VALUES
-(3, 'Feeding', TRUE),
-(3, 'Boarding', TRUE),
-(3, 'Spa & Grooming', TRUE),
-(3, 'Veterinary Medicine', TRUE);
-GO
+    (3, 'Feeding', 1, GETDATE()),
+    (3, 'Boarding', 1, GETDATE()),
+    (3, 'Spa & Grooming', 1, GETDATE()),
+    (3, 'Veterinary Medicine', 1, GETDATE());
 
 */
 
@@ -214,5 +213,8 @@ VALUES
     (N'Home', NULL, N'Home', 1, 1, CAST(N'2024-09-17T00:00:00' AS SMALLDATETIME)),
     (N'About', NULL, N'About', 1, 2, CAST(N'2024-09-17T00:00:00' AS SMALLDATETIME)),
     (N'Service', NULL, N'Service', 1, 3, CAST(N'2024-09-18T00:00:00' AS SMALLDATETIME)),
-    (N'Package', NULL, N'Package', 1, 4, CAST(N'2024-09-18T00:00:00' AS SMALLDATETIME));
+	(N'Product', NULL, N'Product', 1, 4, CAST(N'2024-09-24T00:00:00' AS SMALLDATETIME)),
+    (N'Package', NULL, N'Package', 1, 5, CAST(N'2024-09-18T00:00:00' AS SMALLDATETIME));
 GO
+
+--Delete from tb_Menu

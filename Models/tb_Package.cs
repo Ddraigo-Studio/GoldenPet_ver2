@@ -12,14 +12,21 @@ namespace GoldenPet.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class tb_Menu
+    public partial class tb_Package
     {
+        public tb_Package()
+        {
+            this.tb_PackageFeature = new HashSet<tb_PackageFeature>();
+        }
+    
         public int id { get; set; }
         public string name { get; set; }
-        public string link { get; set; }
-        public string meta { get; set; }
-        public Nullable<bool> hide { get; set; }
-        public Nullable<int> order { get; set; }
-        public Nullable<System.DateTime> datebegin { get; set; }
+        public Nullable<decimal> price { get; set; }
+        public string description { get; set; }
+        public string duration { get; set; }
+        public Nullable<System.DateTime> createdAt { get; set; }
+        public Nullable<System.DateTime> updatedAt { get; set; }
+    
+        public virtual ICollection<tb_PackageFeature> tb_PackageFeature { get; set; }
     }
 }

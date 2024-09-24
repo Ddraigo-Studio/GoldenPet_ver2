@@ -13,12 +13,23 @@ namespace GoldenPet
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+
+            routes.MapRoute("Product", "{type}/{meta}",
+            new { controller = "Product", action = "Index", meta = UrlParameter.Optional },
+            new RouteValueDictionary
+            {
+                { "type", "san-pham" }
+            },
+            namespaces: new[] { "ShopOnline.Controllers" });
+
             routes.MapRoute(
-                name: "Default",
+                name: "Home",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Default", action = "Index", id = UrlParameter.Optional },
+                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional },
                 namespaces: new[] { "GoldenPet.Controllers" }
             );
+
+            
         }
     }
 }
