@@ -25,13 +25,14 @@ namespace GoldenPet.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public DbSet<tb_Menu> tb_Menu { get; set; }
-        public DbSet<tb_Advertisement> tb_Advertisement { get; set; }
-        public DbSet<tb_Contact> tb_Contact { get; set; }
+        public virtual DbSet<tb_Menu> tb_Menu { get; set; }
+        public virtual DbSet<tb_Advertisement> tb_Advertisement { get; set; }
+        public virtual DbSet<tb_Contact> tb_Contact { get; set; }
         public DbSet<tb_Package> tb_Package { get; set; }
         public DbSet<tb_PackageFeature> tb_PackageFeature { get; set; }
-        public DbSet<tb_Product> tb_Product { get; set; }
-        public DbSet<tb_ProductCategory> tb_ProductCategory { get; set; }
-        public DbSet<tb_Service> tb_Service { get; set; }
+        public virtual DbSet<tb_Product> tb_Product { get; set; }
+        public virtual DbSet<tb_ProductCategory> tb_ProductCategory { get; set; }
+        public virtual DbSet<tb_Service> tb_Service { get; set; }
+        public virtual DbSet<tb_Img> tb_Img { get; set; }
     }
 }

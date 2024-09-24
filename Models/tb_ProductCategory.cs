@@ -14,6 +14,7 @@ namespace GoldenPet.Models
     
     public partial class tb_ProductCategory
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public tb_ProductCategory()
         {
             this.tb_Product = new HashSet<tb_Product>();
@@ -28,6 +29,7 @@ namespace GoldenPet.Models
         public Nullable<int> order { get; set; }
         public Nullable<System.DateTime> createdDate { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tb_Product> tb_Product { get; set; }
     }
 }
