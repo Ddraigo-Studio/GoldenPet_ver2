@@ -1,0 +1,21 @@
+﻿
+@model List<GoldenPet.Models.tb_Product>
+@foreach (var item in Model)
+ {
+    <div class="col-lg-3 col-md-6">
+        <div class="team card position-relative overflow-hidden border-0 mb-4">
+            <img class="card-img-top" src="/Content/img/@item.img" alt="Product 1">
+            <div class="card-body text-center p-0">
+                <div class="team-text d-flex flex-column justify-content-center bg-light">
+                    <h6>@item.name</h6>
+                    <i>@item.price VNĐ</i>
+                </div>
+                <div class="team-social d-flex align-items-center justify-content-center bg-dark">
+                    <a class="btn btn-outline-primary rounded-circle text-center mr-2 px-0" style="width: 36px; height: 36px;" href="#"><i class="fab fa-twitter"></i></a>
+                    <a class="btn btn-outline-primary rounded-circle text-center mr-2 px-0" style="width: 36px; height: 36px;" href="/@ViewBag.meta/@item.meta/@item.id"><i class="fab fa-facebook-f"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+ }
+<div class="clearfix"> </div>

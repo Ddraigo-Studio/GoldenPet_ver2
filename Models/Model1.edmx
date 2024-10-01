@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="GoldenPetModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="GoldenPetModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="tb_Advertisement">
           <Key>
             <PropertyRef Name="id" />
@@ -95,6 +95,7 @@
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="name" Type="nvarchar" MaxLength="150" />
+          <Property Name="brand" Type="nvarchar" MaxLength="150" />
           <Property Name="price" Type="decimal" Precision="18" Scale="2" />
           <Property Name="priceSale" Type="decimal" Precision="18" Scale="2" />
           <Property Name="img" Type="nvarchar" MaxLength="100" />
@@ -156,7 +157,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tb_Produc__categ__0A9D95DB">
+        <Association Name="FK__tb_Produc__categ__41EDCAC5">
           <End Role="tb_ProductCategory" Type="Self.tb_ProductCategory" Multiplicity="0..1" />
           <End Role="tb_Product" Type="Self.tb_Product" Multiplicity="*" />
           <ReferentialConstraint>
@@ -182,13 +183,12 @@
             <End Role="tb_Package" EntitySet="tb_Package" />
             <End Role="tb_PackageFeature" EntitySet="tb_PackageFeature" />
           </AssociationSet>
-          <AssociationSet Name="FK__tb_Produc__categ__0A9D95DB" Association="Self.FK__tb_Produc__categ__0A9D95DB">
+          <AssociationSet Name="FK__tb_Produc__categ__41EDCAC5" Association="Self.FK__tb_Produc__categ__41EDCAC5">
             <End Role="tb_ProductCategory" EntitySet="tb_ProductCategory" />
             <End Role="tb_Product" EntitySet="tb_Product" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="GoldenPetModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -298,6 +298,7 @@
           <Property Name="order" Type="Int32" />
           <Property Name="createdDate" Type="DateTime" Precision="0" />
           <NavigationProperty Name="tb_ProductCategory" Relationship="Self.FK__tb_Produc__categ__0A9D95DB" FromRole="tb_Product" ToRole="tb_ProductCategory" />
+          <Property Name="brand" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="tb_ProductCategory">
           <Key>
@@ -477,6 +478,7 @@
           <EntitySetMapping Name="tb_Product">
             <EntityTypeMapping TypeName="GoldenPetModel.tb_Product">
               <MappingFragment StoreEntitySet="tb_Product">
+                <ScalarProperty Name="brand" ColumnName="brand" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="price" ColumnName="price" />

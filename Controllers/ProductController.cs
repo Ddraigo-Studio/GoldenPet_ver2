@@ -14,7 +14,7 @@ namespace GoldenPet.Controllers
         // GET: Product
         public ActionResult Index(string meta)
         {
-            var v = from t in _db.tb_Product
+            var v = from t in _db.tb_ProductCategory
                     where t.meta == meta
                     select t;
             return View(v.FirstOrDefault());

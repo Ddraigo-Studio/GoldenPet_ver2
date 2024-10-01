@@ -29,6 +29,7 @@ namespace GoldenPet.Models
         public Nullable<bool> hide { get; set; }
         public Nullable<int> order { get; set; }
         public Nullable<System.DateTime> createdDate { get; set; }
+        public string brand { get; set; }
     
         public virtual tb_ProductCategory tb_ProductCategory { get; set; }
     }

@@ -20,7 +20,15 @@ namespace GoldenPet
             {
                 { "type", "san-pham" }
             },
-            namespaces: new[] { "ShopOnline.Controllers" });
+            namespaces: new[] { "GoldenPet.Controllers" });
+
+            routes.MapRoute("Detail", "{type}/{meta}/{id}",
+            new { controller = "Product", action = "Detail", id = UrlParameter.Optional },
+            new RouteValueDictionary
+            {
+                { "type", "san-pham" }
+            },
+            namespaces: new[] { "GoldenPet.Controllers" });
 
             routes.MapRoute(
                 name: "Default",

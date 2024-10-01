@@ -1,6 +1,6 @@
 ﻿
 @{
-    ViewBag.Title = "Product";
+    ViewBag.Title = "Sản phẩm";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -8,23 +8,26 @@
 <!-- Product Start -->
 <style>
     .card {
-        height: 100%; /* Ensures all cards have the same height */
+        height: 100%;
     }
 
     .card-img-top {
-        height: 200px; /* Set a fixed height for images */
-        object-fit: cover; /* Ensures images cover the area without distortion */
+        height: 200px; 
+        object-fit: cover; 
     }
+    
 </style>
 
 <div class="container pt-5">
     <div class="d-flex flex-column text-center mb-5 pt-5">
-        <h4 class="text-secondary mb-3">Our</h4>
-        <h1 class="display-4 m-0"><span class="text-primary">Products</span> Available</h1>
+
+        <h1 class="display-4 m-0"><span class="text-primary">@Model.name</span> tại cửa hàng</h1>
+        <h4 class="text-secondary mb-3">của chúng tôi</h4>
     </div>
     <div class="row pb-3">
         <!-- Product 1 -->
-        <div class="col-lg-3 col-md-4 mb-4">
+        @Html.Action("getProduct", "Default", new { id = Model.id, metatitle = Model.meta })
+        @*<div class="col-lg-3 col-md-4 mb-4">
             <div class="card border-0 mb-2">
                 <img class="card-img-top" src="~/Content/img/product-1.jpg" alt="Product 1">
                 <div class="card-body bg-light p-4">
@@ -38,7 +41,7 @@
             </div>
         </div>
 
-        <!-- Product 2 -->
+         Product 2
         <div class="col-lg-3 col-md-4 mb-4">
             <div class="card border-0 mb-2">
                 <img class="card-img-top" src="~/Content/img/product-2.jpg" alt="Product 2">
@@ -53,7 +56,7 @@
             </div>
         </div>
 
-        <!-- Product 3 -->
+         Product 3
         <div class="col-lg-3 col-md-4 mb-4">
             <div class="card border-0 mb-2">
                 <img class="card-img-top" src="~/Content/img/product-3.jpg" alt="Product 3">
@@ -68,7 +71,7 @@
             </div>
         </div>
 
-        <!-- Product 4 -->
+         Product 4
         <div class="col-lg-3 col-md-4 mb-4">
             <div class="card border-0 mb-2">
                 <img class="card-img-top" src="~/Content/img/team-3.jpg" alt="Product 4">
@@ -151,7 +154,7 @@
                     <a class="btn btn-primary font-weight-bold" href="">View Detail</a>
                 </div>
             </div>
-        </div>
+        </div>*@
     </div>
 
     <!-- NumPage Start -->

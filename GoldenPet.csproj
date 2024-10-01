@@ -406,6 +406,9 @@
     <Content Include="Views\Product\Detail.cshtml" />
     <Content Include="Views\Product\Index.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Default\getCategory.cshtml" />
+    <Content Include="Views\Default\getProduct.cshtml" />
+    <Content Include="Views\Default\getProductHome.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
