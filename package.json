@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "@sqlitecloud/drivers": "^1.0.255"
+  }
+}

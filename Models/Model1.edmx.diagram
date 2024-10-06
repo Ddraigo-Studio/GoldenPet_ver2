@@ -4,18 +4,18 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="ec7fe250eec0429c8d366f120e5ae720" Name="Diagram1">
+      <Diagram DiagramId="ec7fe250eec0429c8d366f120e5ae720" Name="Diagram1" ZoomLevel="72">
         <EntityTypeShape EntityType="GoldenPetModel.tb_Advertisement" Width="1.5" PointX="5.75" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="GoldenPetModel.tb_Contact" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
         <EntityTypeShape EntityType="GoldenPetModel.tb_Img" Width="1.5" PointX="2.75" PointY="6.75" IsExpanded="true" />
         <EntityTypeShape EntityType="GoldenPetModel.tb_Menu" Width="1.5" PointX="7.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="GoldenPetModel.tb_Package" Width="1.5" PointX="5.75" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="GoldenPetModel.tb_PackageFeature" Width="1.5" PointX="8" PointY="1.125" IsExpanded="true" />
         <EntityTypeShape EntityType="GoldenPetModel.tb_Product" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="GoldenPetModel.tb_ProductCategory" Width="1.5" PointX="0.75" PointY="1.75" IsExpanded="true" />
         <EntityTypeShape EntityType="GoldenPetModel.tb_Service" Width="1.5" PointX="7.75" PointY="8.75" IsExpanded="true" />
-        <AssociationConnector Association="GoldenPetModel.FK__tb_Packag__packa__17F790F9" ManuallyRouted="false" />
         <AssociationConnector Association="GoldenPetModel.FK__tb_Produc__categ__0A9D95DB" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="GoldenPetModel.tb_Package" Width="1.5" PointX="5.375" PointY="1" />
+        <EntityTypeShape EntityType="GoldenPetModel.tb_PackageFeature" Width="1.5" PointX="7.625" PointY="1.125" />
+        <AssociationConnector Association="GoldenPetModel.FK__tb_Packag__packa__74AE54BC" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

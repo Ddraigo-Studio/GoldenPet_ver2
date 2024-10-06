@@ -103,6 +103,8 @@ GO
 CREATE TABLE dbo.tb_Contact (
     id INT IDENTITY(1,1) NOT NULL PRIMARY KEY, 
     name NVARCHAR(150) NULL,
+	phonenumber NVARCHAR(10),
+	location NVARCHAR(150),
     email NVARCHAR(150) NULL,
 	subject NVARCHAR(MAX) NULL,
 	message NTEXT NULL, 
@@ -114,11 +116,13 @@ CREATE TABLE dbo.tb_Contact (
 	modifidedBy NVARCHAR(150) NULL,
 );
 GO
-
+drop table dbo.tb_Contact
+select * from dbo.tb_Contact
 
 CREATE TABLE dbo.tb_Package (
     id INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
     name VARCHAR(100) NOT NULL,           -- Name of the package (e.g., Basic, Standard, Premium)
+	img VarChar(200) Not null,
     price DECIMAL(18, 2) NULL,        -- Package price
 	description NTEXT NULL,
     duration VARCHAR(50),                 -- Duration of the package (e.g., per month)                       -- List of services included in the package
@@ -139,6 +143,21 @@ CREATE TABLE dbo.tb_PackageFeature (
     FOREIGN KEY (packageId) REFERENCES tb_Package(id) --ON DELETE CASCADE
 );
 GO
+--drop table dbo.tb_PackageFeature,dbo.tb_Package
+
+INSERT INTO dbo.tb_Package (name,img, price, description, duration, createdAt)
+VALUES
+    ('Basic','price-1.jpg', 49.00, 'Basic pet care services including feeding and boarding.', 'Per Month', GETDATE()),
+    ('Standard','price-2.jpg', 99.00, 'Standard pet care services including feeding, boarding, and spa & grooming.', 'Per Month', GETDATE()),
+    ('Premium','price-3.jpg', 149.00, 'Premium pet care services including feeding, boarding, spa & grooming, and veterinary medicine.', 'Per Month', GETDATE());
+
+-- Insert data for 'Basic' package
+INSERT INTO dbo.tb_PackageFeature (packageId, featureName, isIncluded, createdAt)
+VALUES
+    (1, 'Feeding', 1, GETDATE()),
+    (1, 'Boarding', 1, GETDATE()),
+    (1, 'Spa & Grooming', 0, GETDATE()),
+    (1, 'Veterinary Medicine', 0, GETDATE());
 
 drop table dbo.tb_Img
 CREATE TABLE dbo.tb_Img (
@@ -165,19 +184,6 @@ VALUES
 
 /*
 
-INSERT INTO dbo.tb_Package (name, price, description, duration, createdAt)
-VALUES
-    ('Basic', 49.00, 'Basic pet care services including feeding and boarding.', 'Per Month', GETDATE()),
-    ('Standard', 99.00, 'Standard pet care services including feeding, boarding, and spa & grooming.', 'Per Month', GETDATE()),
-    ('Premium', 149.00, 'Premium pet care services including feeding, boarding, spa & grooming, and veterinary medicine.', 'Per Month', GETDATE());
-
--- Insert data for 'Basic' package
-INSERT INTO dbo.tb_PackageFeature (packageId, featureName, isIncluded, createdAt)
-VALUES
-    (1, 'Feeding', 1, GETDATE()),
-    (1, 'Boarding', 1, GETDATE()),
-    (1, 'Spa & Grooming', 0, GETDATE()),
-    (1, 'Veterinary Medicine', 0, GETDATE());
 
 -- Insert data for 'Standard' package
 INSERT INTO dbo.tb_PackageFeature (packageId, featureName, isIncluded, createdAt)

@@ -24,5 +24,7 @@ namespace GoldenPet.Models
         public string createdBy { get; set; }
         public Nullable<System.DateTime> modifidedDate { get; set; }
         public string modifidedBy { get; set; }
+        public string phonenumber { get; set; }
+        public string location { get; set; }
     }
 }
