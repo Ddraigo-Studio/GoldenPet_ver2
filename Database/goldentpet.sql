@@ -39,8 +39,30 @@ CREATE TABLE dbo.tb_Advertisement (
 	modifidedBy NVARCHAR(150) NULL,
 );
 GO
+drop table dbo.tb_Img
+CREATE TABLE dbo.tb_Img (
+    id INT IDENTITY(1,1) NOT NULL PRIMARY KEY, 
+	link NVARCHAR(100) NOT NULL,
+    type NVARCHAR(100) NOT NULL,
+	title NVARCHAR(150) NULL,
+    description NTEXT NULL,
+	meta NVARCHAR(MAX) NULL,             
+    hide BIT NULL,                       
+    [order] INT NULL,                    
+    createdDate SMALLDATETIME DEFAULT CURRENT_TIMESTAMP,    
+	createdBy NVARCHAR(150) NULL,
+	modifidedDate SMALLDATETIME NULL,
+	modifidedBy NVARCHAR(150) NULL,
+);
+
+INSERT INTO dbo.tb_Img (link, type, title, description, meta, hide, [order], createdBy, modifidedDate, modifidedBy)
+VALUES
+('about-1.jpg', 'about', Null, Null, null, 1, 1, null, NULL, NULL),
+('team-1.jpg', 'team', 'Huy Dương', 'CEO', null, 1, 1, 'Huy', NULL, NULL)
+('carousel-1.jpg', 'carousel', 'HHA', 'Huy dep trai vai o', null, 1, 1, 'User1', NULL, NULL),
 
 
+select * from dbo.tb_Img
 CREATE TABLE dbo.tb_ProductCategory(
     id INT IDENTITY(1,1) NOT NULL PRIMARY KEY,        
     name NVARCHAR(150) NULL,  
