@@ -1,0 +1,12 @@
+﻿@model List<GoldenPet.Models.tb_ProductCategory>
+
+@foreach (var i in Model)
+{
+    <div class="d-flex flex-column text-center mb-5">
+        <h3 class="display-4 m-0"> <a href="/@ViewBag.meta/@i.meta/">@i.name</a></h3>
+    </div>
+    <div class="row pb-3">
+        @Html.Action("getProduct", "Product", new { id = @i.id, metatitle = ViewBag.metatitle })
+    </div>
+}
+

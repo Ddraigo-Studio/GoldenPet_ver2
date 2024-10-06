@@ -69,5 +69,38 @@ namespace GoldenPet.Controllers
         }
 
 
+        public ActionResult getCategory()
+        {
+            //var category = _db.Menus.Where(x => x.Id == 3).FirstOrDefault();
+            ViewBag.meta = "san-pham";
+            var v = from t in _db.tb_ProductCategory
+                    where t.hide == true
+                    orderby t.order ascending
+                    select t;
+            return PartialView(v.ToList());
+        }
+
+        public ActionResult getProductHome(long id, string metatitle)
+        {
+            ViewBag.meta = metatitle;
+            var v = from t in _db.tb_Product
+                    where t.categoryID == id && t.hide == true
+                    orderby t.order ascending
+                    select t;
+            return PartialView(v.ToList());
+        }
+
+        public ActionResult getProduct(long id, string metatitle)
+        {
+            ViewBag.meta = metatitle;
+            var v = from t in _db.tb_Product
+                    where t.categoryID == id && t.hide == true
+                    orderby t.order ascending
+                    select t;
+            return PartialView(v.ToList());
+        }
+
+        
+
     }
 }
