@@ -75,6 +75,7 @@
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="img" Type="varchar" MaxLength="200" Nullable="false" />
           <Property Name="price" Type="decimal" Precision="18" Scale="2" />
           <Property Name="description" Type="ntext" />
           <Property Name="duration" Type="varchar" MaxLength="50" />
@@ -97,6 +98,7 @@
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="name" Type="nvarchar" MaxLength="150" />
+          <Property Name="brand" Type="nvarchar" MaxLength="150" />
           <Property Name="price" Type="decimal" Precision="18" Scale="2" />
           <Property Name="priceSale" Type="decimal" Precision="18" Scale="2" />
           <Property Name="img" Type="nvarchar" MaxLength="100" />
@@ -146,7 +148,7 @@
           <Property Name="modifidedDate" Type="smalldatetime" />
           <Property Name="modifidedBy" Type="nvarchar" MaxLength="150" />
         </EntityType>
-        <Association Name="FK__tb_Packag__packa__74AE54BC">
+        <Association Name="FK__tb_Packag__packa__57DD0BE4">
           <End Role="tb_Package" Type="Self.tb_Package" Multiplicity="0..1" />
           <End Role="tb_PackageFeature" Type="Self.tb_PackageFeature" Multiplicity="*" />
           <ReferentialConstraint>
@@ -158,7 +160,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tb_Produc__categ__403A8C7D">
+        <Association Name="FK__tb_Produc__categ__41EDCAC5">
           <End Role="tb_ProductCategory" Type="Self.tb_ProductCategory" Multiplicity="0..1" />
           <End Role="tb_Product" Type="Self.tb_Product" Multiplicity="*" />
           <ReferentialConstraint>
@@ -180,11 +182,11 @@
           <EntitySet Name="tb_Product" EntityType="Self.tb_Product" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tb_ProductCategory" EntityType="Self.tb_ProductCategory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tb_Service" EntityType="Self.tb_Service" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__tb_Packag__packa__74AE54BC" Association="Self.FK__tb_Packag__packa__74AE54BC">
+          <AssociationSet Name="FK__tb_Packag__packa__57DD0BE4" Association="Self.FK__tb_Packag__packa__57DD0BE4">
             <End Role="tb_Package" EntitySet="tb_Package" />
             <End Role="tb_PackageFeature" EntitySet="tb_PackageFeature" />
           </AssociationSet>
-          <AssociationSet Name="FK__tb_Produc__categ__403A8C7D" Association="Self.FK__tb_Produc__categ__403A8C7D">
+          <AssociationSet Name="FK__tb_Produc__categ__41EDCAC5" Association="Self.FK__tb_Produc__categ__41EDCAC5">
             <End Role="tb_ProductCategory" EntitySet="tb_ProductCategory" />
             <End Role="tb_Product" EntitySet="tb_Product" />
           </AssociationSet>
@@ -277,6 +279,7 @@
           <Property Name="order" Type="Int32" />
           <Property Name="createdDate" Type="DateTime" Precision="0" />
           <NavigationProperty Name="tb_ProductCategory" Relationship="Self.FK__tb_Produc__categ__0A9D95DB" FromRole="tb_Product" ToRole="tb_ProductCategory" />
+          <Property Name="brand" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="tb_ProductCategory">
           <Key>
@@ -357,6 +360,7 @@
           <Property Name="createdAt" Type="DateTime" Precision="0" />
           <Property Name="updatedAt" Type="DateTime" Precision="0" />
           <NavigationProperty Name="tb_PackageFeature" Relationship="GoldenPetModel.FK__tb_Packag__packa__74AE54BC" FromRole="tb_Package" ToRole="tb_PackageFeature" />
+          <Property Name="img" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="tb_PackageFeature">
           <Key>
@@ -458,6 +462,7 @@
           <EntitySetMapping Name="tb_Product">
             <EntityTypeMapping TypeName="GoldenPetModel.tb_Product">
               <MappingFragment StoreEntitySet="tb_Product">
+                <ScalarProperty Name="brand" ColumnName="brand" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="price" ColumnName="price" />
@@ -516,6 +521,7 @@
           <EntitySetMapping Name="tb_Package">
             <EntityTypeMapping TypeName="GoldenPetModel.tb_Package">
               <MappingFragment StoreEntitySet="tb_Package">
+                <ScalarProperty Name="img" ColumnName="img" />
                 <ScalarProperty Name="updatedAt" ColumnName="updatedAt" />
                 <ScalarProperty Name="createdAt" ColumnName="createdAt" />
                 <ScalarProperty Name="duration" ColumnName="duration" />

@@ -1,6 +1,7 @@
 ﻿
+
 @{
-    ViewBag.Title = "Product";
+    ViewBag.Title = "Sản phẩm";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -8,151 +9,153 @@
 <!-- Product Start -->
 <style>
     .card {
-        height: 100%; /* Ensures all cards have the same height */
+        height: 100%;
     }
 
     .card-img-top {
-        height: 200px; /* Set a fixed height for images */
-        object-fit: cover; /* Ensures images cover the area without distortion */
+        height: 200px;
+        object-fit: cover;
     }
 </style>
 
 <div class="container pt-5">
     <div class="d-flex flex-column text-center mb-5 pt-5">
-        <h4 class="text-secondary mb-3">Our</h4>
-        <h1 class="display-4 m-0"><span class="text-primary">Products</span> Available</h1>
+
+        <h1 class="display-4 m-0"><span class="text-primary">Product</span> tại cửa hàng</h1>
+        <h4 class="text-secondary mb-3">của chúng tôi</h4>
     </div>
-    <div class="row pb-3">
-        <!-- Product 1 -->
-        <div class="col-lg-3 col-md-4 mb-4">
-            <div class="card border-0 mb-2">
-                <img class="card-img-top" src="~/Content/img/product-1.jpg" alt="Product 1">
-                <div class="card-body bg-light p-4">
-                    <h4 class="card-title text-truncate">Premium Dog Food</h4>
-                    <div class="d-flex mb-3">
-                        <small class="mr-2"><i class="fa fa-tag text-muted"></i> $49.99</small>
+    @{ Html.RenderAction("getCategory");}
+    <!--<div class="row pb-3">
+        <!-- Product 1 -->-->
+        <!--@*<div class="col-lg-3 col-md-4 mb-4">
+                <div class="card border-0 mb-2">
+                    <img class="card-img-top" src="~/Content/img/product-1.jpg" alt="Product 1">
+                    <div class="card-body bg-light p-4">
+                        <h4 class="card-title text-truncate">Premium Dog Food</h4>
+                        <div class="d-flex mb-3">
+                            <small class="mr-2"><i class="fa fa-tag text-muted"></i> $49.99</small>
+                        </div>
+                        <p>High-quality dog food packed with all essential nutrients for your dog's health and vitality.</p>
+                        <a class="btn btn-primary font-weight-bold" href="">View Detail</a>
                     </div>
-                    <p>High-quality dog food packed with all essential nutrients for your dog's health and vitality.</p>
-                    <a class="btn btn-primary font-weight-bold" href="">View Detail</a>
                 </div>
             </div>
-        </div>
 
-        <!-- Product 2 -->
-        <div class="col-lg-3 col-md-4 mb-4">
-            <div class="card border-0 mb-2">
-                <img class="card-img-top" src="~/Content/img/product-2.jpg" alt="Product 2">
-                <div class="card-body bg-light p-4">
-                    <h4 class="card-title text-truncate">Cat Scratching Post</h4>
-                    <div class="d-flex mb-3">
-                        <small class="mr-2"><i class="fa fa-tag text-muted"></i> $29.99</small>
+             Product 2
+            <div class="col-lg-3 col-md-4 mb-4">
+                <div class="card border-0 mb-2">
+                    <img class="card-img-top" src="~/Content/img/product-2.jpg" alt="Product 2">
+                    <div class="card-body bg-light p-4">
+                        <h4 class="card-title text-truncate">Cat Scratching Post</h4>
+                        <div class="d-flex mb-3">
+                            <small class="mr-2"><i class="fa fa-tag text-muted"></i> $29.99</small>
+                        </div>
+                        <p>A sturdy and fun scratching post designed to keep your cat entertained and away from your furniture.</p>
+                        <a class="btn btn-primary font-weight-bold" href="">View Detail</a>
                     </div>
-                    <p>A sturdy and fun scratching post designed to keep your cat entertained and away from your furniture.</p>
-                    <a class="btn btn-primary font-weight-bold" href="">View Detail</a>
                 </div>
             </div>
-        </div>
 
-        <!-- Product 3 -->
-        <div class="col-lg-3 col-md-4 mb-4">
-            <div class="card border-0 mb-2">
-                <img class="card-img-top" src="~/Content/img/product-3.jpg" alt="Product 3">
-                <div class="card-body bg-light p-4">
-                    <h4 class="card-title text-truncate">Bird Cage</h4>
-                    <div class="d-flex mb-3">
-                        <small class="mr-2"><i class="fa fa-tag text-muted"></i> $99.99</small>
+             Product 3
+            <div class="col-lg-3 col-md-4 mb-4">
+                <div class="card border-0 mb-2">
+                    <img class="card-img-top" src="~/Content/img/product-3.jpg" alt="Product 3">
+                    <div class="card-body bg-light p-4">
+                        <h4 class="card-title text-truncate">Bird Cage</h4>
+                        <div class="d-flex mb-3">
+                            <small class="mr-2"><i class="fa fa-tag text-muted"></i> $99.99</small>
+                        </div>
+                        <p>A spacious and durable bird cage, perfect for small to medium-sized birds with easy-to-clean features.</p>
+                        <a class="btn btn-primary font-weight-bold" href="">View Detail</a>
                     </div>
-                    <p>A spacious and durable bird cage, perfect for small to medium-sized birds with easy-to-clean features.</p>
-                    <a class="btn btn-primary font-weight-bold" href="">View Detail</a>
                 </div>
             </div>
-        </div>
 
-        <!-- Product 4 -->
-        <div class="col-lg-3 col-md-4 mb-4">
-            <div class="card border-0 mb-2">
-                <img class="card-img-top" src="~/Content/img/team-3.jpg" alt="Product 4">
-                <div class="card-body bg-light p-4">
-                    <h4 class="card-title text-truncate">Bird Cage</h4>
-                    <div class="d-flex mb-3">
-                        <small class="mr-2"><i class="fa fa-tag text-muted"></i> $99.99</small>
+             Product 4
+            <div class="col-lg-3 col-md-4 mb-4">
+                <div class="card border-0 mb-2">
+                    <img class="card-img-top" src="~/Content/img/team-3.jpg" alt="Product 4">
+                    <div class="card-body bg-light p-4">
+                        <h4 class="card-title text-truncate">Bird Cage</h4>
+                        <div class="d-flex mb-3">
+                            <small class="mr-2"><i class="fa fa-tag text-muted"></i> $99.99</small>
+                        </div>
+                        <p>A spacious and durable bird cage, perfect for small to medium-sized birds with easy-to-clean features.</p>
+                        <a class="btn btn-primary font-weight-bold" href="">View Detail</a>
                     </div>
-                    <p>A spacious and durable bird cage, perfect for small to medium-sized birds with easy-to-clean features.</p>
-                    <a class="btn btn-primary font-weight-bold" href="">View Detail</a>
                 </div>
             </div>
-        </div>
 
-        <div class="col-lg-3 col-md-4 mb-4">
-            <div class="card border-0 mb-2">
-                <img class="card-img-top" src="~/Content/img/team-3.jpg" alt="Product 4">
-                <div class="card-body bg-light p-4">
-                    <h4 class="card-title text-truncate">Bird Cage</h4>
-                    <div class="d-flex mb-3">
-                        <small class="mr-2"><i class="fa fa-tag text-muted"></i> $99.99</small>
+            <div class="col-lg-3 col-md-4 mb-4">
+                <div class="card border-0 mb-2">
+                    <img class="card-img-top" src="~/Content/img/team-3.jpg" alt="Product 4">
+                    <div class="card-body bg-light p-4">
+                        <h4 class="card-title text-truncate">Bird Cage</h4>
+                        <div class="d-flex mb-3">
+                            <small class="mr-2"><i class="fa fa-tag text-muted"></i> $99.99</small>
+                        </div>
+                        <p>A spacious and durable bird cage, perfect for small to medium-sized birds with easy-to-clean features.</p>
+                        <a class="btn btn-primary font-weight-bold" href="">View Detail</a>
                     </div>
-                    <p>A spacious and durable bird cage, perfect for small to medium-sized birds with easy-to-clean features.</p>
-                    <a class="btn btn-primary font-weight-bold" href="">View Detail</a>
                 </div>
             </div>
-        </div>
 
-        <div class="col-lg-3 col-md-4 mb-4">
-            <div class="card border-0 mb-2">
-                <img class="card-img-top" src="~/Content/img/team-3.jpg" alt="Product 4">
-                <div class="card-body bg-light p-4">
-                    <h4 class="card-title text-truncate">Bird Cage</h4>
-                    <div class="d-flex mb-3">
-                        <small class="mr-2"><i class="fa fa-tag text-muted"></i> $99.99</small>
+            <div class="col-lg-3 col-md-4 mb-4">
+                <div class="card border-0 mb-2">
+                    <img class="card-img-top" src="~/Content/img/team-3.jpg" alt="Product 4">
+                    <div class="card-body bg-light p-4">
+                        <h4 class="card-title text-truncate">Bird Cage</h4>
+                        <div class="d-flex mb-3">
+                            <small class="mr-2"><i class="fa fa-tag text-muted"></i> $99.99</small>
+                        </div>
+                        <p>A spacious and durable bird cage, perfect for small to medium-sized birds with easy-to-clean features.</p>
+                        <a class="btn btn-primary font-weight-bold" href="">View Detail</a>
                     </div>
-                    <p>A spacious and durable bird cage, perfect for small to medium-sized birds with easy-to-clean features.</p>
-                    <a class="btn btn-primary font-weight-bold" href="">View Detail</a>
                 </div>
             </div>
-        </div>
 
-        <div class="col-lg-3 col-md-4 mb-4">
-            <div class="card border-0 mb-2">
-                <img class="card-img-top" src="~/Content/img/team-3.jpg" alt="Product 4">
-                <div class="card-body bg-light p-4">
-                    <h4 class="card-title text-truncate">Bird Cage</h4>
-                    <div class="d-flex mb-3">
-                        <small class="mr-2"><i class="fa fa-tag text-muted"></i> $99.99</small>
+            <div class="col-lg-3 col-md-4 mb-4">
+                <div class="card border-0 mb-2">
+                    <img class="card-img-top" src="~/Content/img/team-3.jpg" alt="Product 4">
+                    <div class="card-body bg-light p-4">
+                        <h4 class="card-title text-truncate">Bird Cage</h4>
+                        <div class="d-flex mb-3">
+                            <small class="mr-2"><i class="fa fa-tag text-muted"></i> $99.99</small>
+                        </div>
+                        <p>A spacious and durable bird cage, perfect for small to medium-sized birds with easy-to-clean features.</p>
+                        <a class="btn btn-primary font-weight-bold" href="">View Detail</a>
                     </div>
-                    <p>A spacious and durable bird cage, perfect for small to medium-sized birds with easy-to-clean features.</p>
-                    <a class="btn btn-primary font-weight-bold" href="">View Detail</a>
                 </div>
             </div>
-        </div>
 
-        <div class="col-lg-3 col-md-4 mb-4">
-            <div class="card border-0 mb-2">
-                <img class="card-img-top" src="~/Content/img/team-3.jpg" alt="Product 4">
-                <div class="card-body bg-light p-4">
-                    <h4 class="card-title text-truncate">Bird Cage</h4>
-                    <div class="d-flex mb-3">
-                        <small class="mr-2"><i class="fa fa-tag text-muted"></i> $99.99</small>
+            <div class="col-lg-3 col-md-4 mb-4">
+                <div class="card border-0 mb-2">
+                    <img class="card-img-top" src="~/Content/img/team-3.jpg" alt="Product 4">
+                    <div class="card-body bg-light p-4">
+                        <h4 class="card-title text-truncate">Bird Cage</h4>
+                        <div class="d-flex mb-3">
+                            <small class="mr-2"><i class="fa fa-tag text-muted"></i> $99.99</small>
+                        </div>
+                        <p>A spacious and durable bird cage, perfect for small to medium-sized birds with easy-to-clean features.</p>
+                        <a class="btn btn-primary font-weight-bold" href="">View Detail</a>
                     </div>
-                    <p>A spacious and durable bird cage, perfect for small to medium-sized birds with easy-to-clean features.</p>
-                    <a class="btn btn-primary font-weight-bold" href="">View Detail</a>
                 </div>
             </div>
-        </div>
 
-        <div class="col-lg-3 col-md-4 mb-4">
-            <div class="card border-0 mb-2">
-                <img class="card-img-top" src="~/Content/img/team-3.jpg" alt="Product 4">
-                <div class="card-body bg-light p-4">
-                    <h4 class="card-title text-truncate">Bird Cage</h4>
-                    <div class="d-flex mb-3">
-                        <small class="mr-2"><i class="fa fa-tag text-muted"></i> $99.99</small>
+            <div class="col-lg-3 col-md-4 mb-4">
+                <div class="card border-0 mb-2">
+                    <img class="card-img-top" src="~/Content/img/team-3.jpg" alt="Product 4">
+                    <div class="card-body bg-light p-4">
+                        <h4 class="card-title text-truncate">Bird Cage</h4>
+                        <div class="d-flex mb-3">
+                            <small class="mr-2"><i class="fa fa-tag text-muted"></i> $99.99</small>
+                        </div>
+                        <p>A spacious and durable bird cage, perfect for small to medium-sized birds with easy-to-clean features.</p>
+                        <a class="btn btn-primary font-weight-bold" href="">View Detail</a>
                     </div>
-                    <p>A spacious and durable bird cage, perfect for small to medium-sized birds with easy-to-clean features.</p>
-                    <a class="btn btn-primary font-weight-bold" href="">View Detail</a>
                 </div>
-            </div>
-        </div>
-    </div>
+            </div>*@
+    </div>-->
 
     <!-- NumPage Start -->
     <div class="col-lg-12">

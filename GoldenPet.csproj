@@ -407,9 +407,13 @@
     <Content Include="Views\Product\Detail.cshtml" />
     <Content Include="Views\Product\Index.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Default\getCategory.cshtml" />
+    <Content Include="Views\Default\getProductHome.cshtml" />
     <Content Include="Views\Default\getFooter.cshtml" />
     <Content Include="Views\Default\getContactInfoTopBar.cshtml" />
     <Content Include="Views\Default\getPricingPlan.cshtml" />
+    <Content Include="Views\Product\getProduct.cshtml" />
+    <Content Include="Views\Product\getCategory.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

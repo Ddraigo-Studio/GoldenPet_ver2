@@ -27,6 +27,7 @@ namespace GoldenPet.Models
         public string duration { get; set; }
         public Nullable<System.DateTime> createdAt { get; set; }
         public Nullable<System.DateTime> updatedAt { get; set; }
+        public string img { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tb_PackageFeature> tb_PackageFeature { get; set; }
