@@ -182,9 +182,9 @@ VALUES
 ('team-1.jpg', 'team', 'Huy Dương', 'CEO', null, 1, 1, 'Huy', NULL, NULL),
 ('carousel-1.jpg', 'carousel', 'HHA', 'Huy dep trai vai o', null, 1, 1, 'User1', NULL, NULL)
 
+
+
 /*
-
-
 -- Insert data for 'Standard' package
 INSERT INTO dbo.tb_PackageFeature (packageId, featureName, isIncluded, createdAt)
 VALUES
@@ -192,6 +192,7 @@ VALUES
     (2, 'Boarding', 1, GETDATE()),
     (2, 'Spa & Grooming', 1, GETDATE()),
     (2, 'Veterinary Medicine', 0, GETDATE());
+GO
 
 -- Insert data for 'Premium' package
 INSERT INTO dbo.tb_PackageFeature (packageId, featureName, isIncluded, createdAt)

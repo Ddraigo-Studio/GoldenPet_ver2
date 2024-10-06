@@ -2,9 +2,9 @@
 @foreach (var item in Model)
 {
     <div class="col-lg-3 col-md-4 mb-4">
-        <div class="card border-0 mb-2">
+        <div class="card  mb-2" style="border-radius: 0 0 10px 10px">
             <img class="card-img-top" src="/Content/img/@item.img" alt="Product 1">
-            <div class="card-body bg-light p-4">
+            <div class="card-body bg-light p-4 " style="border-radius: 0 0 10px 10px">
                 <h5 class="card-title text-truncate">@item.name</h5>
                 <div class="d-flex mb-3">
                     <small class="mr-2"><i class="fa fa-tag text-muted"></i> @item.price VNĐ</small>
@@ -14,7 +14,7 @@
             </div>
         </div>
     </div>
-    
+
 }
 <div class="clearfix"> </div>
 
