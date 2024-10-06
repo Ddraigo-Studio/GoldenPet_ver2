@@ -1,0 +1,13 @@
+﻿@model IEnumerable<GoldenPet.Models.tb_Contact>
+@foreach (var i in Model)
+{
+    <div class="d-inline-flex flex-column text-center px-3 border-right">
+        <h6>Email Us</h6>
+        <p class="m-0">@i.email</p>
+    </div>
+    <div class="d-inline-flex flex-column text-center pl-3">
+        <h6>Call Us</h6>
+        <p class="m-0">@i.phonenumber</p>
+    </div>
+    break;
+}

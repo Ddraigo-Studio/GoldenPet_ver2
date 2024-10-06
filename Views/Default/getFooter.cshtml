@@ -1,0 +1,9 @@
+﻿@model IEnumerable<GoldenPet.Models.tb_Contact>
+
+@foreach (var i in Model)
+{
+    <p><i class="fa fa-map-marker-alt mr-2"></i>@i.location</p>
+    <p><i class="fa fa-phone-alt mr-2"></i>@i.phonenumber</p>
+    <p><i class="fa fa-envelope mr-2"></i>@i.email</p>
+    break;
+}

@@ -152,6 +152,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\PackagePricing_Model\PackagePricing.cs" />
     <Compile Include="Models\tb_Advertisement.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -406,6 +407,9 @@
     <Content Include="Views\Product\Detail.cshtml" />
     <Content Include="Views\Product\Index.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Default\getFooter.cshtml" />
+    <Content Include="Views\Default\getContactInfoTopBar.cshtml" />
+    <Content Include="Views\Default\getPricingPlan.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

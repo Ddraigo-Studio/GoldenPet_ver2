@@ -360,7 +360,8 @@
             <h1 class="display-4 m-0">Choose the <span class="text-primary">Best Price</span></h1>
         </div>
         <div class="row">
-            <div class="col-lg-4 mb-4">
+            @{Html.RenderAction("getPricingPlan", "Default"); }
+            @*<div class="col-lg-4 mb-4">
                 <div class="card border-0">
                     <div class="card-header position-relative border-0 p-0 mb-4">
                         <img class="card-img-top" src="~/Content/img/price-1.jpg" alt="">
@@ -431,7 +432,7 @@
                         <a href="" class="btn btn-primary btn-block p-3" style="border-radius: 0;">Signup Now</a>
                     </div>
                 </div>
-            </div>
+            </div>*@
         </div>
     </div>
 </div>
