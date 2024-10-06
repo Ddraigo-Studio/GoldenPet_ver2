@@ -4,7 +4,7 @@
 <head>
 
     <meta charset="utf-8">
-    <title>PetLover - Pet Care Website Template</title>
+    <title>GoldenPet - Pet Care Website Template</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="Free HTML Templates" name="keywords">
     <meta content="Free HTML Templates" name="description">
@@ -65,7 +65,7 @@
         <div class="row py-3 px-lg-5">
             <div class="col-lg-4">
                 <a href="" class="navbar-brand d-none d-lg-block">
-                    <h1 class="m-0 display-5 text-capitalize"><span class="text-primary">Pet</span>Lover</h1>
+                    <h1 class="m-0 display-5 text-capitalize"><span class="text-primary">Golden</span>Pet</h1>
                 </a>
             </div>
             <div class="col-lg-8 text-center text-lg-right">
@@ -101,7 +101,7 @@
                 
                 @{Html.RenderAction("GetMenu", "Menu"); }
 
-                <a href="" class="btn btn-lg btn-primary px-3 d-none d-lg-block">Get Quote</a>
+                <a href="@Url.Action("Index", "Login")" class="btn btn-lg btn-primary px-3 d-none d-lg-block">Đăng nhập</a>
             </div>
         </nav>
     </div>
