@@ -4,17 +4,29 @@
     Layout = null;
 }
 
+@Styles.Render("~/css/login")
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Đăng nhập</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sen:wght@700&display=swap" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700&display=swap" />
-    <link rel="stylesheet" href="~/Content/css/login.css" />
-    
-
+    <style>
+        .input-field {
+            width: 100%;
+            height: 50px;
+            border: 1.5px solid #808080;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+    </style>
 </head>
 <body>
     <div class="main-container">
@@ -27,9 +39,9 @@
                 <div class="form">
                     <span class="title">Đăng nhập</span>
                     <div class="external-login">
-                        <div class="frame"><div class="google"></div></div>
-                        <button class="button"><div class="facebook"></div></button>
-
+                        <button class="button" style="width: 150px;"><div class="google"></div></button>
+                        <button class="button" style="width: 150px;"><div class="facebook"></div></button>
+                        <button class="button" style="width: 150px;"><div class="vector"></div></button>
                     </div>
                     <div class="login-separator">
                         <div class="line"></div>
@@ -38,16 +50,20 @@
                     </div>
                     <div class="login-form">
                         <span class="usuario-correo-electronico">Tên đăng nhập</span>
-                        <div class="input"></div>
-                        <div class="wrapper-4"></div>
-                        <div class="pass">
-                            <span class="contrasena">Mật khẩu</span><span class="olvidaste-tu-contrasena">Bạn quên mật khẩu?</span>
+                        <input type="text" class="form-control input-field " />
+
+                        <div class="pass d-flex justify-content-between align-items-center">
+                            <span class="contrasena">Mật khẩu</span>
+                            <span class="olvidaste-tu-contrasena">Bạn quên mật khẩu?</span>
                         </div>
-                        <div class="input-field"></div>
+
+                        <input type="password" class="form-control input-field"/>
+
                         <div class="empty"></div>
                         <button class="submit-button">
                             <span class="login-text">Đăng nhập</span>
                         </button>
+
                         <div class="footer">
                             <div class="vector-3"></div>
                             <span class="devmiguelfg">devmiguelfg</span>
@@ -57,17 +73,13 @@
             </div>
             <div class="image-container">
                 <div class="description">
-                    <span class="misifu">Golden Pet</span><span class="misifu-description">“Mang đến cho các Pet xinh yêu những trải nghiệm dịch vụ tốt nhất”</span>
-                    <!-- <div class="navigation">
-                      <div class="frame-4"></div>
-                      <div class="frame-5"></div>
-                    </div> -->
-                    <input class="description-input" />
+                    <span class="misifu">Golden Pet</span>
+                    <span class="misifu-description">“Mang đến cho các Pet xinh yêu những trải nghiệm dịch vụ tốt nhất”</span>
+                    <input class="description-input" placeholder="Nhập mô tả" />
                 </div>
             </div>
         </div>
     </div>
-
 </body>
 </html>
 

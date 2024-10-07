@@ -5,12 +5,12 @@
 }
 
 <!-- Product Detail Start -->
-<div class="container py-5">
+@*<div class="container py-5">
     <div class="row pt-5">
         <div class="col-lg-8">
             <div class="d-flex flex-column text-left mb-4">
                 <h4 class="text-secondary mb-3">Product Detail</h4>
-                <h1 class="mb-3">Product Name Here</h1>
+                <h1 class="mb-3">@Model.name</h1>
                 <div class="d-index-flex mb-2">
                     <span class="mr-3"><i class="fa fa-user text-muted"></i> Seller Name</span>
                     <span class="mr-3"><i class="fa fa-tag text-muted"></i> Category Name</span>
@@ -19,8 +19,8 @@
             </div>
 
             <div class="mb-5">
-                <img class="img-fluid w-100 mb-4" src="img/product.jpg" alt="Product Image">
-                <p>Product description goes here. Highlight features, specifications, and any important details about the product. Make sure to give potential buyers a clear understanding of what makes this product unique.</p>
+                <img class="img-fluid w-100 mb-4" src="/Content/img/@Model.img" alt="Product Image">
+                <p>@Model.description</p>
 
                 <h2 class="mb-4">Features</h2>
                 <ul>
@@ -30,12 +30,12 @@
                     <li>Feature 4</li>
                 </ul>
 
-                <h3 class="mb-4">Price: $XX.XX</h3>
+                <h3 class="mb-4">Price: @Model.price VNĐ</h3>
                 <button class="btn btn-primary btn-lg">Add to Cart</button>
             </div>
 
             <div class="media bg-light mb-5 p-4 p-md-5">
-                <img src="img/user.jpg" alt="User Image" class="img-fluid mr-4 mt-1" style="width: 80px;">
+                <img src="~/Content/img/user.jpg" alt="User Image" class="img-fluid mr-4 mt-1" style="width: 80px;">
                 <div class="media-body">
                     <h5 class="mb-3">User Review</h5>
                     <p class="m-0">Conset elitr erat vero labore dolor ipsum et diam, tempor eos dolor conset lorem ipsum, ipsum ipsum sit no ut est. Guber ea ipsum erat conset magna kasd amet est magna elitr ea sit justo sed.</p>
@@ -45,14 +45,14 @@
             <div class="mb-5">
                 <h3 class="mb-4">Customer Reviews (3)</h3>
                 <div class="media mb-4">
-                    <img src="img/user.jpg" alt="User Image" class="img-fluid mr-3 mt-1" style="width: 45px;">
+                    <img src="~/Content/img/user.jpg" alt="User Image" class="img-fluid mr-3 mt-1" style="width: 45px;">
                     <div class="media-body">
                         <h6>John Doe <small><i>01 Jan 2045</i></small></h6>
                         <p>Great product! It has exceeded my expectations. Highly recommend.</p>
                     </div>
                 </div>
                 <div class="media mb-4">
-                    <img src="img/user.jpg" alt="User Image" class="img-fluid mr-3 mt-1" style="width: 45px;">
+                    <img src="~/Content/img/user.jpg" alt="User Image" class="img-fluid mr-3 mt-1" style="width: 45px;">
                     <div class="media-body">
                         <h6>Jane Smith <small><i>02 Jan 2045</i></small></h6>
                         <p>Good value for the price. Satisfied with my purchase.</p>
@@ -153,14 +153,65 @@
                     </div>
                 </div>
             </div>
-            <div class="mb-5">
-                <h3 class="mb-4">Tag Cloud</h3>
-                <div class="d-flex flex-wrap m-n1">
-                    <a href="" class="btn btn-outline-primary m-1">Electronics</a>
-                    <a href="" class="btn btn-outline-primary m-1">Fashion</a>
-                    <a href="" class="btn btn-outline-primary m-1">Home</a>
-                    <a href="" class="btn btn-outline-primary m-1">Books</a>
-                    <a href="" class="btn btn-outline-primary m-1">Gifts</a>
+        </div>
+    </div>
+</div>*@
+<link href="~/Content/css/product_detail.css" rel="stylesheet" />
+
+<div class="main-container">
+    <div class="container">
+        <div class="frame">
+            <div class="frame-1">
+                <div class="arrow-left"></div>
+                <span class="back-to-list">back to list</span>
+            </div>
+            <div class="ellipse"></div>
+            <div class="group"></div>
+            <img class="img-fluid w-100 mb-4" src="/Content/img/@Model.img" alt="Product Image">
+            <div class="ellipse-2"></div>
+        </div>
+        <div class="flex-column-fdc">
+            <span class="product_name">@Model.name</span>
+            <div class="frame-3">
+                <div class="frame-4"><span class="brand">@Model.brand</span></div>
+                <div class="line"></div>
+                <div class="frame-5"><span class="allaf">ALLAF</span></div>
+            </div>
+            <div class="frame-6">
+                <div class="frame-7">
+                    <span class="description">Mô tả:</span>
+                    <span class="complete-nutrition">@Model.description</span>
+                </div>
+                <div class="frame-8">
+                    <div class="rectangle"></div>
+                    <div class="rectangle-9"></div>
+                    <div class="rectangle-a"></div>
+                </div>
+                <div class="frame-b">
+                    <span class="size-label">Size:</span>
+                    <div class="frame-c">
+                        <button class="frame-button"><span class="weight-1-5kg">1.5 kg</span></button>
+                        <button class="frame-button-d"><span class="weight-1kg">1 kg</span></button>
+                        <button class="button-frame"><span class="span-gr">500 gr</span></button>
+                        <button class="button-frame-e"><span class="span-gr-f">250 gr</span></button>
+                    </div>
+                </div>
+                <div class="div-frame">
+                    <span class="span-ingrendients">Ingredients:</span>
+                    <span class="span-nutrisi">Nutrisi<br />Vitamin E<br />Protein</span>
+                </div>
+            </div>
+            <div class="div-frame-10">
+                <div class="div-frame-11">
+                    <div class="div-frame-12">
+                        <span class="span-quantity">Số lượng:</span>
+                        <div class="minus-square"></div>
+                        <button class="button-group">
+                            <div class="frame-13"><span class="span-1">1</span></div>
+                        </button>
+                        <div class="plus-square"></div>
+                    </div>
+                    <button class="button-frame-14"><span class="add-to-card">ADD TO CART</span></button>
                 </div>
             </div>
         </div>

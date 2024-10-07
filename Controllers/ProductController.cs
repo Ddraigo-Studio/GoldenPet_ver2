@@ -45,8 +45,9 @@ namespace GoldenPet.Controllers
 
         public ActionResult Detail(long id)
         {
+            
             var v = from t in _db.tb_Product
-                    where t.id == id
+                    where  t.id == id
                     select t;
             return View(v.FirstOrDefault());
         }

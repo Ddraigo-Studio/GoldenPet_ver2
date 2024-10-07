@@ -185,14 +185,25 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\css\assets\images\116b9631-4392-45c6-8934-c393c5c80724.png" />
+    <Content Include="Content\css\assets\images\172165fb-3aad-46f0-b32e-88ad7ca9749d.png" />
     <Content Include="Content\css\assets\images\2c4c2773-5013-40b1-9c01-087c009af467.png" />
+    <Content Include="Content\css\assets\images\2e2f79ea-7871-4c07-aafe-180c152ac070.png" />
     <Content Include="Content\css\assets\images\36085094-f973-49c3-9e4c-411ea386f2e0.png" />
     <Content Include="Content\css\assets\images\3ceda8a9477eacbdc7b08dd5c6c65333f3f80545.png" />
+    <Content Include="Content\css\assets\images\446aabdf-6c53-4eac-8b4d-bcfd08a573bd.png" />
+    <Content Include="Content\css\assets\images\59bfddde-5063-46f6-8a44-e0d949aae4dd.png" />
     <Content Include="Content\css\assets\images\5fa37c97-747e-42e5-895c-08b933aba77a.png" />
+    <Content Include="Content\css\assets\images\65521e2f-e0c7-4cc7-87b2-634a0740d334.png" />
+    <Content Include="Content\css\assets\images\765db069-5ea0-47d5-ad16-fccdab42aec8.png" />
+    <Content Include="Content\css\assets\images\8d2f8293-ff39-4099-8622-d3f5c02e1ba4.png" />
     <Content Include="Content\css\assets\images\99343392-f8a4-4d0a-8954-f11c4ab20f02.png" />
+    <Content Include="Content\css\assets\images\9ef8e3af4e362bbd2e24a945b3bea8d5b57cace6.png" />
     <Content Include="Content\css\assets\images\a7cdaa29-b86b-4648-8ecf-2d485afd38ce.png" />
+    <Content Include="Content\css\assets\images\bf3c55fcee5e0fdf804b9e720a182556f991d854.png" />
+    <Content Include="Content\css\assets\images\bff2d644-0a78-424b-8fed-11e2453b1abd.png" />
     <Content Include="Content\css\assets\images\c578a992-5a59-4c47-bdc0-78ade9537653.png" />
     <Content Include="Content\css\assets\images\d28686f3-2f1f-433d-9e75-e9cf636e2ef1.png" />
+    <Content Include="Content\css\assets\images\d7ea825d-560f-4810-bed4-ae4b3327b734.png" />
     <Content Include="Content\css\assets\images\edecdcf7-56bc-4f58-981b-777e3539f18d.png" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
@@ -210,6 +221,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Content\css\product_detail.css" />
     <Content Include="Content\css\login.css" />
     <Content Include="Content\css\style.css" />
     <Content Include="Content\css\style.min.css" />
