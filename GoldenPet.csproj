@@ -132,9 +132,9 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\DefaultController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\MenuController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Controllers\UserAccountController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -438,7 +438,10 @@
     <Content Include="Views\Default\getPricingPlan.cshtml" />
     <Content Include="Views\Product\getProduct.cshtml" />
     <Content Include="Views\Product\getCategory.cshtml" />
-    <Content Include="Views\Login\Index.cshtml" />
+    <Content Include="Views\Product\getImageProduct.cshtml" />
+    <Content Include="Views\Shared\LoginLayout .cshtml" />
+    <Content Include="Views\UserAccount\Login.cshtml" />
+    <Content Include="Views\UserAccount\SignUp.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

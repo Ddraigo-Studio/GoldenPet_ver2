@@ -1,0 +1,8 @@
+﻿@model List<string>
+
+<div class="frame-8">
+    @foreach (var image in Model)
+    {
+        <button class="rectangle"><img src="@Url.Content("~/Content/img/" + image)" alt="Product Image" /></button>
+    }
+</div>

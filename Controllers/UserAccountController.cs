@@ -6,10 +6,15 @@ using System.Web.Mvc;
 
 namespace GoldenPet.Controllers
 {
-    public class LoginController : Controller
+    public class UserAccountController : Controller
     {
-        // GET: Login
-        public ActionResult Index()
+        // GET: UserAccount
+        public ActionResult Login()
+        {
+            return View();
+        }
+
+        public ActionResult SignUp()
         {
             return View();
         }

@@ -157,13 +157,14 @@ button {
 }
 .input-field {
     width: 100%;
-    height: 60px;
-    border: 1px #E84A15;
-    border-radius: 2px;
-    padding: 15px;
+    height: 70px;
+    border: 1.5px solid #808080;
+    border-radius: 5px;
+    padding: 10px;
     margin-bottom: 15px;
-    font-size: 16px;
+    font-size: 20px;
 }
+
 .google {
   flex-shrink: 0;
   position: relative;
@@ -297,7 +298,7 @@ button {
   flex-grow: 1;
   flex-shrink: 0;
   flex-basis: 0;
-  gap: 10px;
+  gap: 5px;
   position: relative;
   padding: 36px 0 0 0;
   z-index: 19;
@@ -425,17 +426,15 @@ button {
   z-index: 29;
 }
 .footer {
-  display: flex;
-  align-items: flex-end;
-  align-self: stretch;
-  flex-wrap: nowrap;
-  flex-grow: 1;
-  flex-shrink: 0;
-  flex-basis: 0;
-  gap: 8px;
-  position: relative;
-  z-index: 30;
-  overflow: hidden;
+    display: flex;
+    align-items: center; 
+    justify-content: flex-start; 
+    gap: 8px;
+    position: relative;
+    z-index: 30;
+    overflow: hidden;
+    padding: 20px; 
+    height: auto; 
 }
 .vector-3 {
   flex-shrink: 0;
@@ -619,6 +618,7 @@ button {
 
   .submit-button {
     height: 50px; /* Giảm chiều cao button */
+    margin-bottom: auto;
   }
 
   .vector-3 {

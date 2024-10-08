@@ -1,10 +1,10 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 
 <head>
 
     <meta charset="utf-8">
-    <title>GoldenPet - Pet Care Website Template</title>
+    <title>GoldenPet - Pet Care</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="Free HTML Templates" name="keywords">
     <meta content="Free HTML Templates" name="description">
@@ -22,11 +22,12 @@
     <link href="~/Content/lib/flaticon/font/flaticon.css" rel="stylesheet">
 
     <!-- Libraries Stylesheet -->
-    <link href="~/Content/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-    <link href="~/Content/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
-
+    @*<link href="~/Content/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+        <link href="~/Content/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />*@
+    @Styles.Render("~/lib/css/layout")
     <!-- Customized Bootstrap Stylesheet -->
-    <link href="~/Content/css/style.css" rel="stylesheet">
+    @Styles.Render("~/css/layout")
+    
 </head>
 
 <body>
@@ -101,7 +102,7 @@
                 
                 @{Html.RenderAction("GetMenu", "Menu"); }
 
-                <a href="@Url.Action("Index", "Login")" class="btn btn-lg btn-primary px-3 d-none d-lg-block">Đăng nhập</a>
+                <a href="@Url.Action("Login", "UserAccount")" class="btn btn-lg btn-primary px-3 d-none d-lg-block">Đăng nhập</a>
             </div>
         </nav>
     </div>

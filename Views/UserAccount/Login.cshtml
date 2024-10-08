@@ -1,0 +1,52 @@
+﻿
+@{
+    ViewBag.Title = "Đăng nhập";
+    Layout = "~/Views/Shared/LoginLayout .cshtml";
+}
+
+<div class="form">
+    <span class="title">Đăng nhập</span>
+
+    <div class="login-form">
+        <span class="usuario-correo-electronico">Tên đăng nhập</span>
+        <input type="text" class="form-control input-field " />
+
+        <div class="pass d-flex justify-content-between align-items-center">
+            <span class="contrasena">Mật khẩu</span>
+            <span class="olvidaste-tu-contrasena">Bạn quên mật khẩu?</span>
+        </div>
+
+        <input type="password" class="form-control input-field" />
+
+        <div class="empty"></div>
+        <button class="submit-button">
+            <span class="login-text">Đăng nhập</span>
+        </button>
+        <div class="empty"></div>
+        <div style="display: flex; justify-content: flex-end; width: 100%;">
+
+            <span>Bạn chưa có tài khoản?</span>
+            @Html.ActionLink(" Đăng ký ngay", "SignUp", "UserAccount", null, new { @class = "register-link" })
+
+        </div>
+    </div>
+
+    <div class="login-separator">
+        <div class="line"></div>
+        <span class="o-inicia-sesion">Hoặc đăng nhập bằng</span>
+        <div class="line-2"></div>
+    </div>
+
+    <div class="external-login">
+        <button class="button"><div class="google"></div></button>
+        <button class="button"><div class="facebook"></div></button>
+        <button class="button"><div class="vector"></div></button>
+
+    </div>
+    
+    <div class="footer">
+        <div class="vector-3"></div>
+        <span class="devmiguelfg">devmiguelfg</span>
+    </div>
+</div>
+

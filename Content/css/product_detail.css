@@ -37,25 +37,30 @@ button {
   overflow: hidden;
   border-radius: 28px;
 }
+
 .frame {
-  position: absolute;
-  width: 616px;
-  height: 100%;
-  top: 0;
-  left: 0;
-  background: #e3e5fa;
-  z-index: 8;
-  overflow: hidden;
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: center; 
+    position: absolute;
+    width: 616px;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: #e3e5fa;
+    z-index: 8;
+    overflow: hidden;
 }
 .frame-1 {
-  display: flex;
-  align-items: center;
-  flex-wrap: nowrap;
-  gap: 10px;
-  position: relative;
-  width: 88px;
-  margin: 18px 0 0 22px;
-  z-index: 13;
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    gap: 10px;
+    position: relative;
+    width: 88px;
+    margin: 18px 0 0 22px;
+    z-index: 13;
 }
 .arrow-left {
   flex-shrink: 0;
@@ -169,10 +174,11 @@ button {
   flex-wrap: nowrap;
   gap: 12px;
   position: relative;
-  width: 107px;
+  width: fit-content;
   height: 12px;
   margin: 13px 0 0 4px;
   z-index: 2;
+  justify-content: space-between
 }
 .frame-4 {
   display: flex;
@@ -181,7 +187,7 @@ button {
   flex-shrink: 0;
   gap: 3px;
   position: relative;
-  width: 48px;
+  width: fit-content;
   z-index: 3;
 }
 .brand {
@@ -191,7 +197,7 @@ button {
   flex-shrink: 0;
   flex-basis: auto;
   position: relative;
-  width: 48px;
+  width: fit-content;
   height: 15px;
   color: #4fcc97;
   font-family: Manrope, var(--default-font-family);
@@ -267,24 +273,24 @@ button {
   min-width: 0;
   z-index: 17;
 }
-.description {
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  flex-shrink: 0;
-  flex-basis: auto;
-  position: relative;
-  width: 74px;
-  height: 15px;
-  color: #000000;
-  font-family: Manrope, var(--default-font-family);
-  font-size: 12px;
-  font-weight: 600;
-  line-height: 15px;
-  text-align: center;
-  white-space: nowrap;
-  letter-spacing: 0.24px;
-  z-index: 18;
+.description-detail {
+    display: flex;
+    align-items: flex-start;
+/*    justify-content: left;*/
+    flex-shrink: 0;
+    flex-basis: auto;
+    position: relative;
+    width: 74px;
+    height: 20px;
+    color: #000000;
+    font-family: Manrope, var(--default-font-family);
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 20px;
+    text-align: center;
+    white-space: nowrap;
+    letter-spacing: 0.24px;
+    z-index: 18;
 }
 .complete-nutrition {
   display: flex;
@@ -295,7 +301,7 @@ button {
   width: 418px;
   height: 147px;
   color: #000000;
-  font-family: Manrope, var(--default-font-family);
+  font-family: Arial, var(--default-font-family);
   font-size: 12px;
   font-weight: 300;
   line-height: 20.64px;
@@ -304,50 +310,46 @@ button {
   z-index: 19;
 }
 .frame-8 {
-  display: flex;
-  align-items: center;
-  flex-wrap: nowrap;
-  flex-shrink: 0;
-  gap: 23px;
-  position: relative;
-  width: 186px;
-  z-index: 20;
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    gap: 23px;
+    position: relative;
+    width: 186px;
+    z-index: 20;
 }
+
+.rectangle, .rectangle-9, .rectangle-a, .rectangle-b {
+    display: block;
+    flex-shrink: 0;
+    position: relative;
+    overflow: hidden; 
+    border-radius: 10px;
+    border: 1px #404040;
+}
+
 .rectangle {
-  flex-shrink: 0;
-  position: relative;
-  width: 52px;
-  height: 53px;
-  background: url(./assets/images/bff2d644-0a78-424b-8fed-11e2453b1abd.png)
-    no-repeat center;
-  background-size: cover;
-  z-index: 21;
-  border-radius: 10px;
-  box-sizing: content-box;
+    width: 52px;
+    height: 53px;
 }
-.rectangle-9 {
-  flex-shrink: 0;
-  position: relative;
-  width: 44px;
-  height: 44px;
-  background: rgba(255, 255, 255, 0.1)
-    url(./assets/images/9ef8e3af4e362bbd2e24a945b3bea8d5b57cace6.png) no-repeat
-    center;
-  background-size: cover;
-  z-index: 22;
-  border-radius: 10px;
+
+.rectangle-9, .rectangle-a, .rectangle-b {
+    width: 44px;
+    height: 44px;
 }
-.rectangle-a {
-  flex-shrink: 0;
-  position: relative;
-  width: 44px;
-  height: 44px;
-  background: rgba(255, 255, 255, 0.1)
-    url(./assets/images/bf3c55fcee5e0fdf804b9e720a182556f991d854.png) no-repeat
-    center;
-  background-size: cover;
-  z-index: 23;
-  border-radius: 10px;
+
+.rectangle img {
+    width: 100%;
+    height: 100%; 
+    object-fit: cover; 
+}
+
+.rectangle-9 img,
+.rectangle-a img,
+.rectangle-b img {
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover;
 }
 .frame-b {
   display: flex;

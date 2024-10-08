@@ -43,6 +43,42 @@ namespace GoldenPet.Controllers
             return PartialView(v.ToList());
         }
 
+        public ActionResult getImageProduct(long id)
+        {
+            var product = _db.tb_Product
+                .Where(t => t.id == id && t.hide == true)
+                .OrderBy(t => t.order)
+                .FirstOrDefault(); 
+
+            if (product == null)
+            {
+                return HttpNotFound(); 
+            }
+
+           
+            var images = new List<string>();
+
+          
+            if (!string.IsNullOrEmpty(product.img))
+            {
+                images.Add(product.img);
+            }
+            if (!string.IsNullOrEmpty(product.img2))
+            {
+                images.Add(product.img2);
+            }
+            if (!string.IsNullOrEmpty(product.img3))
+            {
+                images.Add(product.img3);
+            }
+            if (!string.IsNullOrEmpty(product.img4))
+            {
+                images.Add(product.img4);
+            }
+
+            return PartialView(images); 
+        }
+
         public ActionResult Detail(long id)
         {
             
