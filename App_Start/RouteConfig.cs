@@ -22,6 +22,48 @@ namespace GoldenPet
             },
             namespaces: new[] { "GoldenPet.Controllers" });
 
+            routes.MapRoute("News", "{type}/{meta}",
+            new { controller = "News", action = "getNews_Index", meta = UrlParameter.Optional },
+            new RouteValueDictionary
+            {
+                { "type", "tin-tuc" }
+            },
+            namespaces: new[] { "GoldenPet.Controllers" });
+
+            //routes.MapRoute("News_Details", "{type}/{meta}/{id}",
+            //new { controller = "News", action = "getNew_Details", meta = UrlParameter.Optional },
+            //new RouteValueDictionary
+            //{
+            //    { "type", "tin-tuc" }
+            //},
+            //namespaces: new[] { "GoldenPet.Controllers" });
+
+
+            routes.MapRoute("Service", "{type}/{meta}",
+           new { controller = "Service", action = "Index", meta = UrlParameter.Optional },
+           new RouteValueDictionary
+           {
+                { "type", "dich-vu" }
+           },
+           namespaces: new[] { "GoldenPet.Controllers" });
+
+
+            routes.MapRoute("price", "{type}/{meta}",
+           new { controller = "Price", action = "Index", meta = UrlParameter.Optional },
+           new RouteValueDictionary
+           {
+                { "type", "goi-dich-vu" }
+           },
+           namespaces: new[] { "GoldenPet.Controllers" });
+
+            routes.MapRoute("AboutUs", "{type}/{meta}",
+            new { controller = "AboutUs", action = "Index", meta = UrlParameter.Optional },
+            new RouteValueDictionary
+            {
+                { "type", "thong-tin-ve-chung-toi" }
+            },
+            namespaces: new[] { "GoldenPet.Controllers" });
+
             routes.MapRoute("Detail", "{type}/{meta}/{id}",
             new { controller = "Product", action = "Detail", id = UrlParameter.Optional },
             new RouteValueDictionary

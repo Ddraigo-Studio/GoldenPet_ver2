@@ -3,42 +3,44 @@
 
 @foreach (var i in Model)
 {
-    <div class="col-lg-4 mb-4">
-        <div class="card border-0">
-            <div class="card-header position-relative border-0 p-0 mb-4">
-                <img class="card-img-top" src="~/Content/img/price-1.jpg" alt="">
-                <div class="position-absolute d-flex flex-column align-items-center justify-content-center w-100 h-100" style="top: 0; left: 0; z-index: 1; background: rgba(0, 0, 0, .5);">
-                    <h3 class="text-primary mb-3">@i.PackageName</h3>
-                    <h1 class="display-4 text-white mb-0">
-                        <small class="align-top" style="font-size: 22px; line-height: 45px;">$</small>@i.PackagePrice<small class="align-bottom" style="font-size: 16px; line-height: 40px;">/ Mo</small>
-                    </h1>
+    if (i.PackagePrice != null)
+    {<div class="col-lg-4 mb-4">
+            <div class="card border-0">
+                <div class="card-header position-relative border-0 p-0 mb-4">
+                    <img class="card-img-top" src="@($"/Content/img/{@i.Imglink}")" alt="">
+                    <div class="position-absolute d-flex flex-column align-items-center justify-content-center w-100 h-100" style="top: 0; left: 0; z-index: 1; background: rgba(0, 0, 0, .5);">
+                        <h3 class="text-primary mb-3">@i.PackageName</h3>
+                        <h1 class="display-4 text-white mb-0">
+                            <small class="align-top" style="font-size: 22px; line-height: 45px;">$</small>@i.PackagePrice<small class="align-bottom" style="font-size: 16px; line-height: 40px;">/ Mo</small>
+                        </h1>
+                    </div>
+                </div>
+                <div class="card-body text-center p-0">
+                    <ul class="list-group list-group-flush mb-4">
+                        @foreach (var z in i.Features)
+                        {
+                            if (@z.IsIncluded == true)
+                            {
+                                <li class="list-group-item p-2"><i class="fa fa-check text-secondary mr-2"></i>@z.FeatureName</li>
+
+                            }
+                            else if (z.IsIncluded == false)
+                            {
+                                <li class="list-group-item p-2"><i class="fa fa-times text-danger mr-2"></i>@z.FeatureName</li>
+
+                            }
+                        }
+
+                        @*<li class="list-group-item p-2"><i class="fa fa-check text-secondary mr-2"></i>Feeding</li>
+                            <li class="list-group-item p-2"><i class="fa fa-check text-secondary mr-2"></i>Boarding</li>
+                            <li class="list-group-item p-2"><i class="fa fa-times text-danger mr-2"></i>Spa & Grooming</li>
+                            <li class="list-group-item p-2"><i class="fa fa-times text-danger mr-2"></i>Veterinary Medicine</li>*@
+                    </ul>
+                </div>
+                <div class="card-footer border-0 p-0">
+                    <a href="" class="btn btn-primary btn-block p-3" style="border-radius: 0;">Signup Now</a>
                 </div>
             </div>
-            <div class="card-body text-center p-0">
-                <ul class="list-group list-group-flush mb-4">
-                    @foreach (var z in i.Features)
-                    {
-                        if (@z.IsIncluded == true)
-                        {
-                            <li class="list-group-item p-2"><i class="fa fa-check text-secondary mr-2"></i>@z.FeatureName</li>
+        </div>        }
 
-                        }
-                        else if (z.IsIncluded == false)
-                        {
-                            <li class="list-group-item p-2"><i class="fa fa-times text-danger mr-2"></i>@z.FeatureName</li>
-
-                        }
-                    }
-
-                    @*<li class="list-group-item p-2"><i class="fa fa-check text-secondary mr-2"></i>Feeding</li>
-                    <li class="list-group-item p-2"><i class="fa fa-check text-secondary mr-2"></i>Boarding</li>
-                    <li class="list-group-item p-2"><i class="fa fa-times text-danger mr-2"></i>Spa & Grooming</li>
-                    <li class="list-group-item p-2"><i class="fa fa-times text-danger mr-2"></i>Veterinary Medicine</li>*@
-                </ul>
-            </div>
-            <div class="card-footer border-0 p-0">
-                <a href="" class="btn btn-primary btn-block p-3" style="border-radius: 0;">Signup Now</a>
-            </div>
-        </div>
-    </div>
-        }
+}
