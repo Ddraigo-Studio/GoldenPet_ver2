@@ -133,6 +133,7 @@
     <Compile Include="Controllers\AboutUsController.cs" />
     <Compile Include="Controllers\DefaultController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\MenuController.cs" />
     <Compile Include="Controllers\NewsController.cs" />
     <Compile Include="Controllers\PriceController.cs" />
@@ -193,6 +194,16 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\css\assets\images\116b9631-4392-45c6-8934-c393c5c80724.png" />
+    <Content Include="Content\css\assets\images\2c4c2773-5013-40b1-9c01-087c009af467.png" />
+    <Content Include="Content\css\assets\images\36085094-f973-49c3-9e4c-411ea386f2e0.png" />
+    <Content Include="Content\css\assets\images\3ceda8a9477eacbdc7b08dd5c6c65333f3f80545.png" />
+    <Content Include="Content\css\assets\images\5fa37c97-747e-42e5-895c-08b933aba77a.png" />
+    <Content Include="Content\css\assets\images\99343392-f8a4-4d0a-8954-f11c4ab20f02.png" />
+    <Content Include="Content\css\assets\images\a7cdaa29-b86b-4648-8ecf-2d485afd38ce.png" />
+    <Content Include="Content\css\assets\images\c578a992-5a59-4c47-bdc0-78ade9537653.png" />
+    <Content Include="Content\css\assets\images\d28686f3-2f1f-433d-9e75-e9cf636e2ef1.png" />
+    <Content Include="Content\css\assets\images\edecdcf7-56bc-4f58-981b-777e3539f18d.png" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-grid.rtl.css" />
@@ -209,6 +220,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Content\css\login.css" />
     <Content Include="Content\css\style.css" />
     <Content Include="Content\css\style.min.css" />
     <Content Include="Content\img\about-1.jpg" />
@@ -431,6 +443,8 @@
     <Content Include="Views\News\getNew_Details.cshtml" />
     <Content Include="Views\Service\Index.cshtml" />
     <Content Include="Views\Price\Index.cshtml" />
+    <Content Include="Views\Login\Index.cshtml" />
+
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
