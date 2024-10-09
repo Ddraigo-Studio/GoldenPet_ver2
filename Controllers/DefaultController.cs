@@ -56,34 +56,12 @@ namespace GoldenPet.Controllers
                               {
                                   PackageName = p.name,
                                   PackagePrice = p.price,
-                                  Imglink=p.img,
                                   Features = _db.tb_PackageFeature
                                                 .Where(f => f.packageId == p.id)
                                                 .Select(f => new FeatureModel
                                                 {
                                                     FeatureName = f.featureName,
                                                     IsIncluded = f.isIncluded ?? false
-                                                    
-                                                }).ToList()
-                              }).ToList();
-
-            return PartialView(packages);
-        }
-        public ActionResult getAboutUs()
-        {
-            var packages = _db.tb_Package
-                              .Select(p => new PackagePricing
-                              {
-                                  PackageName = p.name,
-                                  PackagePrice = p.price,
-                                  Imglink = p.img,
-                                  Features = _db.tb_PackageFeature
-                                                .Where(f => f.packageId == p.id)
-                                                .Select(f => new FeatureModel
-                                                {
-                                                    FeatureName = f.featureName,
-                                                    IsIncluded = f.isIncluded ?? false
-
                                                 }).ToList()
                               }).ToList();
 
@@ -121,14 +99,6 @@ namespace GoldenPet.Controllers
                     select t;
             return PartialView(v.ToList());
         }
-        public ActionResult getNews()
-        {
-            var v = from t in _db.tb_News
-                    select t;
-
-            return PartialView(v.ToList());
-        }
-        
 
         
 

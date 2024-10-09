@@ -130,15 +130,11 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\AboutUsController.cs" />
     <Compile Include="Controllers\DefaultController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\MenuController.cs" />
-    <Compile Include="Controllers\NewsController.cs" />
-    <Compile Include="Controllers\PriceController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
-    <Compile Include="Controllers\ServiceController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -168,12 +164,6 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tb_Menu.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\tb_News.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\tb_NewsImages.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tb_Package.cs">
@@ -436,15 +426,7 @@
     <Content Include="Views\Default\getPricingPlan.cshtml" />
     <Content Include="Views\Product\getProduct.cshtml" />
     <Content Include="Views\Product\getCategory.cshtml" />
-    <Content Include="Views\News\getNews_Index.cshtml" />
-    <Content Include="Views\Default\getNews.cshtml" />
-    <Content Include="Views\Default\getAboutUs.cshtml" />
-    <Content Include="Views\AboutUs\Index.cshtml" />
-    <Content Include="Views\News\getNew_Details.cshtml" />
-    <Content Include="Views\Service\Index.cshtml" />
-    <Content Include="Views\Price\Index.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
-
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

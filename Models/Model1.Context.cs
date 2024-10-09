@@ -34,7 +34,5 @@ namespace GoldenPet.Models
         public virtual DbSet<tb_Service> tb_Service { get; set; }
         public virtual DbSet<tb_Package> tb_Package { get; set; }
         public virtual DbSet<tb_PackageFeature> tb_PackageFeature { get; set; }
-        public virtual DbSet<tb_News> tb_News { get; set; }
-        public virtual DbSet<tb_NewsImages> tb_NewsImages { get; set; }
     }
 }

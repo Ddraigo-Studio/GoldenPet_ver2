@@ -4,113 +4,89 @@
 
 @foreach (var i in Model)
 {
-    if (i.type.Equals("carousel"))
-    {
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img class="w-100" src="@($"/Content/img/{@i.link}")" alt="Image">
-                <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
-                    <div class="p-3" style="max-width: 900px;">
-                        <h3 class="text-white mb-3 d-none d-sm-block">@i.title</h3>
-                        <h1 class="display-3 text-white mb-3">Keep Your Pet Happy</h1>
-                        <h5 class="text-white mb-3 d-none d-sm-block">@i.description</h5>
-                        <a href="" class="btn btn-lg btn-primary mt-3 mt-md-4 px-4">Book Now</a>
-                        <a href="" class="btn btn-lg btn-secondary mt-3 mt-md-4 px-4">Learn More</a>
+            if (i.type.Equals("carousel"))
+            {
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img class="w-100" src="@($"/Content/img/{@i.link}")" alt="Image">
+                        <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                            <div class="p-3" style="max-width: 900px;">
+                                <h3 class="text-white mb-3 d-none d-sm-block">@i.title</h3>
+                                <h1 class="display-3 text-white mb-3">Keep Your Pet Happy</h1>
+                                <h5 class="text-white mb-3 d-none d-sm-block">@i.description</h5>
+                                <a href="" class="btn btn-lg btn-primary mt-3 mt-md-4 px-4">Book Now</a>
+                                <a href="" class="btn btn-lg btn-secondary mt-3 mt-md-4 px-4">Learn More</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
         break;
     }
     else if (i.type == "about")
     {
-       
-
-                if (@i.order == 1)
-                {
+            <div class="col-lg-5">
+                <div class="row px-3">
                     <div class="col-12 p-0">
                         <img class="img-fluid w-100" src="@($"/Content/img/{@i.link}")" alt="">
                     </div>
-                }
-                else
-                {
-                    <div class="col-6 p-0">
-                        <img class="img-fluid w-100" src="@($"/Content/img/{@i.link}")" alt="">
-                    </div>
-                }
-
-           
-        @*<div class="col-lg-5">
-                   <div class="row px-3">
-                       <div class="col-12 p-0">
-                           <img class="img-fluid w-100" src="~/Content/img/about-1.jpg" alt="">
-                       </div>
-                       <div class="col-6 p-0">
-                           <img class="img-fluid w-100" src="~/Content/img/about-2.jpg" alt="">
-                       </div>
-                       <div class="col-6 p-0">
-                           <img class="img-fluid w-100" src="~/Content/img/about-3.jpg" alt="">
-                       </div>
-                   </div>
-            </div>*@
-
-
-
-    }
-    else if (i.type == "price")
-    {
-        <div class="col-lg-4 mb-4">
-            <div class="card border-0">
-                <div class="card-header position-relative border-0 p-0 mb-4">
-                    <img class="card-img-top" src="@($"/Content/img/{@i.link}")" alt="">
-                    <div class="position-absolute d-flex flex-column align-items-center justify-content-center w-100 h-100" style="top: 0; left: 0; z-index: 1; background: rgba(0, 0, 0, .5);">
-                        <h3 class="text-primary mb-3">Basic</h3>
-                        <h1 class="display-4 text-white mb-0">
-                            <small class="align-top" style="font-size: 22px; line-height: 45px;">$</small>49<small class="align-bottom" style="font-size: 16px; line-height: 40px;">/ Mo</small>
-                        </h1>
-                    </div>
-                </div>
-                if(@i.description.Equals("0")){
-                <div class="card-body text-center p-0">
-
-                    <ul class="list-group list-group-flush mb-4">
-                        <li class="list-group-item p-2"><i class="fa fa-check text-secondary mr-2"></i>Feeding</li>
-                        <li class="list-group-item p-2"><i class="fa fa-check text-secondary mr-2"></i>Boarding</li>
-                        <li class="list-group-item p-2"><i class="fa fa-times text-danger mr-2"></i>Spa & Grooming</li>
-                        <li class="list-group-item p-2"><i class="fa fa-times text-danger mr-2"></i>Veterinary Medicine</li>
-                    </ul>
-                </div>
-                }
-
-                <div class="card-footer border-0 p-0">
-                    <a href="" class="btn btn-primary btn-block p-3" style="border-radius: 0;">Signup Now</a>
                 </div>
             </div>
-        </div>
+            }
+            else if (i.type == "price")
+            {
+            <div class="col-lg-4 mb-4">
+                <div class="card border-0">
+                    <div class="card-header position-relative border-0 p-0 mb-4">
+                        <img class="card-img-top" src="@($"/Content/img/{@i.link}")" alt="">
+                        <div class="position-absolute d-flex flex-column align-items-center justify-content-center w-100 h-100" style="top: 0; left: 0; z-index: 1; background: rgba(0, 0, 0, .5);">
+                            <h3 class="text-primary mb-3">Basic</h3>
+                            <h1 class="display-4 text-white mb-0">
+                                <small class="align-top" style="font-size: 22px; line-height: 45px;">$</small>49<small class="align-bottom" style="font-size: 16px; line-height: 40px;">/ Mo</small>
+                            </h1>
+                        </div>
+                    </div>
+                    if(@i.description.Equals("0")){
+                    <div class="card-body text-center p-0">
+
+                        <ul class="list-group list-group-flush mb-4">
+                            <li class="list-group-item p-2"><i class="fa fa-check text-secondary mr-2"></i>Feeding</li>
+                            <li class="list-group-item p-2"><i class="fa fa-check text-secondary mr-2"></i>Boarding</li>
+                            <li class="list-group-item p-2"><i class="fa fa-times text-danger mr-2"></i>Spa & Grooming</li>
+                            <li class="list-group-item p-2"><i class="fa fa-times text-danger mr-2"></i>Veterinary Medicine</li>
+                        </ul>
+                    </div>
+                    }
+
+                    <div class="card-footer border-0 p-0">
+                        <a href="" class="btn btn-primary btn-block p-3" style="border-radius: 0;">Signup Now</a>
+                    </div>
+                </div>
+            </div>
         break;
     }
     else if (i.type.Equals("team"))
     {
-        <div class="col-lg-3 col-md-6">
-            <div class="team card position-relative overflow-hidden border-0 mb-4">
-                <img class="card-img-top" src="@($"/Content/img/{@i.link}")" alt="">
-                <div class="card-body text-center p-0">
-                    <div class="team-text d-flex flex-column justify-content-center bg-light">
-                        <h5>@i.title</h5>  @*Tên*@
-                        <i>@i.description</i> @*Chức Vụ*@
-                    </div>
-                    <div class="team-social d-flex align-items-center justify-content-center bg-dark">
-                        <a class="btn btn-outline-primary rounded-circle text-center mr-2 px-0" style="width: 36px; height: 36px;" href="#"><i class="fab fa-twitter"></i></a>
-                        <a class="btn btn-outline-primary rounded-circle text-center mr-2 px-0" style="width: 36px; height: 36px;" href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a class="btn btn-outline-primary rounded-circle text-center mr-2 px-0" style="width: 36px; height: 36px;" href="#"><i class="fab fa-linkedin-in"></i></a>
-                        <a class="btn btn-outline-primary rounded-circle text-center px-0" style="width: 36px; height: 36px;" href="#"><i class="fab fa-instagram"></i></a>
+            <div class="col-lg-3 col-md-6">
+                <div class="team card position-relative overflow-hidden border-0 mb-4">
+                    <img class="card-img-top" src="@($"/Content/img/{@i.link}")" alt="">
+                    <div class="card-body text-center p-0">
+                        <div class="team-text d-flex flex-column justify-content-center bg-light">
+                            <h5>@i.title</h5>  @*Tên*@
+                            <i>@i.description</i> @*Chức Vụ*@
+                        </div>
+                        <div class="team-social d-flex align-items-center justify-content-center bg-dark">
+                            <a class="btn btn-outline-primary rounded-circle text-center mr-2 px-0" style="width: 36px; height: 36px;" href="#"><i class="fab fa-twitter"></i></a>
+                            <a class="btn btn-outline-primary rounded-circle text-center mr-2 px-0" style="width: 36px; height: 36px;" href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-outline-primary rounded-circle text-center mr-2 px-0" style="width: 36px; height: 36px;" href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a class="btn btn-outline-primary rounded-circle text-center px-0" style="width: 36px; height: 36px;" href="#"><i class="fab fa-instagram"></i></a>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
         break;
     }
 
 }
 
 
+     
