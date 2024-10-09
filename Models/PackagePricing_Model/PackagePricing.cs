@@ -10,6 +10,7 @@ namespace GoldenPet.Models.PackagePricing_Model
         public string PackageName { get; set; }
         public decimal? PackagePrice { get; set; }
         public List<FeatureModel> Features { get; set; }
+        public string Imglink {  get; set; }
 
         public class FeatureModel
         {

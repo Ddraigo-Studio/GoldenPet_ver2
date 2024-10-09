@@ -69,6 +69,35 @@
           <Property Name="order" Type="int" />
           <Property Name="datebegin" Type="smalldatetime" />
         </EntityType>
+        <EntityType Name="tb_News">
+          <Key>
+            <PropertyRef Name="NewsID" />
+          </Key>
+          <Property Name="NewsID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Content" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Slug" Type="nvarchar" MaxLength="255" />
+          <Property Name="AuthorName" Type="varchar" MaxLength="50" />
+          <Property Name="CategoryName" Type="varchar" MaxLength="50" />
+          <Property Name="PublishedDate" Type="datetime" />
+          <Property Name="LastModifiedDate" Type="datetime" />
+          <Property Name="Status" Type="nvarchar" MaxLength="50" />
+          <Property Name="Summary" Type="nvarchar" MaxLength="500" />
+          <Property Name="ThumbnailImageURL" Type="nvarchar" MaxLength="500" />
+          <Property Name="MetaTitle" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="tb_NewsImages">
+          <Key>
+            <PropertyRef Name="ImageID" />
+          </Key>
+          <Property Name="ImageID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NewsID" Type="int" />
+          <Property Name="ImageURL" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="Caption" Type="nvarchar" MaxLength="255" />
+          <Property Name="Order" Type="int" />
+          <Property Name="IsPrimary" Type="bit" />
+          <Property Name="UploadedDate" Type="datetime" />
+        </EntityType>
         <EntityType Name="tb_Package">
           <Key>
             <PropertyRef Name="id" />
@@ -148,7 +177,19 @@
           <Property Name="modifidedDate" Type="smalldatetime" />
           <Property Name="modifidedBy" Type="nvarchar" MaxLength="150" />
         </EntityType>
-        <Association Name="FK__tb_Packag__packa__57DD0BE4">
+        <Association Name="FK__tb_NewsIm__NewsI__19DFD96B">
+          <End Role="tb_News" Type="Self.tb_News" Multiplicity="0..1" />
+          <End Role="tb_NewsImages" Type="Self.tb_NewsImages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_News">
+              <PropertyRef Name="NewsID" />
+            </Principal>
+            <Dependent Role="tb_NewsImages">
+              <PropertyRef Name="NewsID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_Packag__packa__7C4F7684">
           <End Role="tb_Package" Type="Self.tb_Package" Multiplicity="0..1" />
           <End Role="tb_PackageFeature" Type="Self.tb_PackageFeature" Multiplicity="*" />
           <ReferentialConstraint>
@@ -160,7 +201,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tb_Produc__categ__41EDCAC5">
+        <Association Name="FK__tb_Produc__categ__03F0984C">
           <End Role="tb_ProductCategory" Type="Self.tb_ProductCategory" Multiplicity="0..1" />
           <End Role="tb_Product" Type="Self.tb_Product" Multiplicity="*" />
           <ReferentialConstraint>
@@ -177,16 +218,22 @@
           <EntitySet Name="tb_Contact" EntityType="Self.tb_Contact" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tb_Img" EntityType="Self.tb_Img" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tb_Menu" EntityType="Self.tb_Menu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_News" EntityType="Self.tb_News" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_NewsImages" EntityType="Self.tb_NewsImages" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tb_Package" EntityType="Self.tb_Package" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tb_PackageFeature" EntityType="Self.tb_PackageFeature" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tb_Product" EntityType="Self.tb_Product" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tb_ProductCategory" EntityType="Self.tb_ProductCategory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tb_Service" EntityType="Self.tb_Service" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__tb_Packag__packa__57DD0BE4" Association="Self.FK__tb_Packag__packa__57DD0BE4">
+          <AssociationSet Name="FK__tb_NewsIm__NewsI__19DFD96B" Association="Self.FK__tb_NewsIm__NewsI__19DFD96B">
+            <End Role="tb_News" EntitySet="tb_News" />
+            <End Role="tb_NewsImages" EntitySet="tb_NewsImages" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_Packag__packa__7C4F7684" Association="Self.FK__tb_Packag__packa__7C4F7684">
             <End Role="tb_Package" EntitySet="tb_Package" />
             <End Role="tb_PackageFeature" EntitySet="tb_PackageFeature" />
           </AssociationSet>
-          <AssociationSet Name="FK__tb_Produc__categ__41EDCAC5" Association="Self.FK__tb_Produc__categ__41EDCAC5">
+          <AssociationSet Name="FK__tb_Produc__categ__03F0984C" Association="Self.FK__tb_Produc__categ__03F0984C">
             <End Role="tb_ProductCategory" EntitySet="tb_ProductCategory" />
             <End Role="tb_Product" EntitySet="tb_Product" />
           </AssociationSet>
@@ -347,6 +394,12 @@
             <End Role="tb_Package" EntitySet="tb_Package" />
             <End Role="tb_PackageFeature" EntitySet="tb_PackageFeature" />
           </AssociationSet>
+          <EntitySet Name="tb_News" EntityType="GoldenPetModel.tb_News" />
+          <EntitySet Name="tb_NewsImages" EntityType="GoldenPetModel.tb_NewsImages" />
+          <AssociationSet Name="FK__tb_NewsIm__NewsI__19DFD96B" Association="GoldenPetModel.FK__tb_NewsIm__NewsI__19DFD96B">
+            <End Role="tb_News" EntitySet="tb_News" />
+            <End Role="tb_NewsImages" EntitySet="tb_NewsImages" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="tb_Package">
           <Key>
@@ -382,6 +435,49 @@
             </Principal>
             <Dependent Role="tb_PackageFeature">
               <PropertyRef Name="packageId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="tb_News">
+          <Key>
+            <PropertyRef Name="NewsID" />
+          </Key>
+          <Property Name="NewsID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Content" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Slug" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="AuthorName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CategoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PublishedDate" Type="DateTime" Precision="3" />
+          <Property Name="LastModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Summary" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="ThumbnailImageURL" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="MetaTitle" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tb_NewsImages" Relationship="GoldenPetModel.FK__tb_NewsIm__NewsI__19DFD96B" FromRole="tb_News" ToRole="tb_NewsImages" />
+        </EntityType>
+        <EntityType Name="tb_NewsImages">
+          <Key>
+            <PropertyRef Name="ImageID" />
+          </Key>
+          <Property Name="ImageID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NewsID" Type="Int32" />
+          <Property Name="ImageURL" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Caption" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Order" Type="Int32" />
+          <Property Name="IsPrimary" Type="Boolean" />
+          <Property Name="UploadedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tb_News" Relationship="GoldenPetModel.FK__tb_NewsIm__NewsI__19DFD96B" FromRole="tb_NewsImages" ToRole="tb_News" />
+        </EntityType>
+        <Association Name="FK__tb_NewsIm__NewsI__19DFD96B">
+          <End Type="GoldenPetModel.tb_News" Role="tb_News" Multiplicity="0..1" />
+          <End Type="GoldenPetModel.tb_NewsImages" Role="tb_NewsImages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_News">
+              <PropertyRef Name="NewsID" />
+            </Principal>
+            <Dependent Role="tb_NewsImages">
+              <PropertyRef Name="NewsID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -543,7 +639,38 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-        </EntityContainerMapping>
+          <EntitySetMapping Name="tb_News">
+            <EntityTypeMapping TypeName="GoldenPetModel.tb_News">
+              <MappingFragment StoreEntitySet="tb_News">
+                <ScalarProperty Name="MetaTitle" ColumnName="MetaTitle" />
+                <ScalarProperty Name="ThumbnailImageURL" ColumnName="ThumbnailImageURL" />
+                <ScalarProperty Name="Summary" ColumnName="Summary" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+                <ScalarProperty Name="PublishedDate" ColumnName="PublishedDate" />
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+                <ScalarProperty Name="AuthorName" ColumnName="AuthorName" />
+                <ScalarProperty Name="Slug" ColumnName="Slug" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="NewsID" ColumnName="NewsID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_NewsImages">
+            <EntityTypeMapping TypeName="GoldenPetModel.tb_NewsImages">
+              <MappingFragment StoreEntitySet="tb_NewsImages">
+                <ScalarProperty Name="UploadedDate" ColumnName="UploadedDate" />
+                <ScalarProperty Name="IsPrimary" ColumnName="IsPrimary" />
+                <ScalarProperty Name="Order" ColumnName="Order" />
+                <ScalarProperty Name="Caption" ColumnName="Caption" />
+                <ScalarProperty Name="ImageURL" ColumnName="ImageURL" />
+                <ScalarProperty Name="NewsID" ColumnName="NewsID" />
+                <ScalarProperty Name="ImageID" ColumnName="ImageID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>

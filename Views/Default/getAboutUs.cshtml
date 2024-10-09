@@ -1,0 +1,19 @@
+﻿@model IEnumerable<GoldenPet.Models.PackagePricing_Model.PackagePricing>
+@foreach (var i in Model)
+{
+    if (@i.PackagePrice == null) /*nếu price bằng null thì nó sẽ đổ dữ liệu vào about us*/
+    {
+        <h5 class="text-muted mb-3">@i.PackageName</h5> @*phần mô tả được in đậm *chỉ có giới hạn 100 chữ cái*@
+
+        @*<p class="mb-4">@i</p>*@
+        <ul class="list-inline">
+            @foreach (var z in i.Features)
+            {
+                <li><h5><i class="fa fa-check-double text-secondary mr-3"></i>@z.FeatureName</h5></li>
+                @*tên các sologan*@
+            }
+        </ul>
+    }
+
+
+}
