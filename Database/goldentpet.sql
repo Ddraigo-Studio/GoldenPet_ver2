@@ -417,3 +417,8 @@ VALUES
 --Delete from tb_Product
 
 GO
+
+INSERT INTO dbo.tb_Contact(phonenumber,location,email,createdDate)
+values
+('0961305436','Quan 7, Tp.HCM','Huyduong110082004@gmail.com',GETDATE())
+GO
