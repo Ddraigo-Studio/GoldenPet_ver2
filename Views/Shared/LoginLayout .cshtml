@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Đăng nhập</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sen:wght@700&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700&display=swap" />
+
+    @Styles.Render("~/css/login")
+
+</head>
+<body>
+    <div class="main-container">
+        <div class="design-pc">
+            <div class="login">
+                <div class="logo">
+                    <div class="subtract"></div>
+                    <span class="untitled-ui">Goldent Pet</span>
+                </div>
+
+                <!-- Login start -->
+                @*<div class="form">
+                    <span class="title">Đăng nhập</span>
+
+                    <div class="login-form">
+                        <span class="usuario-correo-electronico">Tên đăng nhập</span>
+                        <input type="text" class="form-control input-field " />
+
+                        <div class="pass d-flex justify-content-between align-items-center">
+                            <span class="contrasena">Mật khẩu</span>
+                            <span class="olvidaste-tu-contrasena">Bạn quên mật khẩu?</span>
+                        </div>
+
+                        <input type="password" class="form-control input-field" />
+
+                        <div class="empty"></div>
+                        <button class="submit-button">
+                            <span class="login-text">Đăng nhập</span>
+                        </button>
+
+                    </div>
+
+                    <div class="login-separator">
+                        <div class="line"></div>
+                        <span class="o-inicia-sesion">Hoặc đăng nhập bằng</span>
+                        <div class="line-2"></div>
+                    </div>
+
+                    <div class="external-login">
+                        <button class="button"><div class="google"></div></button>
+                        <button class="button"><div class="facebook"></div></button>
+                        <button class="button"><div class="vector"></div></button>
+
+                    </div>
+                    <div class="footer">
+                        <div class="vector-3"></div>
+                        <span class="devmiguelfg">devmiguelfg</span>
+                    </div>
+                </div>*@
+                @RenderBody()
+                <!-- Login end -->
+            </div>
+            <div class="image-container">
+                <div class="description">
+                    <span class="misifu">Golden Pet</span>
+                    <span class="misifu-description">“Mang đến cho các Pet xinh yêu những trải nghiệm dịch vụ tốt nhất”</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

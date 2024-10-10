@@ -11,7 +11,7 @@ namespace GoldenPet.Controllers
         // GET: Service
         public ActionResult Index()
         {
-            return PartialView();
+            return View();
         }
     }
 }

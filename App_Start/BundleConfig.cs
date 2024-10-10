@@ -25,6 +25,15 @@ namespace GoldenPet
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+
+            bundles.Add(new StyleBundle("~/css/login").Include("~/Content/css/login.css"));
+
+            bundles.Add(new StyleBundle("~/lib/css/layout").Include(
+                     "~/Content/lib/owlcarousel/assets/owl.carousel.min.css",
+                     "~/Content/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css"));
+
+            bundles.Add(new StyleBundle("~/css/layout").Include("~/Content/css/style.css"));
+
         }
     }
 }

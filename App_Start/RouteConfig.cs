@@ -15,12 +15,12 @@ namespace GoldenPet
 
 
             routes.MapRoute("Product", "{type}/{meta}",
-            new { controller = "Product", action = "Index", meta = UrlParameter.Optional },
-            new RouteValueDictionary
-            {
+             new { controller = "Product", action = "Index", meta = UrlParameter.Optional },
+             new RouteValueDictionary
+             {
                 { "type", "san-pham" }
-            },
-            namespaces: new[] { "GoldenPet.Controllers" });
+             },
+             namespaces: new[] { "GoldenPet.Controllers" });
 
             routes.MapRoute("News", "{type}/{meta}",
             new { controller = "News", action = "getNews_Index", meta = UrlParameter.Optional },
@@ -69,6 +69,15 @@ namespace GoldenPet
             new RouteValueDictionary
             {
                 { "type", "san-pham" }
+            },
+            namespaces: new[] { "ShopOnline.Controllers" });
+
+
+            routes.MapRoute("Home", "{type}",
+            new { controller = "Default", action = "Index", id = UrlParameter.Optional },
+            new RouteValueDictionary
+            {
+                { "type", "trang-chu" }
             },
             namespaces: new[] { "GoldenPet.Controllers" });
 
