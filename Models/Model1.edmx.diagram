@@ -16,6 +16,9 @@
         <EntityTypeShape EntityType="GoldenPetModel.tb_Package" Width="1.5" PointX="5.375" PointY="1" />
         <EntityTypeShape EntityType="GoldenPetModel.tb_PackageFeature" Width="1.5" PointX="7.625" PointY="1.125" />
         <AssociationConnector Association="GoldenPetModel.FK__tb_Packag__packa__74AE54BC" />
+        <EntityTypeShape EntityType="GoldenPetModel.tb_News" Width="1.5" PointX="10.375" PointY="1" />
+        <EntityTypeShape EntityType="GoldenPetModel.tb_NewsImages" Width="1.5" PointX="12.625" PointY="1.5" />
+        <AssociationConnector Association="GoldenPetModel.FK__tb_NewsIm__NewsI__19DFD96B" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

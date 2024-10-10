@@ -39,8 +39,30 @@ CREATE TABLE dbo.tb_Advertisement (
 	modifidedBy NVARCHAR(150) NULL,
 );
 GO
+drop table dbo.tb_Img
+CREATE TABLE dbo.tb_Img (
+    id INT IDENTITY(1,1) NOT NULL PRIMARY KEY, 
+	link NVARCHAR(100) NOT NULL,
+    type NVARCHAR(100) NOT NULL,
+	title NVARCHAR(150) NULL,
+    description NTEXT NULL,
+	meta NVARCHAR(MAX) NULL,             
+    hide BIT NULL,                       
+    [order] INT NULL,                    
+    createdDate SMALLDATETIME DEFAULT CURRENT_TIMESTAMP,    
+	createdBy NVARCHAR(150) NULL,
+	modifidedDate SMALLDATETIME NULL,
+	modifidedBy NVARCHAR(150) NULL,
+);
+
+INSERT INTO dbo.tb_Img (link, type, title, description, meta, hide, [order], createdBy, modifidedDate, modifidedBy)
+VALUES
+('about-1.jpg', 'about', Null, Null, null, 1, 1, null, NULL, NULL),
+('team-1.jpg', 'team', 'Huy Dương', 'CEO', null, 1, 1, 'Huy', NULL, NULL)
+('carousel-1.jpg', 'carousel', 'HHA', 'Huy dep trai vai o', null, 1, 1, 'User1', NULL, NULL),
 
 
+select * from dbo.tb_Img
 CREATE TABLE dbo.tb_ProductCategory(
     id INT IDENTITY(1,1) NOT NULL PRIMARY KEY,        
     name NVARCHAR(150) NULL,  
@@ -52,7 +74,7 @@ CREATE TABLE dbo.tb_ProductCategory(
     createdDate SMALLDATETIME DEFAULT CURRENT_TIMESTAMP,         
 );
 GO
-
+drop table dbo.tb_Product
 
 CREATE TABLE dbo.tb_Product(
     id INT IDENTITY(1,1) NOT NULL PRIMARY KEY,        
@@ -121,7 +143,7 @@ select * from dbo.tb_Contact
 
 CREATE TABLE dbo.tb_Package (
     id INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
-    name VARCHAR(100) NOT NULL,           -- Name of the package (e.g., Basic, Standard, Premium)
+    name NVARCHAR(100) NOT NULL,           -- Name of the package (e.g., Basic, Standard, Premium)
 	img VarChar(200) Not null,
     price DECIMAL(18, 2) NULL,        -- Package price
 	description NTEXT NULL,
@@ -145,19 +167,27 @@ CREATE TABLE dbo.tb_PackageFeature (
 GO
 --drop table dbo.tb_PackageFeature,dbo.tb_Package
 
+
 INSERT INTO dbo.tb_Package (name,img, price, description, duration, createdAt)
 VALUES
     ('Basic','price-1.jpg', 49.00, 'Basic pet care services including feeding and boarding.', 'Per Month', GETDATE()),
     ('Standard','price-2.jpg', 99.00, 'Standard pet care services including feeding, boarding, and spa & grooming.', 'Per Month', GETDATE()),
-    ('Premium','price-3.jpg', 149.00, 'Premium pet care services including feeding, boarding, spa & grooming, and veterinary medicine.', 'Per Month', GETDATE());
+    ('Premium','price-3.jpg', 149.00, 'Premium pet care services including feeding, boarding, spa & grooming, and veterinary medicine.', 'Per Month', GETDATE()),
+	(N'Đây là phần mô tả','about-1.jpg', null, null, null, null);
+
 
 -- Insert data for 'Basic' package
 INSERT INTO dbo.tb_PackageFeature (packageId, featureName, isIncluded, createdAt)
 VALUES
+ (4, N'Đỉnh Nóc', 0, GETDATE()),
+  (4, N'Kịch Trần', 0, GETDATE()),
+ (4, N'Bay Phấp Phới', 0, GETDATE()),
+
     (1, 'Feeding', 1, GETDATE()),
     (1, 'Boarding', 1, GETDATE()),
     (1, 'Spa & Grooming', 0, GETDATE()),
     (1, 'Veterinary Medicine', 0, GETDATE());
+
 
 drop table dbo.tb_Img
 CREATE TABLE dbo.tb_Img (
@@ -176,14 +206,40 @@ CREATE TABLE dbo.tb_Img (
 );
 GO
 
-INSERT INTO dbo.tb_Img (link, type, title, description, meta, hide, [order], createdBy, modifidedDate, modifidedBy)
-VALUES
-
-('team-1.jpg', 'team', 'Huy Dương', 'CEO', null, 1, 1, 'Huy', NULL, NULL),
-('carousel-1.jpg', 'carousel', 'HHA', 'Huy dep trai vai o', null, 1, 1, 'User1', NULL, NULL)
 
 
+CREATE TABLE dbo.tb_News
+(
+    NewsID INT IDENTITY(1,1) PRIMARY KEY,       -- Unique identifier for each news article
+    Title NVARCHAR(255) NOT NULL,               -- Title of the news article
+    Content NVARCHAR(MAX) NOT NULL,             -- Main content of the news article
+    Slug NVARCHAR(255),                         -- URL-friendly version of the title
+    AuthorName NVARCHAR(50),                               -- ID of the author
+    CategoryName NVARCHAR(50),                             -- ID of the category
+    PublishedDate DATETIME,                     -- The date the article was published
+    LastModifiedDate DATETIME,                  -- The date the article was last updated
+    Status NVARCHAR(50),                        -- Draft, Published, or Archived
+    Summary NVARCHAR(500),                      -- Short summary of the news
+    ThumbnailImageURL NVARCHAR(500),            -- URL of the main thumbnail image
 
+    -- Meta fields for SEO
+    MetaTitle NVARCHAR(255),                    -- Custom meta title for SEO
+);
+
+-- Create NewsImages Table
+CREATE TABLE dbo.tb_NewsImages
+(
+    ImageID INT IDENTITY(1,1) PRIMARY KEY,       -- Unique identifier for each image
+    NewsID INT,                                  -- Reference to the NewsID in the News table
+    ImageURL NVARCHAR(500) NOT NULL,             -- URL or file path of the image
+    Caption NVARCHAR(255),                       -- Optional caption for the image
+    [Order] INT,                                 -- Order of the image in the article
+    IsPrimary BIT,                               -- Indicates if this image is the main image
+    UploadedDate DATETIME DEFAULT GETDATE(),     -- Date and time the image was uploaded
+    FOREIGN KEY (NewsID) REFERENCES dbo.tb_News(NewsID)  -- Foreign key constraint to link to the News table
+);
+
+drop table dbo.tb_NewsImages,dbo.tb_News
 /*
 -- Insert data for 'Standard' package
 INSERT INTO dbo.tb_PackageFeature (packageId, featureName, isIncluded, createdAt)
@@ -290,6 +346,68 @@ N'Thức ăn cho mèo con từ 1 tháng tuổi trở lên, vị cá hồi cá ng
 Mèo con nên được cho ăn khi được 3 đến 4 tuần tuổi. Nên ngâm sản phẩm với nước ấm để giữ nguyên chất dinh dưỡng và dễ ăn hơn. Khi được 5-6 tuần, bắt đầu giảm lượng nước bổ sung cho đến khi mèo con có thể ăn thức ăn khô. Khi mèo con của bạn đã được 6 tháng tuổi, hãy chuyển sang thức ăn dành cho độ tuổi lớn hơn.', 
 NULL, 'san-pham/thuc-an-cho-meo', 1, 5, GETDATE());
 GO
+delete  from dbo.tb_News
 
+--NEWS
+INSERT INTO dbo.tb_News 
+(Title, Content, Slug, AuthorName, CategoryName, PublishedDate, LastModifiedDate, Status, Summary, ThumbnailImageURL, MetaTitle)
+VALUES 
+(N'Các Dịch Vụ Chăm Sóc Thú Cưng Tốt Nhất', 
+ N'Chúng tôi cung cấp các dịch vụ chăm sóc thú cưng chuyên nghiệp, bao gồm cắt tỉa lông, tắm rửa, và kiểm tra sức khỏe định kỳ cho thú cưng của bạn.', 
+ 'cac-dich-vu-cham-soc-thu-cung-tot-nhat', 
+ N'Nguyễn Văn A', 
+ N'Dịch Vụ', 
+ GETDATE(), 
+ GETDATE(), 
+ 'Published', 
+ N'Các dịch vụ chăm sóc thú cưng của chúng tôi giúp thú cưng luôn khỏe mạnh và sạch sẽ.', 
+ 'new-1.jpg', 
+ N'Dịch Vụ Chăm Sóc Thú Cưng'),
+
+(N'Sản Phẩm Dành Cho Chó Mèo Chất Lượng Cao', 
+ N'Khám phá các sản phẩm dành riêng cho chó mèo như thức ăn, đồ chơi, và vật dụng chăm sóc với chất lượng hàng đầu.', 
+ 'san-pham-danh-cho-cho-meo-chat-luong-cao', 
+ N'Trần Thị B', 
+ N'Sản Phẩm', 
+  GETDATE(), 
+ GETDATE(),  
+ 'Published', 
+ N'Các sản phẩm chất lượng cao dành riêng cho thú cưng của bạn.', 
+ 'new-2.jpg', 
+ N'Sản Phẩm Cho Chó Mèo'),
+
+(N'Tư Vấn Sức Khỏe Cho Thú Cưng', 
+ N'Đội ngũ chuyên gia của chúng tôi luôn sẵn sàng hỗ trợ và tư vấn sức khỏe cho thú cưng, từ chế độ ăn uống đến phòng ngừa bệnh tật.', 
+ 'tu-van-suc-khoe-cho-thu-cung', 
+ N'Lê Văn C', 
+ N'Tư Vấn', 
+  GETDATE(), 
+ GETDATE(),  
+ 'Published', 
+ N'Dịch vụ tư vấn sức khỏe và chế độ dinh dưỡng tốt nhất cho thú cưng.', 
+ 'new-3.jpg', 
+ N'Tư Vấn Sức Khỏe Thú Cưng');
+--IMG NEWS
+INSERT INTO dbo.tb_NewsImages 
+(NewsID, ImageURL, Caption, [Order], IsPrimary) 
+VALUES 
+(1, 'new-1.jpg', 'Dịch Vụ Cắt Tỉa Lông Cho Mèo', 1, 1),
+(2, 'new-2.jpg', 'Thức Ăn Dành Cho Chó', 1, 1),
+(3, 'new-3.jpg', 'Bác Sĩ Thú Y Tư Vấn Sức Khỏe', 1, 1);
+
+
+
+--IMG FOR PARTALVIEW
+INSERT INTO dbo.tb_Img (link, type, title, description, meta, hide, [order], createdBy, modifidedDate, modifidedBy)
+VALUES
+('about-1.jpg', 'about', null, null, null, 1, 1, 'Huy', NULL, NULL),
+('about-3.jpg', 'about', null, null, null, 1, 3, 'Huy', NULL, NULL),
+('about-2.jpg', 'about', null, null, null, 1, 2, 'Huy', NULL, NULL)
+
+
+('team-1.jpg', 'team', 'Huy Dương', 'CEO', null, 1, 1, 'Huy', NULL, NULL),
+('carousel-1.jpg', 'carousel', 'HHA', 'Huy dep trai vai o', null, 1, 1, 'User1', NULL, NULL)
+--drop table dbo.tb_News,
 -- DBCC CHECKIDENT ('tb_Product', RESEED, 0);
 --Delete from tb_Product
+
