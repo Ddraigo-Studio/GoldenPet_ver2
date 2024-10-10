@@ -131,6 +131,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AboutUsController.cs" />
+    <Compile Include="Controllers\CardController.cs" />
     <Compile Include="Controllers\DefaultController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MenuController.cs" />
@@ -194,24 +195,39 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\css\assets\images\05716c42-3627-4a53-af43-d38dc5ce129b.png" />
     <Content Include="Content\css\assets\images\116b9631-4392-45c6-8934-c393c5c80724.png" />
     <Content Include="Content\css\assets\images\172165fb-3aad-46f0-b32e-88ad7ca9749d.png" />
+    <Content Include="Content\css\assets\images\1bc0967a-27f1-4cd4-945c-4a7966bf8817.png" />
+    <Content Include="Content\css\assets\images\2259235d-b34f-48a2-89d6-6bc7dcffa95b.png" />
+    <Content Include="Content\css\assets\images\2b1333f948b7fdaadc244abf2a5f763ad94d833c.png" />
     <Content Include="Content\css\assets\images\2c4c2773-5013-40b1-9c01-087c009af467.png" />
     <Content Include="Content\css\assets\images\2e2f79ea-7871-4c07-aafe-180c152ac070.png" />
     <Content Include="Content\css\assets\images\36085094-f973-49c3-9e4c-411ea386f2e0.png" />
     <Content Include="Content\css\assets\images\3ceda8a9477eacbdc7b08dd5c6c65333f3f80545.png" />
+    <Content Include="Content\css\assets\images\3d07f436-3630-4fa9-b3cf-3c9fd7715a4a.png" />
     <Content Include="Content\css\assets\images\446aabdf-6c53-4eac-8b4d-bcfd08a573bd.png" />
+    <Content Include="Content\css\assets\images\4c1ae927-82ef-4898-a7b6-8c34681894fc.png" />
+    <Content Include="Content\css\assets\images\565c50292f467ed37bc56d503d74830c8b6eae21.png" />
     <Content Include="Content\css\assets\images\59bfddde-5063-46f6-8a44-e0d949aae4dd.png" />
     <Content Include="Content\css\assets\images\5fa37c97-747e-42e5-895c-08b933aba77a.png" />
+    <Content Include="Content\css\assets\images\603c6db2-f91b-4c0d-a68f-cd783df9a01c.png" />
     <Content Include="Content\css\assets\images\65521e2f-e0c7-4cc7-87b2-634a0740d334.png" />
+    <Content Include="Content\css\assets\images\661d05a3-4cce-4d5f-bf9c-ab27f78753c2.png" />
     <Content Include="Content\css\assets\images\765db069-5ea0-47d5-ad16-fccdab42aec8.png" />
+    <Content Include="Content\css\assets\images\7af9e5a0edee039aa8eafa44db7ddf8306eac4b5.png" />
+    <Content Include="Content\css\assets\images\7de61cab42ca064544385ad78a91fcb69b618032.png" />
+    <Content Include="Content\css\assets\images\8996dde9a211a003d60b2597e2fff5076f6510d9.png" />
     <Content Include="Content\css\assets\images\8d2f8293-ff39-4099-8622-d3f5c02e1ba4.png" />
+    <Content Include="Content\css\assets\images\990ede34614b620013d504d51cf403647af97471.png" />
     <Content Include="Content\css\assets\images\99343392-f8a4-4d0a-8954-f11c4ab20f02.png" />
     <Content Include="Content\css\assets\images\9ef8e3af4e362bbd2e24a945b3bea8d5b57cace6.png" />
+    <Content Include="Content\css\assets\images\a646ff718760850495f2055df3205287002c688d.png" />
     <Content Include="Content\css\assets\images\a7cdaa29-b86b-4648-8ecf-2d485afd38ce.png" />
     <Content Include="Content\css\assets\images\bf3c55fcee5e0fdf804b9e720a182556f991d854.png" />
     <Content Include="Content\css\assets\images\bff2d644-0a78-424b-8fed-11e2453b1abd.png" />
     <Content Include="Content\css\assets\images\c578a992-5a59-4c47-bdc0-78ade9537653.png" />
+    <Content Include="Content\css\assets\images\d05934ce-a510-4f37-bd98-1c95dcd326e6.png" />
     <Content Include="Content\css\assets\images\d28686f3-2f1f-433d-9e75-e9cf636e2ef1.png" />
     <Content Include="Content\css\assets\images\d7ea825d-560f-4810-bed4-ae4b3327b734.png" />
     <Content Include="Content\css\assets\images\edecdcf7-56bc-4f58-981b-777e3539f18d.png" />
@@ -231,6 +247,8 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Content\css\assets\images\f7d71dcbf2d8a1f106b1613a422672f1faaf6f19.png" />
+    <Content Include="Content\css\card.css" />
     <Content Include="Content\css\product_detail.css" />
     <Content Include="Content\css\login.css" />
     <Content Include="Content\css\style.css" />
@@ -455,6 +473,9 @@
     <Content Include="Views\News\getNews_Index.cshtml" />
     <Content Include="Views\News\getNew_Details.cshtml" />
     <Content Include="Views\AboutUs\Index.cshtml" />
+    <Content Include="Views\UserAccount\Login.cshtml" />
+    <Content Include="Views\UserAccount\SignUp.cshtml" />
+    <Content Include="Views\Card\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
