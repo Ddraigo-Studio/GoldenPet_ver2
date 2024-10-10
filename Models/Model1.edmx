@@ -77,8 +77,8 @@
           <Property Name="Title" Type="nvarchar" MaxLength="255" Nullable="false" />
           <Property Name="Content" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Slug" Type="nvarchar" MaxLength="255" />
-          <Property Name="AuthorName" Type="varchar" MaxLength="50" />
-          <Property Name="CategoryName" Type="varchar" MaxLength="50" />
+          <Property Name="AuthorName" Type="nvarchar" MaxLength="50" />
+          <Property Name="CategoryName" Type="nvarchar" MaxLength="50" />
           <Property Name="PublishedDate" Type="datetime" />
           <Property Name="LastModifiedDate" Type="datetime" />
           <Property Name="Status" Type="nvarchar" MaxLength="50" />
@@ -177,7 +177,7 @@
           <Property Name="modifidedDate" Type="smalldatetime" />
           <Property Name="modifidedBy" Type="nvarchar" MaxLength="150" />
         </EntityType>
-        <Association Name="FK__tb_NewsIm__NewsI__19DFD96B">
+        <Association Name="FK__tb_NewsIm__NewsI__65370702">
           <End Role="tb_News" Type="Self.tb_News" Multiplicity="0..1" />
           <End Role="tb_NewsImages" Type="Self.tb_NewsImages" Multiplicity="*" />
           <ReferentialConstraint>
@@ -189,7 +189,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tb_Packag__packa__7C4F7684">
+        <Association Name="FK__tb_Packag__packa__57DD0BE4">
           <End Role="tb_Package" Type="Self.tb_Package" Multiplicity="0..1" />
           <End Role="tb_PackageFeature" Type="Self.tb_PackageFeature" Multiplicity="*" />
           <ReferentialConstraint>
@@ -201,7 +201,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tb_Produc__categ__03F0984C">
+        <Association Name="FK__tb_Produc__categ__41EDCAC5">
           <End Role="tb_ProductCategory" Type="Self.tb_ProductCategory" Multiplicity="0..1" />
           <End Role="tb_Product" Type="Self.tb_Product" Multiplicity="*" />
           <ReferentialConstraint>
@@ -225,15 +225,15 @@
           <EntitySet Name="tb_Product" EntityType="Self.tb_Product" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tb_ProductCategory" EntityType="Self.tb_ProductCategory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tb_Service" EntityType="Self.tb_Service" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__tb_NewsIm__NewsI__19DFD96B" Association="Self.FK__tb_NewsIm__NewsI__19DFD96B">
+          <AssociationSet Name="FK__tb_NewsIm__NewsI__65370702" Association="Self.FK__tb_NewsIm__NewsI__65370702">
             <End Role="tb_News" EntitySet="tb_News" />
             <End Role="tb_NewsImages" EntitySet="tb_NewsImages" />
           </AssociationSet>
-          <AssociationSet Name="FK__tb_Packag__packa__7C4F7684" Association="Self.FK__tb_Packag__packa__7C4F7684">
+          <AssociationSet Name="FK__tb_Packag__packa__57DD0BE4" Association="Self.FK__tb_Packag__packa__57DD0BE4">
             <End Role="tb_Package" EntitySet="tb_Package" />
             <End Role="tb_PackageFeature" EntitySet="tb_PackageFeature" />
           </AssociationSet>
-          <AssociationSet Name="FK__tb_Produc__categ__03F0984C" Association="Self.FK__tb_Produc__categ__03F0984C">
+          <AssociationSet Name="FK__tb_Produc__categ__41EDCAC5" Association="Self.FK__tb_Produc__categ__41EDCAC5">
             <End Role="tb_ProductCategory" EntitySet="tb_ProductCategory" />
             <End Role="tb_Product" EntitySet="tb_Product" />
           </AssociationSet>
@@ -446,8 +446,8 @@
           <Property Name="Title" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="Content" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Slug" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="AuthorName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="CategoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AuthorName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CategoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="PublishedDate" Type="DateTime" Precision="3" />
           <Property Name="LastModifiedDate" Type="DateTime" Precision="3" />
           <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />

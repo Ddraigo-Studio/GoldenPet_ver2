@@ -448,7 +448,13 @@
     <Content Include="Views\Default\getPricingPlan.cshtml" />
     <Content Include="Views\Product\getProduct.cshtml" />
     <Content Include="Views\Product\getCategory.cshtml" />
-    <Content Include="Views\Login\Index.cshtml" />
+    <Content Include="Views\Shared\LoginLayout .cshtml" />
+    <Content Include="Views\Shared\_ValidationScriptsPartial.cshtml" />
+    <Content Include="Views\Price\Index.cshtml" />
+    <Content Include="Views\Service\Index.cshtml" />
+    <Content Include="Views\News\getNews_Index.cshtml" />
+    <Content Include="Views\News\getNew_Details.cshtml" />
+    <Content Include="Views\AboutUs\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
