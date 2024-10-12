@@ -26,6 +26,7 @@ namespace GoldenPet.Controllers
 
             return PartialView(v.ToList());
         }
+
         public ActionResult getImg(string type) //hàm get Partial view cho trang defualt 
         {
             var v = from t in _db.tb_Img
@@ -35,13 +36,16 @@ namespace GoldenPet.Controllers
 
             return PartialView(v.ToList()); 
         }
+
         public ActionResult getFooter()
         {
             var v = from t in _db.tb_Contact
-                                        select t;
-                return PartialView(v.ToList());
+                    select t;
+              
+            return PartialView(v.ToList());
 
         }
+
         public ActionResult getContactInfoTopBar()
         {
             var v = from t in _db.tb_Contact
@@ -49,6 +53,7 @@ namespace GoldenPet.Controllers
             return PartialView(v.ToList());
 
         }
+
         public ActionResult getPricingPlan()
         {
             var packages = _db.tb_Package
@@ -69,6 +74,7 @@ namespace GoldenPet.Controllers
 
             return PartialView(packages);
         }
+
         public ActionResult getAboutUs()
         {
             var packages = _db.tb_Package
@@ -105,22 +111,15 @@ namespace GoldenPet.Controllers
         public ActionResult getProductHome(long id, string metatitle)
         {
             ViewBag.meta = metatitle;
-            var v = from t in _db.tb_Product
-                    where t.categoryID == id && t.hide == true
-                    orderby t.order ascending
-                    select t;
+            var v = (from t in _db.tb_Product
+                     where t.categoryID == id && t.hide == true
+                     orderby t.order descending
+                     select t).Take(4); // Chỉ lấy 4 sản phẩm
+
             return PartialView(v.ToList());
         }
 
-        public ActionResult getProduct(long id, string metatitle)
-        {
-            ViewBag.meta = metatitle;
-            var v = from t in _db.tb_Product
-                    where t.categoryID == id && t.hide == true
-                    orderby t.order ascending
-                    select t;
-            return PartialView(v.ToList());
-        }
+
         public ActionResult getNews()
         {
             var v = from t in _db.tb_News
@@ -128,9 +127,10 @@ namespace GoldenPet.Controllers
 
             return PartialView(v.ToList());
         }
-        
 
-        
+
+
+
 
     }
 }

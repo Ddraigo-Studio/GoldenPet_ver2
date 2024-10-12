@@ -3247,6 +3247,10 @@ input[type="button"].btn-block {
     border-radius: 0.25rem;
 }
 
+.nav-item.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
 .dropdown-menu-left {
     right: auto;
     left: 0;

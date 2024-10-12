@@ -69,6 +69,19 @@
           <Property Name="order" Type="int" />
           <Property Name="datebegin" Type="smalldatetime" />
         </EntityType>
+        <EntityType Name="tb_MenuCategory">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" />
+          <Property Name="link" Type="nvarchar(max)" />
+          <Property Name="menuId" Type="int" />
+          <Property Name="meta" Type="nvarchar(max)" />
+          <Property Name="hide" Type="bit" />
+          <Property Name="order" Type="int" />
+          <Property Name="datebegin" Type="smalldatetime" />
+        </EntityType>
         <EntityType Name="tb_News">
           <Key>
             <PropertyRef Name="NewsID" />
@@ -177,6 +190,18 @@
           <Property Name="modifidedDate" Type="smalldatetime" />
           <Property Name="modifidedBy" Type="nvarchar" MaxLength="150" />
         </EntityType>
+        <Association Name="FK__tb_MenuCa__menuI__756D6ECB">
+          <End Role="tb_Menu" Type="Self.tb_Menu" Multiplicity="0..1" />
+          <End Role="tb_MenuCategory" Type="Self.tb_MenuCategory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_Menu">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tb_MenuCategory">
+              <PropertyRef Name="menuId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__tb_NewsIm__NewsI__65370702">
           <End Role="tb_News" Type="Self.tb_News" Multiplicity="0..1" />
           <End Role="tb_NewsImages" Type="Self.tb_NewsImages" Multiplicity="*" />
@@ -218,6 +243,7 @@
           <EntitySet Name="tb_Contact" EntityType="Self.tb_Contact" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tb_Img" EntityType="Self.tb_Img" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tb_Menu" EntityType="Self.tb_Menu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_MenuCategory" EntityType="Self.tb_MenuCategory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tb_News" EntityType="Self.tb_News" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tb_NewsImages" EntityType="Self.tb_NewsImages" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tb_Package" EntityType="Self.tb_Package" Schema="dbo" store:Type="Tables" />
@@ -225,6 +251,10 @@
           <EntitySet Name="tb_Product" EntityType="Self.tb_Product" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tb_ProductCategory" EntityType="Self.tb_ProductCategory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tb_Service" EntityType="Self.tb_Service" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__tb_MenuCa__menuI__756D6ECB" Association="Self.FK__tb_MenuCa__menuI__756D6ECB">
+            <End Role="tb_Menu" EntitySet="tb_Menu" />
+            <End Role="tb_MenuCategory" EntitySet="tb_MenuCategory" />
+          </AssociationSet>
           <AssociationSet Name="FK__tb_NewsIm__NewsI__65370702" Association="Self.FK__tb_NewsIm__NewsI__65370702">
             <End Role="tb_News" EntitySet="tb_News" />
             <End Role="tb_NewsImages" EntitySet="tb_NewsImages" />
@@ -305,6 +335,7 @@
           <Property Name="hide" Type="Boolean" />
           <Property Name="order" Type="Int32" />
           <Property Name="datebegin" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="tb_MenuCategory" Relationship="GoldenPetModel.FK__tb_MenuCa__menuI__756D6ECB" FromRole="tb_Menu" ToRole="tb_MenuCategory" />
         </EntityType>
         <EntityType Name="tb_Product">
           <Key>
@@ -400,6 +431,11 @@
             <End Role="tb_News" EntitySet="tb_News" />
             <End Role="tb_NewsImages" EntitySet="tb_NewsImages" />
           </AssociationSet>
+          <EntitySet Name="tb_MenuCategory" EntityType="GoldenPetModel.tb_MenuCategory" />
+          <AssociationSet Name="FK__tb_MenuCa__menuI__756D6ECB" Association="GoldenPetModel.FK__tb_MenuCa__menuI__756D6ECB">
+            <End Role="tb_Menu" EntitySet="tb_Menu" />
+            <End Role="tb_MenuCategory" EntitySet="tb_MenuCategory" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="tb_Package">
           <Key>
@@ -478,6 +514,32 @@
             </Principal>
             <Dependent Role="tb_NewsImages">
               <PropertyRef Name="NewsID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="tb_MenuCategory">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="link" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="menuId" Type="Int32" />
+          <Property Name="meta" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="hide" Type="Boolean" />
+          <Property Name="order" Type="Int32" />
+          <Property Name="datebegin" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="tb_Menu" Relationship="GoldenPetModel.FK__tb_MenuCa__menuI__756D6ECB" FromRole="tb_MenuCategory" ToRole="tb_Menu" />
+        </EntityType>
+        <Association Name="FK__tb_MenuCa__menuI__756D6ECB">
+          <End Type="GoldenPetModel.tb_Menu" Role="tb_Menu" Multiplicity="0..1" />
+          <End Type="GoldenPetModel.tb_MenuCategory" Role="tb_MenuCategory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_Menu">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tb_MenuCategory">
+              <PropertyRef Name="menuId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -667,6 +729,20 @@
                 <ScalarProperty Name="ImageURL" ColumnName="ImageURL" />
                 <ScalarProperty Name="NewsID" ColumnName="NewsID" />
                 <ScalarProperty Name="ImageID" ColumnName="ImageID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_MenuCategory">
+            <EntityTypeMapping TypeName="GoldenPetModel.tb_MenuCategory">
+              <MappingFragment StoreEntitySet="tb_MenuCategory">
+                <ScalarProperty Name="datebegin" ColumnName="datebegin" />
+                <ScalarProperty Name="order" ColumnName="order" />
+                <ScalarProperty Name="hide" ColumnName="hide" />
+                <ScalarProperty Name="meta" ColumnName="meta" />
+                <ScalarProperty Name="menuId" ColumnName="menuId" />
+                <ScalarProperty Name="link" ColumnName="link" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -36,5 +36,6 @@ namespace GoldenPet.Models
         public virtual DbSet<tb_PackageFeature> tb_PackageFeature { get; set; }
         public virtual DbSet<tb_News> tb_News { get; set; }
         public virtual DbSet<tb_NewsImages> tb_NewsImages { get; set; }
+        public virtual DbSet<tb_MenuCategory> tb_MenuCategory { get; set; }
     }
 }
