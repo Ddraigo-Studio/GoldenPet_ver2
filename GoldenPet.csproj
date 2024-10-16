@@ -455,6 +455,9 @@
     <Content Include="Views\News\getNews_Index.cshtml" />
     <Content Include="Views\News\getNew_Details.cshtml" />
     <Content Include="Views\AboutUs\Index.cshtml" />
+    <Content Include="Views\UserAccount\Login.cshtml" />
+    <Content Include="Views\UserAccount\SignUp.cshtml" />
+    <Content Include="Views\Default\getService.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
