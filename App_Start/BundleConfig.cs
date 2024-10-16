@@ -34,6 +34,16 @@ namespace GoldenPet
 
             bundles.Add(new StyleBundle("~/css/layout").Include("~/Content/css/style.css"));
 
+            bundles.Add(new ScriptBundle("~/Content/lib/Layout").Include(
+                "~/Content/lib/easing/easing.min.js",
+                "~/Content/lib/owlcarousel/owl.carousel.min.js",
+                "~/Content/lib/tempusdominus/js/moment.min.js",
+                "~/Content/lib/tempusdominus/js/moment-timezone.min.js",
+                "~/Content/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"));
+
+            bundles.Add(new ScriptBundle("~/Content/mail/Layout").Include(
+                "~/Content/mail/jqBootstrapValidation.min.js",
+                "~/Content/mail/contact.js"));
         }
     }
 }

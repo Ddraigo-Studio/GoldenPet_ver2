@@ -17,15 +17,6 @@ namespace GoldenPet.Controllers
         {
             return View();
         }
-        public ActionResult getAbout()
-        {
-            var v = from t in _db.tb_Advertisement
-                    where t.hide == true
-                    orderby t.order ascending
-                    select t;
-
-            return PartialView(v.ToList());
-        }
 
         public ActionResult getImg(string type) //hàm get Partial view cho trang defualt 
         {
@@ -127,10 +118,6 @@ namespace GoldenPet.Controllers
 
             return PartialView(v.ToList());
         }
-
-
-
-
 
     }
 }

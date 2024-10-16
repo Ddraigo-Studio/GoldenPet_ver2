@@ -11,8 +11,18 @@
                     <i>@item.price VNĐ</i>
                 </div>
                 <div class="team-social d-flex align-items-center justify-content-center bg-dark">
-                    <a class="btn btn-outline-primary rounded-circle text-center mr-2 px-0" style="width: 36px; height: 36px;" href="#"><i class="fab fa-twitter"></i></a>
-                    <a class="btn btn-outline-primary rounded-circle text-center mr-2 px-0" style="width: 36px; height: 36px;" href="/@ViewBag.meta/@item.meta/@item.id"><i class="fab fa-facebook-f"></i></a>
+                    <a class="btn btn-outline-primary rounded-circle text-center mr-2 px-0"
+                       style="width: 36px; height: 36px;"
+                       href="#"
+                       alt="Thêm vào giỏ hàng">
+                        <i class="fa-solid fa-bag-shopping" style="color: #ed6436;"></i>
+                    </a>
+                    <a class="btn btn-outline-primary rounded-circle text-center mr-2 px-0"
+                       style="width: 36px; height: 36px;"
+                       href="@ViewBag.meta/@item.meta/@item.id"
+                       alt="Xem chi tiết">
+                        <i class="fa-solid fa-eye" style="color: #ed6436;"></i>
+                    </a>
                 </div>
             </div>
         </div>
