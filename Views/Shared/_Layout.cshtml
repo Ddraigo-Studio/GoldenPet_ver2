@@ -17,14 +17,14 @@
 
     <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
     <!-- Flaticon Font -->
     <link href="~/Content/lib/flaticon/font/flaticon.css" rel="stylesheet">
 
     <!-- Libraries Stylesheet -->
-    @*<link href="~/Content/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-        <link href="~/Content/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />*@
     @Styles.Render("~/lib/css/layout")
+
     <!-- Customized Bootstrap Stylesheet -->
     @Styles.Render("~/css/layout")
     
@@ -72,18 +72,11 @@
             <div class="col-lg-8 text-center text-lg-right">
                 <div class="d-inline-flex align-items-center">
                     <div class="d-inline-flex flex-column text-center pr-3 border-right">
-                        <h6>Opening Hours</h6>
+                        <h6>Giờ mở cửa</h6>
                         <p class="m-0">8.00AM - 9.00PM</p>
                     </div>
                     @{ Html.RenderAction("getContactInfoTopBar", "Default");}
-                    @*<div class="d-inline-flex flex-column text-center px-3 border-right">
-                        <h6>Email Us</h6>
-                        <p class="m-0">info@example.com</p>
-                    </div>
-                    <div class="d-inline-flex flex-column text-center pl-3">
-                        <h6>Call Us</h6>
-                        <p class="m-0">+012 345 6789</p>
-                    </div>*@
+
                 </div>
             </div>
         </div>
@@ -92,36 +85,141 @@
     <!-- Navbar Start -->
     <div class="container-fluid p-0">
         <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-3 py-lg-0 px-lg-5">
+            <div class="Logo"><img src="~/Content/css/Logo/LogoPet.png" /></div>
             <a href="" class="navbar-brand d-block d-lg-none">
-                <h1 class="m-0 display-5 text-capitalize font-italic text-white"><span class="text-primary">Safety</span>First</h1>
+                <h1 class="m-0 display-5 text-capitalize font-italic text-white"><span class="text-primary">Golden</span>Pet</h1>
             </a>
             <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse">
-                
+
                 @{Html.RenderAction("GetMenu", "Menu"); }
 
-                <a href="@Url.Action("Login", "UserAccount")" class="btn btn-lg btn-primary px-3 d-none d-lg-block">Đăng nhập</a>
+                <div class="header__navbar-right ">
+                    <ul class="nav ">
+                        <li class="nav-item">
+                            <div class="nav-link search" id="searchIcon">
+                                <i class="fa-solid fa-magnifying-glass fa-lg" style="color: #ffffff;"></i>
+                            </div>
+                        </li>
+                        <li class="nav-item user-cart">
+                            <div class="nav-link ">
+                                <i class="fa-regular fa-user fa-lg" style="color: #ffffff;"></i>
+                            </div>
+                            <div class="account-action">
+                                <a href="@Url.Action("Login","UserAccount")" title="Đăng nhập">Đăng nhập</a>
+                                <a href="@Url.Action("SignUp","UserAccount")" title="Đăng ký">Đăng ký</a>
+                            </div>
+                        </li>
+
+                        <li class="nav-item shopping__cart">
+
+                            <a class="nav-link" href="@Url.Action("Index","Card")">
+                                <i class="fa-solid fa-cart-shopping fa-lg" style="color: #ffffff;"></i>
+                                <span class="shopping__cart-notice" id="num-products">3</span>
+                            </a>
+
+                            <div class="shopping__cart-list ">
+                                <div class="shopping__cart-list--no-cart">
+                                    <img src=".\\img\empty-cart.svg" alt="" class="shopping__cart-list--no-cart-img">
+                                    <p class="shopping__cart-list--no-cart-msg">Hổng cóa sản phẩm :<<< </p>
+                                </div>
+
+                                <h4 class="shopping__cart-heading">Sản phẩm đã thêm</h4>
+                                <ul class="shopping__cart-list-item">
+                                    <li class="shopping__cart-item">
+                                        <img src="https://bizweb.dktcdn.net/thumb/large/100/484/752/products/mousepad-spy-x-family-anya-edition.jpg?v=1707409571893"
+                                             alt="" class="shopping__cart-img">
+                                        <div class="shopping__cart-item-info">
+                                            <div class="shopping__cart-item-head">
+                                                <h5 class="shopping__cart-item-name">Mousepad siu cuti</h5>
+                                                <div class="shopping__cart-item-price-wrap">
+                                                    <span class="shopping__cart-item-price">500.000đ</span>
+                                                    <span class="shopping__cart-item-multiply">x</span>
+                                                    <span class="shopping__cart-item-qnt">2</span>
+                                                </div>
+                                            </div>
+
+                                            <div class="shopping__cart-item-body">
+                                                <span class="shopping__cart-item-description">
+                                                    Phân loại: Mousepad
+                                                </span>
+                                                <span class="shopping__cart-item-remove">Xóa</span>
+                                            </div>
+                                        </div>
+                                    </li>
+
+                                    <li class="shopping__cart-item">
+                                        <img src="https://bizweb.dktcdn.net/thumb/large/100/484/752/products/mousepad-spy-x-family-anya-edition.jpg?v=1707409571893"
+                                             alt="" class="shopping__cart-img">
+                                        <div class="shopping__cart-item-info">
+                                            <div class="shopping__cart-item-head">
+                                                <h5 class="shopping__cart-item-name">Mousepad siu cuti</h5>
+                                                <div class="shopping__cart-item-price-wrap">
+                                                    <span class="shopping__cart-item-price">500.000đ</span>
+                                                    <span class="shopping__cart-item-multiply">x</span>
+                                                    <span class="shopping__cart-item-qnt">2</span>
+                                                </div>
+                                            </div>
+
+                                            <div class="shopping__cart-item-body">
+                                                <span class="shopping__cart-item-description">
+                                                    Phân loại: Mousepad
+                                                </span>
+                                                <span class="shopping__cart-item-remove">Xóa</span>
+                                            </div>
+                                        </div>
+                                    </li>
+
+                                    <li class="shopping__cart-item">
+                                        <img src="https://bizweb.dktcdn.net/thumb/large/100/484/752/products/mousepad-spy-x-family-anya-edition.jpg?v=1707409571893"
+                                             alt="" class="shopping__cart-img">
+                                        <div class="shopping__cart-item-info">
+                                            <div class="shopping__cart-item-head">
+                                                <h5 class="shopping__cart-item-name">Mousepad siu cuti</h5>
+                                                <div class="shopping__cart-item-price-wrap">
+                                                    <span class="shopping__cart-item-price">500.000đ</span>
+                                                    <span class="shopping__cart-item-multiply">x</span>
+                                                    <span class="shopping__cart-item-qnt">2</span>
+                                                </div>
+                                            </div>
+
+                                            <div class="shopping__cart-item-body">
+                                                <span class="shopping__cart-item-description">
+                                                    Phân loại: Mousepad
+                                                </span>
+                                                <span class="shopping__cart-item-remove">Xóa</span>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+
+                </div>
+
+                
             </div>
         </nav>
     </div>
     <!-- Navbar End -->
-    
+
     @RenderBody()
 
     <!-- Footer Start -->
     <div class="container-fluid bg-dark text-white mt-5 py-5 px-sm-3 px-md-5">
         <div class="row pt-5">
             <div class="col-lg-4 col-md-12 mb-5">
-                <h1 class="mb-3 display-5 text-capitalize text-white"><span class="text-primary">Pet</span>Lover</h1>
-                <p class="m-0">Ipsum amet sed vero et lorem stet eos ut, labore sed sed stet sea est ipsum ut. Volup amet ea sanct ipsum, dolore vero lorem no duo eirmod. Eirmod amet ipsum no ipsum lorem clita ut. Ut sed sit lorem ea lorem sed, amet stet sit sea ea diam tempor kasd kasd. Diam nonumy etsit tempor ut sed diam sed et ea</p>
+                <h1 class="mb-3 display-5 text-capitalize text-white"><span class="text-primary">Goldent</span> Pet</h1>
+                <p class="m-0">Chúng tôi cung cấp dịch vụ chăm sóc chuyên nghiệp và các sản phẩm chất lượng cho thú cưng của bạn. Từ tắm rửa, cắt tỉa lông đến thực phẩm dinh dưỡng và phụ kiện, hãy để chúng tôi giúp thú cưng của bạn luôn khỏe mạnh và vui vẻ. Để biết thêm thông tin và nhận ưu đãi, hãy liên hệ với chúng tôi hôm nay!</p>
             </div>
             <div class="col-lg-8 col-md-12">
                 <div class="row">
                     <div class="col-md-4 mb-5">
-                        <h5 class="text-primary mb-4">Get In Touch</h5>
-                       
+                        <h5 class="text-primary mb-4">Liên hệ</h5>
+
                         @{Html.RenderAction("getFooter", "Default");}
                         <div class="d-flex justify-content-start mt-4">
                             <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0" style="width: 36px; height: 36px;" href="#"><i class="fab fa-twitter"></i></a>
@@ -131,26 +229,21 @@
                         </div>
                     </div>
                     <div class="col-md-4 mb-5">
-                        <h5 class="text-primary mb-4">Popular Links</h5>
-                        <div class="d-flex flex-column justify-content-start">
-                            <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Home</a>
-                            <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>About Us</a>
-                            <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Our Services</a>
-                            <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Our Team</a>
-                            <a class="text-white" href="#"><i class="fa fa-angle-right mr-2"></i>Contact Us</a>
-                        </div>
                     </div>
                     <div class="col-md-4 mb-5">
-                        <h5 class="text-primary mb-4">Newsletter</h5>
+                        <h5 class="text-primary mb-4">Gửi lời nhắn</h5>
                         <form action="">
                             <div class="form-group">
-                                <input type="text" class="form-control border-0" placeholder="Your Name" required="required" />
+                                <input type="text" class="form-control border-0" placeholder="Họ tên" required="required" />
                             </div>
                             <div class="form-group">
-                                <input type="email" class="form-control border-0" placeholder="Your Email" required="required" />
+                                <input type="email" class="form-control border-0" placeholder="Email" required="required" />
+                            </div>
+                            <div class="form-group">
+                                <textarea class="form-control border-0" placeholder="Lời nhắn" rows="4" required="required"></textarea>
                             </div>
                             <div>
-                                <button class="btn btn-lg btn-primary btn-block border-0" type="submit">Submit Now</button>
+                                <button class="btn btn-lg btn-primary btn-block border-0" type="submit">Gửi ngay</button>
                             </div>
                         </form>
                     </div>
@@ -162,7 +255,7 @@
         <div class="row">
             <div class="col-md-6 text-center text-md-left mb-3 mb-md-0">
                 <p class="m-0 text-white">
-                    &copy; <a class="text-white font-weight-bold" href="#">Your Site Name</a>. All Rights Reserved. Designed by
+                    &copy; <a class="text-white font-weight-bold" href="#">Goldent Pet</a>. All Rights Reserved. Designed by
                     <a class="text-white font-weight-bold" href="https://htmlcodex.com">HTML Codex</a>
                 </p>
             </div>
@@ -192,15 +285,10 @@
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-    <script src="~/Content/lib/easing/easing.min.js"></script>
-    <script src="~/Content/lib/owlcarousel/owl.carousel.min.js"></script>
-    <script src="~/Content/lib/tempusdominus/js/moment.min.js"></script>
-    <script src="~/Content/lib/tempusdominus/js/moment-timezone.min.js"></script>
-    <script src="~/Content/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+    @Styles.Render("~/Content/lib/Layout")
 
     <!-- Contact Javascript File -->
-    <script src="~/Content/mail/jqBootstrapValidation.min.js"></script>
-    <script src="~/Content/mail/contact.js"></script>
+    @Styles.Render("~/Content/mail/Layout")
 
     <!-- Template Javascript -->
     <script src="~/Scripts/main.js"></script>

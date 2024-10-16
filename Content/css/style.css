@@ -6,6 +6,266 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
 
+/* GIỎ HÀNG */
+.shopping__cart {
+    position: relative;
+    text-align: center;
+    margin: 5px;
+    z-index: 1000;
+}
+
+.shopping__cart-list {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 22px;
+    background-color: white;
+    width: 400px;
+    height: fit-content;
+    border-radius: 2px;
+    box-shadow: 0 1px 3.125rem 0 #e9e6e6;
+    display: none; /* Hiển thị giỏ hàng nhanh*/
+    animation: fadeIn ease-in 0.2s;
+    cursor: default;
+}
+
+    .shopping__cart-list::after {
+        content: "";
+        position: absolute;
+        right: 7.5px;
+        top: -32px;
+        border-width: 16px 23px;
+        border-style: solid;
+        border-color: transparent transparent white transparent;
+        cursor: pointer;
+    }
+
+.shopping__cart:hover .shopping__cart-list {
+    display: block;
+}
+
+.shopping__cart-list--no-cart {
+    display: none;
+}
+
+.shopping__cart:hover .shopping__cart-list--no-cart {
+    display: block;
+}
+
+.shopping__cart-list--no-cart .shopping__cart-list--no-cart-img,
+.shopping__cart-list--no-cart .shopping__cart-list--no-cart-msg {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.shopping__cart-list--no-cart-img {
+    width: 40%;
+}
+
+.shopping__cart-list--no-cart-msg {
+    font-size: 1.1rem;
+    margin-top: 14px;
+    color: black;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: center;
+    font-weight: 500;
+}
+
+/* CÓ SP */
+.shopping__cart-notice {
+    position: relative;
+    padding: 2px 6px;
+    background-color: #3f9790;
+    color: white;
+    font-size: 0.7rem;
+    line-height: 0.7rem;
+    border-radius: 50%;
+    border: 2px solid white;
+    top: -15px; 
+    right: 12px; 
+    z-index: 1; 
+}
+
+.shopping__cart-heading {
+    margin: 10px 0 10px 12px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #585656;
+    text-align: left;
+}
+
+.shopping__cart-list-item {
+    padding-left: 0;
+    list-style: none;
+    display: block;
+    text-align: left;
+    max-height: 31ch;
+    overflow: auto;
+    word-wrap: break-word;
+}
+
+.shopping__cart-item {
+    display: flex;
+    align-items: start;
+    width: 100%;
+    height: fit-content;
+}
+
+    .shopping__cart-item:hover {
+        background-color: #f9f5f5b3;
+    }
+
+.shopping__cart-img {
+    margin: 12px;
+    border: 1px solid #e6e1e1b3;
+    width: 90px;
+    height: 90px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.shopping__cart-item-info {
+    margin: 12px;
+    width: 100%;
+    margin-right: 12px;
+    margin-left: 8px;
+    display: block;
+    align-items: center;
+    position: relative;
+    align-items: flex-end;
+}
+
+.shopping__cart-item-head {
+    display: block;
+    font-size: 0.8rem;
+}
+
+.shopping__cart-item-name {
+    font-size: 1rem;
+    font-weight: 400;
+    color: black;
+    margin: 0;
+    cursor: pointer;
+    text-align: left;
+}
+
+    .shopping__cart-item-name:hover {
+        color: #c9341e;
+    }
+
+.shopping__cart-item-body {
+    display: block;
+    text-align: right;
+    position: relative;
+}
+
+.shopping__cart-item-price {
+    font-size: 1rem;
+    font-weight: 450;
+    color: #267871;
+    display: inline-block;
+    align-items: center;
+}
+
+.shopping__cart-item-multiply {
+    font-size: 0.8rem;
+    font-weight: 500;
+    margin: 0.4px;
+    color: #636060;
+}
+
+.shopping__cart-item-qnt {
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin: 0.4px;
+    color: #636060;
+}
+
+.shopping__cart-item-description {
+    color: #3f9790;
+    font-size: 0.9rem;
+    font-weight: 400;
+    display: block;
+}
+
+.shopping__cart-item-remove {
+    color: #636060;
+    font-size: 1rem;
+    margin-left: auto;
+    display: block;
+}
+
+    .shopping__cart-item-remove:hover {
+        color: #c43f3f;
+        cursor: pointer;
+    }
+
+button.shopping__cart-item-remove {
+    border: none;
+    background: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+.nav-item.user-cart {
+    position: relative; /* Để định vị dropdown */
+}
+
+    .nav-item.user-cart .account-action {
+        position: absolute;
+        background: #333;
+        border-radius: 5px;
+        color: #fff;
+        transition-duration: .3s;
+        transition-property: all;
+        transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+        display: none; /* Ẩn dropdown mặc định */
+        text-align: left;
+        left: 50%; /* Căn giữa */
+        transform: translateX(-50%);
+        top: calc(100% + 2px); /* Đặt dropdown ngay dưới nav-item */
+        width: 150px;
+        z-index: 1000; /* Đảm bảo dropdown không bị che */
+    }
+
+    .nav-item.user-cart:hover .account-action {
+        display: block; /* Hiện dropdown khi hover */
+    }
+
+    .nav-item.user-cart .account-action a {
+        display: block;
+        padding: 7px 8px;
+        color: #fff;
+        text-decoration: none;
+    }
+
+        .nav-item.user-cart .account-action a:hover {
+            background: rgba(102, 102, 102, 0.6); /* Thay đổi màu nền khi hover */
+        }
+
+    .nav-item.user-cart .account-action::before {
+        content: '';
+        position: absolute;
+        bottom: 100%; /* Đặt mũi tên ở trên dropdown */
+        left: 50%;
+        border: solid #333;
+        border-top-color: #333;
+        transform: translateX(-50%);
+        margin-bottom: -1px; /* Để không có khoảng cách giữa mũi tên và dropdown */
+    }
+
+    .nav-item.user-cart .account-action::after {
+        content: '';
+        position: absolute;
+        top: -31px; /* Điều chỉnh vị trí mũi tên lên trên */
+        left: 50%;
+        border-width: 16px 23px;
+        border-style: solid;
+        border-color: transparent transparent #333 transparent;
+        transform: translateX(-50%);
+    }
+
+
 
 
 :root {
@@ -3245,6 +3505,10 @@ input[type="button"].btn-block {
     background-clip: padding-box;
     border: 1px solid rgba(0, 0, 0, 0.15);
     border-radius: 0.25rem;
+}
+
+.nav-item.dropdown:hover .dropdown-menu {
+    display: block;
 }
 
 .dropdown-menu-left {
@@ -10607,9 +10871,20 @@ h6 {
     }
 }
 
+.Logo {
+    display: flex;
+    margin-right: 20px;
+}
+
+    .Logo img {
+        height: 100%;
+        max-height: 62px;
+        width: auto;
+    }
+
 .navbar-dark .navbar-nav .nav-link {
-    padding: 30px 20px;
-    font-size: 18px;
+    padding: 20px 20px;
+    font-size: 15px;
     letter-spacing: 1px;
     color: #F2F2F4;
     outline: none;

@@ -19,6 +19,8 @@
         <EntityTypeShape EntityType="GoldenPetModel.tb_News" Width="1.5" PointX="10.375" PointY="1" />
         <EntityTypeShape EntityType="GoldenPetModel.tb_NewsImages" Width="1.5" PointX="12.625" PointY="1.5" />
         <AssociationConnector Association="GoldenPetModel.FK__tb_NewsIm__NewsI__19DFD96B" />
+        <EntityTypeShape EntityType="GoldenPetModel.tb_MenuCategory" Width="1.5" PointX="10" PointY="5.625" />
+        <AssociationConnector Association="GoldenPetModel.FK__tb_MenuCa__menuI__756D6ECB" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

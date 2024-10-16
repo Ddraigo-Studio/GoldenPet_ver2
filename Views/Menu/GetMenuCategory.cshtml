@@ -1,0 +1,8 @@
+﻿@model IEnumerable<GoldenPet.Models.tb_MenuCategory>
+
+<div class="dropdown-menu rounded-0 m-0">
+    @foreach (var subMenu in Model)
+    {
+        <a href="/@ViewBag.meta/@subMenu.meta/" class="dropdown-item">@subMenu.name</a>
+    }
+</div>

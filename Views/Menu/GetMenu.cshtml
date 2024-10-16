@@ -3,8 +3,16 @@
 <div class="navbar-nav mr-auto py-0">
     @foreach (var i in Model)
     {
-        <a href="/@i.meta" class="nav-item nav-link active">@i.name</a>
+        if (i.meta == "san-pham")
+        {
+            <div class="nav-item dropdown active">
+                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">@i.name</a>
+                @Html.Action("getMenuCategory", "Menu", new { id = @i.id, metatitle = i.meta })
+            </div>
+        }
+        else
+        {
+            <a href="/@i.meta" class="nav-item nav-link active">@i.name</a>
+        }
     }
-
 </div>
-
