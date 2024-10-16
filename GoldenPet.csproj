@@ -436,6 +436,8 @@
     <Content Include="Views\UserAccount\SignUp.cshtml" />
     <Content Include="Views\Card\Index.cshtml" />
     <Content Include="Views\Menu\GetMenuCategory.cshtml" />
+
+    <Content Include="Views\Default\getService.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

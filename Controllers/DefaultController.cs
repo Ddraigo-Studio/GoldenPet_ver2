@@ -119,5 +119,13 @@ namespace GoldenPet.Controllers
             return PartialView(v.ToList());
         }
 
+        public ActionResult getService()
+        {
+            var v = from t in _db.tb_Service
+                    select t;
+
+            return PartialView(v.ToList());
+        }
+
     }
 }
