@@ -31,31 +31,31 @@
                 <div class="bg-primary py-5 px-4 px-sm-5">
                     <form class="py-5">
                         <div class="form-group">
-                            <input type="text" class="form-control border-0 p-4" placeholder="Your Name" required="required" />
+                            <input type="text" class="form-control border-0 p-4" placeholder="Họ tên" required="required" />
                         </div>
                         <div class="form-group">
-                            <input type="email" class="form-control border-0 p-4" placeholder="Your Email" required="required" />
+                            <input type="email" class="form-control border-0 p-4" placeholder="Email" required="required" />
+                        </div>
+                        <div class="form-group">
+                            <input type="number" class="form-control border-0 p-4" placeholder="Số điện thoại" required="required" />
                         </div>
                         <div class="form-group">
                             <div class="date" id="date" data-target-input="nearest">
-                                <input type="text" class="form-control border-0 p-4 datetimepicker-input" placeholder="Reservation Date" data-target="#date" data-toggle="datetimepicker" />
+                                <input type="datetime-local" class="form-control border-0 p-4 datetimepicker-input" placeholder="Ngày hẹn" data-target="#date" data-toggle="datetimepicker" />
                             </div>
                         </div>
-                        <div class="form-group">
-                            <div class="time" id="time" data-target-input="nearest">
-                                <input type="text" class="form-control border-0 p-4 datetimepicker-input" placeholder="Reservation Time" data-target="#time" data-toggle="datetimepicker" />
-                            </div>
-                        </div>
+                       
                         <div class="form-group">
                             <select class="custom-select border-0 px-4" style="height: 47px;">
-                                <option selected>Select A Service</option>
-                                <option value="1">Service 1</option>
-                                <option value="2">Service 1</option>
-                                <option value="3">Service 1</option>
+                                <option selected>Chọn dịch vụ</option>
+                                <option value="1">Chăm sóc nội trú</option>
+                                <option value="2">Tư vấn dinh dưỡng và sức khỏe</option>
+                                <option value="3">Grooming</option>
+                                <option value="4">Huấn luyện</option>
                             </select>
                         </div>
                         <div>
-                            <button class="btn btn-dark btn-block border-0 py-3" type="submit">Book Now</button>
+                            <button class="btn btn-dark btn-block border-0 py-3" type="submit">Đặt lịch ngay</button>
                         </div>
                     </form>
                 </div>
@@ -111,11 +111,11 @@
 <div class="container py-5">
     <div class="row py-5">
         <div class="col-lg-7 pb-5 pb-lg-0 px-3 px-lg-5">
-            <h4 class="text-secondary mb-3">About Us</h4>
-            <h1 class="display-4 mb-4"><span class="text-primary">Boarding</span> & <span class="text-secondary">Daycare</span></h1>
+            <h4 class="text-secondary mb-3">Thông tin về chúng tôi</h4>
+            <h1 class="display-4 mb-4"><span class="text-primary">Nội trú</span> & <span class="text-secondary">Trong ngày</span></h1>
             @{Html.RenderAction("getAboutUs"); }
 
-            <a href="" class="btn btn-lg btn-primary mt-3 px-4">Learn More</a>
+            <a href="" class="btn btn-lg btn-primary mt-3 px-4">Tìm hiểu thêm</a>
         </div>
         <div class="col-lg-5">
             <div class="row px-3">
@@ -147,7 +147,7 @@
             <img class="img-fluid w-100" src="~/Content/img/feature.jpg" alt="">
         </div>
         <div class="col-lg-7 py-5 py-lg-0 px-3 px-lg-5">
-            <h4 class="text-secondary mb-3">Why Choose Us?</h4>
+            <h4 class="text-secondary mb-3">Tại sao nên chọn chúng tôi?</h4>
             <h1 class="display-4 mb-4"><span class="text-primary">Special Care</span> On Pets</h1>
             <p class="mb-4">Dolor lorem lorem ipsum sit et ipsum. Sadip sea amet diam sed ut vero no sit. Et elitr stet sed sit sed kasd. Erat duo eos et erat sed diam duo</p>
             <div class="row py-2">
@@ -184,8 +184,8 @@
 <div class="container-fluid bg-light pt-5 pb-4">
     <div class="container py-5">
         <div class="d-flex flex-column text-center mb-5">
-            <h4 class="text-secondary mb-3">Pricing Plan</h4>
-            <h1 class="display-4 m-0">Choose the <span class="text-primary">Best Price</span></h1>
+            <h4 class="text-secondary mb-3">Các gói dịch vụ</h4>
+            <h1 class="display-4 m-0">Sự lựa chọn <span class="text-primary">phù hợp nhất</span></h1>
         </div>
         <div class="row">
             @{Html.RenderAction("getPricingPlan", "Default"); }
@@ -197,66 +197,15 @@
 <!-- Team Start -->
 <div class="container mt-5 pt-5 pb-3">
     <div class="d-flex flex-column text-center mb-5">
-        <h4 class="text-secondary mb-3">Team Member</h4>
-        <h1 class="display-4 m-0">Meet Our <span class="text-primary">Team Member</span></h1>
+        <h4 class="text-secondary mb-3">Đội ngũ tại GoldenPet</h4>
+        <h1 class="display-4 m-0">Gặp gỡ <span class="text-primary">các chuyên gia</span></h1>
     </div>
     <div class="row">
         @{Html.RenderAction("getImg", "Default", new { type = "team" });}
     </div>
 </div>
 <!-- Team End -->
-<!-- Testimonial Start -->
-<div class="container-fluid bg-light my-5 p-0 py-5">
-    <div class="container p-0 py-5">
-        <div class="d-flex flex-column text-center mb-5">
-            <h4 class="text-secondary mb-3">Testimonial</h4>
-            <h1 class="display-4 m-0">Our Client <span class="text-primary">Says</span></h1>
-        </div>
-        <div class="owl-carousel testimonial-carousel">
-            <div class="bg-white mx-3 p-4">
-                <div class="d-flex align-items-end mb-3 mt-n4 ml-n4">
-                    <img class="img-fluid" src="~/Content/img/testimonial-1.jpg" style="width: 80px; height: 80px;" alt="">
-                    <div class="ml-3">
-                        <h5>Client Name</h5>
-                        <i>Profession</i>
-                    </div>
-                </div>
-                <p class="m-0">Sed ea amet kasd elitr stet, stet rebum et ipsum est duo elitr eirmod clita lorem. Dolor tempor ipsum sanct clita</p>
-            </div>
-            <div class="bg-white mx-3 p-4">
-                <div class="d-flex align-items-end mb-3 mt-n4 ml-n4">
-                    <img class="img-fluid" src="~/Content/img/testimonial-2.jpg" style="width: 80px; height: 80px;" alt="">
-                    <div class="ml-3">
-                        <h5>Client Name</h5>
-                        <i>Profession</i>
-                    </div>
-                </div>
-                <p class="m-0">Sed ea amet kasd elitr stet, stet rebum et ipsum est duo elitr eirmod clita lorem. Dolor tempor ipsum sanct clita</p>
-            </div>
-            <div class="bg-white mx-3 p-4">
-                <div class="d-flex align-items-end mb-3 mt-n4 ml-n4">
-                    <img class="img-fluid" src="~/Content/img/testimonial-3.jpg" style="width: 80px; height: 80px;" alt="">
-                    <div class="ml-3">
-                        <h5>Client Name</h5>
-                        <i>Profession</i>
-                    </div>
-                </div>
-                <p class="m-0">Sed ea amet kasd elitr stet, stet rebum et ipsum est duo elitr eirmod clita lorem. Dolor tempor ipsum sanct clita</p>
-            </div>
-            <div class="bg-white mx-3 p-4">
-                <div class="d-flex align-items-end mb-3 mt-n4 ml-n4">
-                    <img class="img-fluid" src="~/Content/img/testimonial-4.jpg" style="width: 80px; height: 80px;" alt="">
-                    <div class="ml-3">
-                        <h5>Client Name</h5>
-                        <i>Profession</i>
-                    </div>
-                </div>
-                <p class="m-0">Sed ea amet kasd elitr stet, stet rebum et ipsum est duo elitr eirmod clita lorem. Dolor tempor ipsum sanct clita</p>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Testimonial End -->
+
 <!-- Blog Start -->
 <div class="container pt-5">
     <div class="d-flex flex-column text-center mb-5">
