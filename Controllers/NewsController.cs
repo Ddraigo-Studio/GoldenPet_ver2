@@ -1,20 +1,14 @@
 ﻿using GoldenPet.Models;
 using System;
-using System.Collections.Generic;
-using System.Drawing.Printing;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-using System.Web.UI;
 
 namespace GoldenPet.Controllers
 {
     public class NewsController : Controller
-
     {
         GoldenPetEntities _db = new GoldenPetEntities();
 
-        // GET: News
         public ActionResult getNews_Index(int page = 1, int pageSize = 6)
         {
             var v = from t in _db.tb_News

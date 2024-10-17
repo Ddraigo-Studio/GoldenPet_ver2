@@ -1,7 +1,5 @@
 ﻿@model IEnumerable<GoldenPet.Models.tb_Img>
 
-
-
 @foreach (var i in Model)
 {
     if (i.type.Equals("carousel"))
@@ -24,20 +22,18 @@
     }
     else if (i.type == "about")
     {
-       
-
-                if (@i.order == 1)
-                {
-                    <div class="col-12 p-0">
-                        <img class="img-fluid w-100" src="@($"/Content/img/{@i.link}")" alt="">
-                    </div>
+        if (@i.order == 1)
+        {
+            <div class="col-12 p-0">
+                  <img class="img-fluid w-100" src="@($"/Content/img/{@i.link}")" alt="">
+            </div>
             break;
         }
         else
         {
-                    <div class="col-6 p-0">
-                        <img class="img-fluid w-100" src="@($"/Content/img/{@i.link}")" alt="">
-                    </div>
+            <div class="col-6 p-0">
+                 <img class="img-fluid w-100" src="@($"/Content/img/{@i.link}")" alt="">
+            </div>
             break;
         }
 
@@ -55,8 +51,6 @@
                        </div>
                    </div>
             </div>*@
-
-
 
     }
     else if (i.type == "price")
