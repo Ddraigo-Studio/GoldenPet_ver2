@@ -9,9 +9,8 @@ namespace GoldenPet.Controllers
 {
     public class ProductController : Controller
     {
-        
         GoldenPetEntities _db = new GoldenPetEntities();
-        // GET: Product
+
         public ActionResult Index(string metatitle)
         {
             ViewBag.meta = metatitle;
@@ -55,10 +54,7 @@ namespace GoldenPet.Controllers
                 return HttpNotFound(); 
             }
 
-           
             var images = new List<string>();
-
-          
             if (!string.IsNullOrEmpty(product.img))
             {
                 images.Add(product.img);

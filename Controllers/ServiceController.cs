@@ -13,5 +13,10 @@ namespace GoldenPet.Controllers
         {
             return View();
         }
+
+        public ActionResult Detail() 
+        { 
+            return View(); 
+        }
     }
 }
