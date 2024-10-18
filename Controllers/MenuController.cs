@@ -24,5 +24,16 @@ namespace GoldenPet.Controllers
             return PartialView(v.ToList());
         }
 
+        public ActionResult GetMenuCategory(long id, string metatitle)
+        {
+            ViewBag.meta = metatitle;
+            var v = from t in _db.tb_MenuCategory
+                    where  t.menuId == id && t.hide == true
+                    orderby t.order ascending
+                    select t;
+
+            return PartialView(v.ToList());
+        }
+
     }
 }

@@ -22,6 +22,21 @@ CREATE TABLE dbo.tb_Menu (
 );
 GO
 
+CREATE TABLE dbo.tb_MenuCategory (
+    id INT IDENTITY(1,1) NOT NULL PRIMARY KEY,        
+    name NVARCHAR(50) NULL,              
+    link NVARCHAR(MAX) NULL,
+	menuId INT NULL,
+
+	-- 4 truong ko the thieu
+    meta NVARCHAR(MAX) NULL,             
+    hide BIT NULL,                       
+    [order] INT NULL,                    
+    datebegin SMALLDATETIME NULL,  
+	FOREIGN KEY (menuId) REFERENCES tb_Menu(id),
+);
+GO
+
 
 CREATE TABLE dbo.tb_Advertisement (
     id INT IDENTITY(1,1) NOT NULL PRIMARY KEY, 
@@ -301,6 +316,7 @@ GO
 
 -------------------------  INSERT DATA ---------------------
 
+
 INSERT INTO dbo.tb_Menu (name, link, meta, hide, [order], datebegin) 
 VALUES 
     (N'Trang chủ', NULL, N'trang-chu', 1, 1, CAST(N'2024-09-17T00:00:00' AS SMALLDATETIME)),
@@ -311,12 +327,23 @@ VALUES
 	(N'Tin tức', NULL, N'tin-tuc', 1, 6, GETDATE());
 GO
 
+--DBCC CHECKIDENT ('tb_Menu', RESEED, 0);
 --Delete from tb_Menu
+
+
+INSERT INTO dbo.tb_MenuCategory (name, link, menuId, meta, hide, [order], datebegin) 
+VALUES
+	(N'Thức ăn', NULL, 4, N'thuc-an-thu-cung', 1, 1, GETDATE()),
+	(N'Đồ chơi', NULL, 4, N'do-choi-thu-cung', 1, 2, GETDATE()),
+	(N'Phụ kiện', NULL, 4, N'phu-kien-thu-cung', 1, 3, GETDATE()),
+	(N'Sản phẩm chăm sóc sức khỏe', NULL, 4, N'san-pham-cham-soc-suc-khoe-thu-cung', 1, 4, GETDATE()),
+	(N'Nhà và chuồng', NULL, 4, N'nha-va-chuong-cho-thu-cung', 1, 5, GETDATE());
+GO
 
 
 INSERT INTO dbo.tb_ProductCategory (name, description, link, meta, hide, [order], createdDate)
 VALUES 
-    (N'Thức ăn',NULL , NULL, N'thuc-an-thu-cung', 1, 1, GETDATE()),
+	(N'Thức ăn', NULL, NULL, N'thuc-an-thu-cung', 1, 1, GETDATE()),
     (N'Đồ chơi',NULL , NULL, N'do-choi-thu-cung', 1, 2,GETDATE()),
     (N'Phụ kiện',NULL , NULL, N'phu-kien-thu-cung', 1, 3,GETDATE()),
     (N'Sản phẩm chăm sóc sức khỏe', NULL, NULL, N'san-pham-cham-soc-suc-khoe-thu-cung', 1, 4,GETDATE()),
@@ -351,6 +378,7 @@ N'Thức ăn cho mèo con từ 1 tháng tuổi trở lên, vị cá hồi cá ng
 Mèo con nên được cho ăn khi được 3 đến 4 tuần tuổi. Nên ngâm sản phẩm với nước ấm để giữ nguyên chất dinh dưỡng và dễ ăn hơn. Khi được 5-6 tuần, bắt đầu giảm lượng nước bổ sung cho đến khi mèo con có thể ăn thức ăn khô. Khi mèo con của bạn đã được 6 tháng tuổi, hãy chuyển sang thức ăn dành cho độ tuổi lớn hơn.', 
 NULL, 'san-pham/thuc-an-cho-meo', 1, 5, GETDATE());
 GO
+
 --delete  from dbo.tb_News
 
 --NEWS
@@ -416,4 +444,9 @@ VALUES
 -- DBCC CHECKIDENT ('tb_Product', RESEED, 0);
 --Delete from tb_Product
 
+GO
+
+INSERT INTO dbo.tb_Contact(phonenumber,location,email,createdDate)
+values
+('0961305436','Quan 7, Tp.HCM','Huyduong110082004@gmail.com',GETDATE())
 GO
