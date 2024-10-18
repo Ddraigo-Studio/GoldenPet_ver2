@@ -57,6 +57,18 @@
           <Property Name="modifidedDate" Type="smalldatetime" />
           <Property Name="modifidedBy" Type="nvarchar" MaxLength="150" />
         </EntityType>
+        <EntityType Name="tb_Logo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" />
+          <Property Name="img" Type="nvarchar" MaxLength="100" />
+          <Property Name="meta" Type="nvarchar(max)" />
+          <Property Name="hide" Type="bit" />
+          <Property Name="order" Type="int" />
+          <Property Name="datebegin" Type="smalldatetime" />
+        </EntityType>
         <EntityType Name="tb_Menu">
           <Key>
             <PropertyRef Name="id" />
@@ -242,6 +254,7 @@
           <EntitySet Name="tb_Advertisement" EntityType="Self.tb_Advertisement" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tb_Contact" EntityType="Self.tb_Contact" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tb_Img" EntityType="Self.tb_Img" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_Logo" EntityType="Self.tb_Logo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tb_Menu" EntityType="Self.tb_Menu" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tb_MenuCategory" EntityType="Self.tb_MenuCategory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tb_News" EntityType="Self.tb_News" Schema="dbo" store:Type="Tables" />
@@ -436,6 +449,7 @@
             <End Role="tb_Menu" EntitySet="tb_Menu" />
             <End Role="tb_MenuCategory" EntitySet="tb_MenuCategory" />
           </AssociationSet>
+          <EntitySet Name="tb_Logo" EntityType="GoldenPetModel.tb_Logo" />
         </EntityContainer>
         <EntityType Name="tb_Package">
           <Key>
@@ -543,6 +557,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="tb_Logo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="img" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="meta" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="hide" Type="Boolean" />
+          <Property Name="order" Type="Int32" />
+          <Property Name="datebegin" Type="DateTime" Precision="0" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -741,6 +767,19 @@
                 <ScalarProperty Name="meta" ColumnName="meta" />
                 <ScalarProperty Name="menuId" ColumnName="menuId" />
                 <ScalarProperty Name="link" ColumnName="link" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_Logo">
+            <EntityTypeMapping TypeName="GoldenPetModel.tb_Logo">
+              <MappingFragment StoreEntitySet="tb_Logo">
+                <ScalarProperty Name="datebegin" ColumnName="datebegin" />
+                <ScalarProperty Name="order" ColumnName="order" />
+                <ScalarProperty Name="hide" ColumnName="hide" />
+                <ScalarProperty Name="meta" ColumnName="meta" />
+                <ScalarProperty Name="img" ColumnName="img" />
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>

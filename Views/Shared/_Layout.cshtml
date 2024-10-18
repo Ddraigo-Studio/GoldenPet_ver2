@@ -63,9 +63,10 @@
                 </div>
             </div>
         </div>
-        <div class="row py-3 px-lg-5">
-            <div class="col-lg-4">
-                <a href="" class="navbar-brand d-none d-lg-block">
+        <div class="row py-3 px-lg-5 align-items-center">
+            <div class="col-lg-4 d-flex align-items-center">
+                @{ Html.RenderAction("GetLogo", "Menu"); }
+                <a href="" class="navbar-brand d-none d-lg-block ml-2">
                     <h1 class="m-0 display-5 text-capitalize"><span class="text-primary">Golden</span>Pet</h1>
                 </a>
             </div>
@@ -75,8 +76,7 @@
                         <h6>Giờ mở cửa</h6>
                         <p class="m-0">8.00AM - 9.00PM</p>
                     </div>
-                    @{ Html.RenderAction("getContactInfoTopBar", "Default");}
-
+                    @{ Html.RenderAction("getContactInfoTopBar", "Default"); }
                 </div>
             </div>
         </div>
@@ -85,7 +85,7 @@
     <!-- Navbar Start -->
     <div class="container-fluid p-0">
         <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-3 py-lg-0 px-lg-5">
-            <div class="Logo"><img src="~/Content/css/Logo/LogoPet.png" /></div>
+
             <a href="" class="navbar-brand d-block d-lg-none">
                 <h1 class="m-0 display-5 text-capitalize font-italic text-white"><span class="text-primary">Golden</span>Pet</h1>
             </a>
@@ -199,8 +199,6 @@
                     </ul>
 
                 </div>
-
-                
             </div>
         </nav>
     </div>
@@ -212,7 +210,14 @@
     <div class="container-fluid bg-dark text-white mt-5 py-5 px-sm-3 px-md-5">
         <div class="row pt-5">
             <div class="col-lg-4 col-md-12 mb-5">
-                <h1 class="mb-3 display-5 text-capitalize text-white"><span class="text-primary">Goldent</span> Pet</h1>
+                <div class="d-flex align-items-center" style="height: 100px;">
+                    <div>
+                        @{ Html.RenderAction("GetLogo", "Menu"); }
+                    </div>
+                    <h1 class="mb-0 display-5 text-capitalize text-white ml-3" style="white-space: nowrap; line-height: 100px;">
+                        <span class="text-primary">Goldent</span> Pet
+                    </h1>
+                </div>
                 <p class="m-0">Chúng tôi cung cấp dịch vụ chăm sóc chuyên nghiệp và các sản phẩm chất lượng cho thú cưng của bạn. Từ tắm rửa, cắt tỉa lông đến thực phẩm dinh dưỡng và phụ kiện, hãy để chúng tôi giúp thú cưng của bạn luôn khỏe mạnh và vui vẻ. Để biết thêm thông tin và nhận ưu đãi, hãy liên hệ với chúng tôi hôm nay!</p>
             </div>
             <div class="col-lg-8 col-md-12">
@@ -260,20 +265,20 @@
                 </p>
             </div>
             <div class="col-md-6 text-center text-md-right">
-                <ul class="nav d-inline-flex">
-                    <li class="nav-item">
-                        <a class="nav-link text-white py-0" href="#">Privacy</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-white py-0" href="#">Terms</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-white py-0" href="#">FAQs</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-white py-0" href="#">Help</a>
-                    </li>
-                </ul>
+                @*<ul class="nav d-inline-flex">
+                        <li class="nav-item">
+                            <a class="nav-link text-white py-0" href="#">Privacy</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white py-0" href="#">Terms</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white py-0" href="#">FAQs</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white py-0" href="#">Help</a>
+                        </li>
+                    </ul>*@
             </div>
         </div>
     </div>

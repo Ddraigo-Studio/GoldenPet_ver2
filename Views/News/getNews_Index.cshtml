@@ -1,10 +1,9 @@
 ﻿@model IEnumerable<GoldenPet.Models.tb_News>
 
-
 <div class="container pt-5">
     <div class="d-flex flex-column text-center mb-5">
         <h4 class="text-secondary mb-3">Pet Blog</h4>
-        <h1 class="display-4 m-0"><span class="text-primary">Updates</span> From Blog</h1>
+        <h1 class="display-4 m-0"><span class="text-primary">Cập nhật</span> tin tức</h1>
     </div>
     <div class="row pb-3">
         @foreach (var i in Model)
@@ -20,12 +19,11 @@
                             <small class="mr-2"><i class="fa fa-comments text-muted"></i> 15</small> @*số lượt bình luận*@
                         </div>
                         <p>@i.Summary</p> @*nội dung tom tat hay xem trc cho thẻ tin tức*@
-                        <a class="font-weight-bold" href="@Url.Action("getNew_Details", "News", new { id = i.NewsID })">Read More</a>
+                        <a class="font-weight-bold" href="@Url.Action("getNew_Details", "News", new { id = i.NewsID })">Tìm hiểu thêm</a>
                     </div>
                 </div>
             </div>
-        }
-
+         }
     </div>
 </div>
 <div class="col-lg-12">
