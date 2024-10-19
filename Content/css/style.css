@@ -82,15 +82,15 @@
 .shopping__cart-notice {
     position: relative;
     padding: 2px 6px;
-    background-color: #3f9790;
+    background-color: #f4754a;
     color: white;
     font-size: 0.7rem;
     line-height: 0.7rem;
     border-radius: 50%;
     border: 2px solid white;
-    top: -15px; 
-    right: 12px; 
-    z-index: 1; 
+    top: -15px;
+    right: 12px;
+    z-index: 1;
 }
 
 .shopping__cart-heading {

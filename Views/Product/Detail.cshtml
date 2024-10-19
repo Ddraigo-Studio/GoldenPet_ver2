@@ -5,18 +5,11 @@
 }
 
 <!-- Product Detail Start -->
-
 <link href="~/Content/css/product_detail.css" rel="stylesheet" />
 
 <div class="main-container">
     <div class="container">
         <div class="frame">
-            @*<div class="frame-1">
-                <div class="arrow-left"></div>
-                <span class="back-to-list">back to list</span>
-            </div>
-            <div class="ellipse"></div>
-            <div class="group"></div>*@
             <img class="img-fluid w-100 mb-4" src="/Content/img/@Model.img" alt="Product Image">
             <div class="ellipse-2"></div>
         </div>
@@ -32,17 +25,10 @@
                     <span class="description-detail">Mô tả:</span>
                     <span class="complete-nutrition">@Model.description</span>
                 </div>
-                @*<div class="frame-8">
-
-                    <button class="rectangle"><img src="/Content/img/@Model.img" /></button>
-                    <button class="rectangle-9"><img src="/Content/img/@Model.img2" /></button>
-                    <button class="rectangle-a"><img src="/Content/img/@Model.img3" /></button>
-                    <button class="rectangle-b"><img src="/Content/img/@Model.img4" /></button>
-                </div>*@
                 @{ Html.RenderAction("getImageProduct");}
 
                 <div class="frame-b">
-                    <span class="size-label">Size:</span>
+                    <span class="size-label">Trọng lượng:</span>
                     <div class="frame-c">
                         <button class="frame-button"><span class="weight-1-5kg">1.5 kg</span></button>
                         <button class="frame-button-d"><span class="weight-1kg">1 kg</span></button>
