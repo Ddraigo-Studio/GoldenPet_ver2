@@ -8,12 +8,6 @@ namespace GoldenPet.Controllers
     {
         GoldenPetEntities _db = new GoldenPetEntities();
 
-        // GET: Memu
-        public ActionResult Index()
-        {
-            return View();
-        }
-
         public ActionResult GetMenu()
         {
             var v = from t in _db.tb_Menu
@@ -35,5 +29,13 @@ namespace GoldenPet.Controllers
             return PartialView(v.ToList());
         }
 
+        public ActionResult GetLogo()
+        {         
+            var logo = from t in _db.tb_Logo
+                    where  t.hide == true
+                    select t;
+
+            return PartialView(logo.FirstOrDefault());
+        }
     }
 }

@@ -21,6 +21,7 @@
         <AssociationConnector Association="GoldenPetModel.FK__tb_NewsIm__NewsI__19DFD96B" />
         <EntityTypeShape EntityType="GoldenPetModel.tb_MenuCategory" Width="1.5" PointX="10" PointY="5.625" />
         <AssociationConnector Association="GoldenPetModel.FK__tb_MenuCa__menuI__756D6ECB" />
+        <EntityTypeShape EntityType="GoldenPetModel.tb_Logo" Width="1.5" PointX="10.375" PointY="9.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

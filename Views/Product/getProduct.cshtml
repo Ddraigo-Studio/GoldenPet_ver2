@@ -1,6 +1,6 @@
 ﻿@model List<GoldenPet.Models.tb_Product>
 @foreach (var item in Model)
-{
+ {
     <div class="col-lg-3 col-md-4 mb-4">
         <div class="card  mb-2" style="border-radius: 0 0 10px 10px">
             <img class="card-img-top" src="/Content/img/@item.img" alt="Product 1">
@@ -10,12 +10,12 @@
                     <small class="mr-2"><i class="fa fa-tag text-muted"></i> @item.price VNĐ</small>
                 </div>
                 <p></p>
-                <a class="btn btn-primary font-weight-bold mt-auto ml-auto" href="@ViewBag.meta/@item.meta/@item.id">View Detail</a>
+                <a class="btn btn-primary font-weight-bold mt-auto ml-auto" href="@ViewBag.meta/@item.meta/@item.id">Xem chi tiết</a>
             </div>
         </div>
     </div>
 
-}
+ }
 <div class="clearfix"> </div>
 
 

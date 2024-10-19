@@ -12,11 +12,9 @@
                     <small class="mr-2"><i class="fa fa-comments text-muted"></i> 15</small> @*số lượt bình luận*@
                 </div>
                 <p>@i.Content</p> @*nội dung cho thẻ tin tức*@
-                <a class="font-weight-bold" href="@Url.Action("getNew_Details", "News", new { id = i.NewsID })">Read More</a>
+                <a class="font-weight-bold" href="@Url.Action("getNew_Details", "News", new { id = i.NewsID })">Chi tiết</a>
             </div>
-
         </div>
-
     </div>
 }
 

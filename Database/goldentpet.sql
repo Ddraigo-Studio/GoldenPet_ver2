@@ -37,6 +37,17 @@ CREATE TABLE dbo.tb_MenuCategory (
 );
 GO
 
+CREATE TABLE dbo.tb_Logo (
+    id INT IDENTITY(1,1) NOT NULL PRIMARY KEY,        
+    name NVARCHAR(50) NULL,              
+	img NVARCHAR(100) NULL,
+
+    meta NVARCHAR(MAX) NULL,             
+    hide BIT NULL,                       
+    [order] INT NULL,                    
+    datebegin SMALLDATETIME NULL,         
+);
+GO
 
 CREATE TABLE dbo.tb_Advertisement (
     id INT IDENTITY(1,1) NOT NULL PRIMARY KEY, 
@@ -449,4 +460,8 @@ GO
 INSERT INTO dbo.tb_Contact(phonenumber,location,email,createdDate)
 values
 ('0961305436','Quan 7, Tp.HCM','Huyduong110082004@gmail.com',GETDATE())
+GO
+
+INSERT INTO dbo.tb_Logo (name, img, meta, hide, [order], datebegin) VALUES
+('GoldentPet', 'LogoPet.png', NULL, 1, 1, GETDATE());
 GO

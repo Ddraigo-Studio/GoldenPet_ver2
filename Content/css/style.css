@@ -6,6 +6,13 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
 
+.des-text {
+    font-family: 'Coiny', system-ui, sans-serif !important;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 1.6em;
+}
+
 /* GIỎ HÀNG */
 .shopping__cart {
     position: relative;
@@ -75,15 +82,15 @@
 .shopping__cart-notice {
     position: relative;
     padding: 2px 6px;
-    background-color: #3f9790;
+    background-color: #f4754a;
     color: white;
     font-size: 0.7rem;
     line-height: 0.7rem;
     border-radius: 50%;
     border: 2px solid white;
-    top: -15px; 
-    right: 12px; 
-    z-index: 1; 
+    top: -15px;
+    right: 12px;
+    z-index: 1;
 }
 
 .shopping__cart-heading {
@@ -865,11 +872,12 @@ pre {
 .container-lg,
 .container-xl {
     width: 100%;
-    padding-right: 15px;
-    padding-left: 15px;
+/*    padding-right: 15px;
+    padding-left: 15px;*/
     margin-right: auto;
     margin-left: auto;
 }
+
 
 @media (min-width: 576px) {
     .container, .container-sm {
@@ -898,8 +906,8 @@ pre {
 .row {
     display: flex;
     flex-wrap: wrap;
-    margin-right: -15px;
-    margin-left: -15px;
+/*    margin-right: -15px;
+    margin-left: -15px;*/
 }
 
 .no-gutters {
@@ -4951,6 +4959,8 @@ input[type="button"].btn-block {
         .navbar-dark .navbar-text a:hover, .navbar-dark .navbar-text a:focus {
             color: #fff;
         }
+
+
 
 .card {
     position: relative;
