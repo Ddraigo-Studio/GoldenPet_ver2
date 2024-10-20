@@ -56,6 +56,7 @@ namespace GoldenPet
            },
            namespaces: new[] { "GoldenPet.Controllers" });
 
+
             routes.MapRoute("AboutUs", "{type}/{meta}",
             new { controller = "AboutUs", action = "Index", meta = UrlParameter.Optional },
             new RouteValueDictionary
