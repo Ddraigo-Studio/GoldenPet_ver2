@@ -126,13 +126,42 @@ CREATE TABLE dbo.tb_Product(
 	FOREIGN KEY (categoryID) REFERENCES tb_ProductCategory(id),
 );
 GO
+INSERT INTO dbo.tb_Service (name, description, description_1, description_2, description_3, price, duration, img, img2, img3, img4, link, meta, hide, [order], createdBy, modifidedDate, modifidedBy)
+Values
 
+    ('Pet Service',N'<div class="col-lg-6 mb-5">
+    <h2 class=" des-text mb-3">PET SPA VÀ GROMMING</h2>
+    <p>Bộ lông và da không chỉ giúp cho thú cưng có ngoại hình ưa nhìn mà còn đóng vai trò quan trọng đối với sức khỏe của thú cưng.</p>
+    <p>Việc vệ sinh bộ lông thường xuyên và cắt tỉa bớt sẽ giúp cho thú cưng giảm nguy cơ mắc các bệnh về da, vận động một cách thoải mái và dạo phố trông thật đáng yêu và sành điệu.</p>
+    <p>Dịch vụ Spa &amp; Grooming của GoldenPet sẽ thay bạn chăm sóc và bảo vệ những người bạn nhỏ.</p>
+    <p>Với các bước chăm sóc chu đáo, tận tình, tạo cho các bé thú cưng cảm giác thư thái.</p>
+    <p>Để đảm bảo chất lượng trải nghiệm dịch vụ tốt nhất, Quý khách hàng có thể đặt lịch hẹn với GoldenPet trước.</p>
+</div>',  N'<div class="col-lg-6 mb-5">
+    <h2 class=" des-text mb-4">QUY TRÌNH LÀM ĐẸP THÚ CƯNG TẠI GoldenPet</h2>
+    <p>Với mong muốn đem lại sự tận hưởng và hạnh phúc cho các bé cưng trong quá trình làm đẹp và một chất lượng xứng đáng với sự tin tưởng của các chủ Pet. Quy trình cho các bé sẽ diễn ra theo từng bước và có những quy tắc riêng. Điều này sẽ giúp Vpet’s dễ dàng hơn trong việc và đảm bảo sự an toàn cho những chú chó, mèo khác đang được chăm sóc tại đây. Quy trình làm đẹp cho Pet yêu sẽ diễn ra theo thứ tự:</p>
+    <ul>
+        <li>Thú cưng sẽ được kiểm tra tình trạng da lông và chọn loại dầu tắm phù hợp</li>
+        <li>Vệ sinh và nhổ lông tai</li>
+        <li>Cạo lông vùng bụng, bàn chân và hậu môn</li>
+        <li>Cắt dũa móng</li>
+        <li>Vắt tuyến hôi</li>
+        <li>Tắm spa kết hợp massage giúp bé thư giãn</li>
+        <li>Cắt tỉa/ cạo tạo kiểu theo yêu cầu</li>
+        <li>Sấy khô, chải lông</li>
+        <li>Thoa dưỡng lông và xịt nước hoa</li>
+        <li>Sau khi hoàn thành, các bé sẽ được bác sĩ kiểm tra lại tình trang da lông lần nữa và hướng dẫn cách chăm sóc bé tại nhà</li>
+    </ul>
+</div>','Hair cutting',N'A', 49.99, 90, 'img1.jpg', 'img2.jpg', 'img3.jpg', 'img4.jpg', 'https://example.com/pet-grooming', 'Meta information', 0, 1, 'Admin', NULL, NULL)
+
+select * from dbo.tb_Service
 --drop table tb_Product
-
 CREATE TABLE dbo.tb_Service (
     id INT IDENTITY(1,1) NOT NULL PRIMARY KEY, 
     name NVARCHAR(150) NULL,
     description NTEXT NULL,
+	description_1 NTEXT NULL,
+    description_2 NTEXT NULL,
+    description_3 NTEXT NULL,
     price DECIMAL(18, 2) NULL,
     duration INT, -- In minutes
     img NVARCHAR(100) NULL, 
@@ -150,7 +179,7 @@ CREATE TABLE dbo.tb_Service (
 	modifidedBy NVARCHAR(150) NULL,
 );
 GO
-
+drop table dbo.tb_Service
 
 CREATE TABLE dbo.tb_Contact (
     id INT IDENTITY(1,1) NOT NULL PRIMARY KEY, 
@@ -465,3 +494,33 @@ GO
 INSERT INTO dbo.tb_Logo (name, img, meta, hide, [order], datebegin) VALUES
 ('GoldentPet', 'LogoPet.png', NULL, 1, 1, GETDATE());
 GO
+
+INSERT INTO dbo.tb_Service (name, description, description_1, description_2, description_3, price, duration, img, img2, img3, img4, link, meta, hide, [order], createdBy, modifidedDate, modifidedBy)
+VALUES
+    
+
+    ('Pet Service',N'<div class="col-lg-6 mb-5">
+    <h2 class=" des-text mb-3">PET SPA VÀ GROMMING</h2>
+    <p>Bộ lông và da không chỉ giúp cho thú cưng có ngoại hình ưa nhìn mà còn đóng vai trò quan trọng đối với sức khỏe của thú cưng.</p>
+    <p>Việc vệ sinh bộ lông thường xuyên và cắt tỉa bớt sẽ giúp cho thú cưng giảm nguy cơ mắc các bệnh về da, vận động một cách thoải mái và dạo phố trông thật đáng yêu và sành điệu.</p>
+    <p>Dịch vụ Spa &amp; Grooming của GoldenPet sẽ thay bạn chăm sóc và bảo vệ những người bạn nhỏ.</p>
+    <p>Với các bước chăm sóc chu đáo, tận tình, tạo cho các bé thú cưng cảm giác thư thái.</p>
+    <p>Để đảm bảo chất lượng trải nghiệm dịch vụ tốt nhất, Quý khách hàng có thể đặt lịch hẹn với GoldenPet trước.</p>
+</div>',  N'<div class="col-lg-6 mb-5">
+    <h2 class=" des-text mb-4">QUY TRÌNH LÀM ĐẸP THÚ CƯNG TẠI GoldenPet</h2>
+    <p>Với mong muốn đem lại sự tận hưởng và hạnh phúc cho các bé cưng trong quá trình làm đẹp và một chất lượng xứng đáng với sự tin tưởng của các chủ Pet. Quy trình cho các bé sẽ diễn ra theo từng bước và có những quy tắc riêng. Điều này sẽ giúp Vpet’s dễ dàng hơn trong việc và đảm bảo sự an toàn cho những chú chó, mèo khác đang được chăm sóc tại đây. Quy trình làm đẹp cho Pet yêu sẽ diễn ra theo thứ tự:</p>
+    <ul>
+        <li>Thú cưng sẽ được kiểm tra tình trạng da lông và chọn loại dầu tắm phù hợp</li>
+        <li>Vệ sinh và nhổ lông tai</li>
+        <li>Cạo lông vùng bụng, bàn chân và hậu môn</li>
+        <li>Cắt dũa móng</li>
+        <li>Vắt tuyến hôi</li>
+        <li>Tắm spa kết hợp massage giúp bé thư giãn</li>
+        <li>Cắt tỉa/ cạo tạo kiểu theo yêu cầu</li>
+        <li>Sấy khô, chải lông</li>
+        <li>Thoa dưỡng lông và xịt nước hoa</li>
+        <li>Sau khi hoàn thành, các bé sẽ được bác sĩ kiểm tra lại tình trang da lông lần nữa và hướng dẫn cách chăm sóc bé tại nhà</li>
+    </ul>
+</div>', Null 'Hair cutting', 49.99, 90, 'img1.jpg', 'img2.jpg', 'img3.jpg', 'img4.jpg', 'https://example.com/pet-grooming', 'Meta information', 0, 1, 'Admin', NULL, NULL),
+    --('Spa Service', 'Relaxing spa treatments for pets', 'Aromatherapy', 'Gentle massage', 'Special bath products', 69.99, 120, 'spa1.jpg', 'spa2.jpg', 'spa3.jpg', 'spa4.jpg', 'https://example.com/spa-service', 'Meta spa', 0, 2, 'Admin', NULL, NULL),
+    --('Nail Clipping', 'Basic nail clipping service', NULL, NULL, NULL, 19.99, 30, 'nail1.jpg', NULL, NULL, NULL, 'https://example.com/nail-clipping', 'Meta nail', 1, 3, 'Admin', NULL, NULL);
