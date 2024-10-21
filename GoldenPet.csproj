@@ -250,8 +250,8 @@
     <Content Include="Content\img\price-1.jpg" />
     <Content Include="Content\img\price-2.jpg" />
     <Content Include="Content\img\price-3.jpg" />
-    <Content Include="Content\img\service-2.png" />
-    <Content Include="Content\img\service.png" />
+    <Content Include="Content\img\grooming2.png" />
+    <Content Include="Content\img\grooming1.png" />
     <Content Include="Content\img\team-1.jpg" />
     <Content Include="Content\img\team-2.jpg" />
     <Content Include="Content\img\team-3.jpg" />
@@ -451,6 +451,7 @@
     <Content Include="Views\Menu\GetLogo.cshtml" />
     <Content Include="Views\Default\getNews.cshtml" />
     <Content Include="Views\Service\Detail.cshtml" />
+    <Content Include="Views\Service\getServiceCategory.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

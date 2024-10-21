@@ -11,7 +11,6 @@
         <EntityTypeShape EntityType="GoldenPetModel.tb_Menu" Width="1.5" PointX="7.75" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="GoldenPetModel.tb_Product" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="GoldenPetModel.tb_ProductCategory" Width="1.5" PointX="0.75" PointY="1.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="GoldenPetModel.tb_Service" Width="1.5" PointX="7.75" PointY="8.75" IsExpanded="true" />
         <AssociationConnector Association="GoldenPetModel.FK__tb_Produc__categ__0A9D95DB" ManuallyRouted="false" />
         <EntityTypeShape EntityType="GoldenPetModel.tb_Package" Width="1.5" PointX="5.375" PointY="1" />
         <EntityTypeShape EntityType="GoldenPetModel.tb_PackageFeature" Width="1.5" PointX="7.625" PointY="1.125" />
@@ -22,6 +21,7 @@
         <EntityTypeShape EntityType="GoldenPetModel.tb_MenuCategory" Width="1.5" PointX="10" PointY="5.625" />
         <AssociationConnector Association="GoldenPetModel.FK__tb_MenuCa__menuI__756D6ECB" />
         <EntityTypeShape EntityType="GoldenPetModel.tb_Logo" Width="1.5" PointX="10.375" PointY="9.75" />
+        <EntityTypeShape EntityType="GoldenPetModel.tb_Service" Width="1.5" PointX="5.375" PointY="9.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

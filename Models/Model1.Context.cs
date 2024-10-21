@@ -31,12 +31,12 @@ namespace GoldenPet.Models
         public virtual DbSet<tb_Menu> tb_Menu { get; set; }
         public virtual DbSet<tb_Product> tb_Product { get; set; }
         public virtual DbSet<tb_ProductCategory> tb_ProductCategory { get; set; }
-        public virtual DbSet<tb_Service> tb_Service { get; set; }
         public virtual DbSet<tb_Package> tb_Package { get; set; }
         public virtual DbSet<tb_PackageFeature> tb_PackageFeature { get; set; }
         public virtual DbSet<tb_News> tb_News { get; set; }
         public virtual DbSet<tb_NewsImages> tb_NewsImages { get; set; }
         public virtual DbSet<tb_MenuCategory> tb_MenuCategory { get; set; }
         public virtual DbSet<tb_Logo> tb_Logo { get; set; }
+        public virtual DbSet<tb_Service> tb_Service { get; set; }
     }
 }

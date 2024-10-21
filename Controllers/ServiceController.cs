@@ -17,11 +17,24 @@ namespace GoldenPet.Controllers
             return View();
         }
 
-        public ActionResult Detail() 
+        public ActionResult Detail(long id)
         {
             var v = from t in _db.tb_Service
+                    where t.id == id
                     select t;
-            return View(v.ToList());
+            return View(v.FirstOrDefault());
         }
+
+
+        public ActionResult getServiceCategory()
+        {
+            ViewBag.meta = "cac-dich-vu";
+            var v = from t in _db.tb_Service
+                    where t.hide == true
+                    orderby t.order ascending
+                    select t;
+            return PartialView(v.ToList());
+        }
+
     }
 }
