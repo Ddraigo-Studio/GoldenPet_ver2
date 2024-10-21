@@ -1,83 +1,81 @@
-﻿@model IEnumerable<GoldenPet.Models.tb_Service>
+﻿@model GoldenPet.Models.tb_Service
 
 @{
     ViewBag.Title = "Detail";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@foreach (var i in Model)
-{
 
-    <div class="container py-5">
-        <div class="row pt-5">
+<div class="container py-5">
+    <div class="row pt-5">
 
 
-            <div class="col-lg-6 mb-5">
-                <img class="img-fluid w-100" src="/Content/img/@i.img" alt="Grooming Service">
+        <div class="col-lg-6 mb-5">
+            <img class="img-fluid w-100" src="/Content/img/@Model.img" alt="Grooming Service">
 
-            </div>
+        </div>
 
-            <div class="col-lg-6 mb-5">
-                <h2 class=" des-text mb-3">PET SPA VÀ GROMMING</h2>
-                <p>@i.description</p>
-                @*<p>Bộ lông và da không chỉ giúp cho thú cưng có ngoại hình ưa nhìn mà còn đóng vai trò quan trọng đối với sức khỏe của thú cưng.</p>
-                    <p>Việc vệ sinh bộ lông thường xuyên và cắt tỉa bớt sẽ giúp cho thú cưng giảm nguy cơ mắc các bệnh về da, vận động một cách thoải mái và dạo phố trông thật đáng yêu và sành điệu.</p>
-                    <p>Dịch vụ Spa  Grooming của GoldenPet sẽ thay bạn chăm sóc và bảo vệ những người bạn nhỏ.</p>
-                    <p>Với các bước chăm sóc chu đáo, tận tình, tạo cho các bé thú cưng cảm giác thư thái.</p>
-                    <p>Để đảm bảo chất lượng trải nghiệm dịch vụ tốt nhất, Quý khách hàng có thể đặt lịch hẹn với GoldenPet trước.</p>*@
-            </div>
-            
-            <!-- Row 2 -->
+        <div class="col-lg-6 mb-5">
+            <h2 class=" des-text mb-3">PET SPA VÀ GROMMING</h2>
+            <p>@Model.description</p>
+            @*<p>Bộ lông và da không chỉ giúp cho thú cưng có ngoại hình ưa nhìn mà còn đóng vai trò quan trọng đối với sức khỏe của thú cưng.</p>
+                <p>Việc vệ sinh bộ lông thường xuyên và cắt tỉa bớt sẽ giúp cho thú cưng giảm nguy cơ mắc các bệnh về da, vận động một cách thoải mái và dạo phố trông thật đáng yêu và sành điệu.</p>
+                <p>Dịch vụ Spa  Grooming của GoldenPet sẽ thay bạn chăm sóc và bảo vệ những người bạn nhỏ.</p>
+                <p>Với các bước chăm sóc chu đáo, tận tình, tạo cho các bé thú cưng cảm giác thư thái.</p>
+                <p>Để đảm bảo chất lượng trải nghiệm dịch vụ tốt nhất, Quý khách hàng có thể đặt lịch hẹn với GoldenPet trước.</p>*@
+        </div>
 
-            <div class="col-lg-6 mb-5">
-                <h2 class=" des-text mb-4">QUY TRÌNH LÀM ĐẸP THÚ CƯNG TẠI GoldenPet</h2>
-                    <p>@i.description_1</p>
-                <ul>
-                    <li>Thú cưng sẽ được kiểm tra tình trạng da lông và chọn loại dầu tắm phù hợp</li>
-                    <li>Vệ sinh và nhổ lông tai</li>
-                    <li>Cạo lông vùng bụng, bàn chân và hậu môn</li>
-                    <li>Cắt dũa móng</li>
-                    <li>Vắt tuyến hôi</li>
-                    <li>Tắm spa kết hợp massage giúp bé thư giãn</li>
-                    <li>Cắt tỉa/ cạo tạo kiểu theo yêu cầu</li>
-                    <li>Sấy khô, chải lông</li>
-                    <li>Thoa dưỡng lông và xịt nước hoa</li>
-                    <li>Sau khi hoàn thành, các bé sẽ được bác sĩ kiểm tra lại tình trang da lông lần nữa và hướng dẫn cách chăm sóc bé tại nhà</li>
-                </ul>
-            </div>
-            <div class="col-lg-6 mb-5">
-                <img class="img-fluid w-100" src="/Content/img/@i.img2" alt="Grooming Process">
-            </div>
+        <!-- Row 2 -->
 
-            <!-- Row 3 -->
-            <div class="col-12 mb-5">
-                <h2 class="des-text mb-4">Hình ảnh Pet yêu làm đẹp tại GoldenPet</h2>
-                <div class="row">
-                    <!-- Sử dụng col-md-2 để chia đều 6 hình trên mỗi hàng -->
-                    <div class="col-md-2 mb-3">
-                        <img class="img-fluid" src="img/price-1.jpg" alt="Grooming 1">
-                    </div>
-                    <div class="col-md-2 mb-3">
-                        <img class="img-fluid" src="img/price-1.jpg" alt="Grooming 2">
-                    </div>
-                    <div class="col-md-2 mb-3">
-                        <img class="img-fluid" src="img/price-1.jpg" alt="Grooming 3">
-                    </div>
-                    <div class="col-md-2 mb-3">
-                        <img class="img-fluid" src="img/price-1.jpg" alt="Grooming 4">
-                    </div>
-                    <div class="col-md-2 mb-3">
-                        <img class="img-fluid" src="img/price-1.jpg" alt="Grooming 5">
-                    </div>
-                    <div class="col-md-2 mb-3">
-                        <img class="img-fluid" src="img/price-1.jpg" alt="Grooming 6">
-                    </div>
+        <div class="col-lg-6 mb-5">
+            <h2 class=" des-text mb-4">QUY TRÌNH LÀM ĐẸP THÚ CƯNG TẠI GoldenPet</h2>
+            <p>@Model.description_1</p>
+            <ul>
+                <li>Thú cưng sẽ được kiểm tra tình trạng da lông và chọn loại dầu tắm phù hợp</li>
+                <li>Vệ sinh và nhổ lông tai</li>
+                <li>Cạo lông vùng bụng, bàn chân và hậu môn</li>
+                <li>Cắt dũa móng</li>
+                <li>Vắt tuyến hôi</li>
+                <li>Tắm spa kết hợp massage giúp bé thư giãn</li>
+                <li>Cắt tỉa/ cạo tạo kiểu theo yêu cầu</li>
+                <li>Sấy khô, chải lông</li>
+                <li>Thoa dưỡng lông và xịt nước hoa</li>
+                <li>Sau khi hoàn thành, các bé sẽ được bác sĩ kiểm tra lại tình trang da lông lần nữa và hướng dẫn cách chăm sóc bé tại nhà</li>
+            </ul>
+        </div>
+        <div class="col-lg-6 mb-5">
+            <img class="img-fluid w-100" src="/Content/img/@Model.img2" alt="Grooming Process">
+        </div>
+
+        <!-- Row 3 -->
+        <div class="col-12 mb-5">
+            <h2 class="des-text mb-4">Hình ảnh Pet yêu làm đẹp tại GoldenPet</h2>
+            <div class="row">
+                <!-- Sử dụng col-md-2 để chia đều 6 hình trên mỗi hàng -->
+                <div class="col-md-2 mb-3">
+                    <img class="img-fluid" src="img/price-1.jpg" alt="Grooming 1">
+                </div>
+                <div class="col-md-2 mb-3">
+                    <img class="img-fluid" src="img/price-1.jpg" alt="Grooming 2">
+                </div>
+                <div class="col-md-2 mb-3">
+                    <img class="img-fluid" src="img/price-1.jpg" alt="Grooming 3">
+                </div>
+                <div class="col-md-2 mb-3">
+                    <img class="img-fluid" src="img/price-1.jpg" alt="Grooming 4">
+                </div>
+                <div class="col-md-2 mb-3">
+                    <img class="img-fluid" src="img/price-1.jpg" alt="Grooming 5">
+                </div>
+                <div class="col-md-2 mb-3">
+                    <img class="img-fluid" src="img/price-1.jpg" alt="Grooming 6">
                 </div>
             </div>
         </div>
     </div>
+</div>
 
-}
+
 
 
 
