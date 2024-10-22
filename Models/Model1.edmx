@@ -205,7 +205,7 @@
           <Property Name="modifidedDate" Type="smalldatetime" />
           <Property Name="modifidedBy" Type="nvarchar" MaxLength="150" />
         </EntityType>
-        <Association Name="FK__tb_MenuCa__menuI__5EBF139D">
+        <Association Name="FK__tb_MenuCa__menuI__4F47C5E3">
           <End Role="tb_Menu" Type="Self.tb_Menu" Multiplicity="0..1" />
           <End Role="tb_MenuCategory" Type="Self.tb_MenuCategory" Multiplicity="*" />
           <ReferentialConstraint>
@@ -217,7 +217,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tb_NewsIm__NewsI__02FC7413">
+        <Association Name="FK__tb_NewsIm__NewsI__3E1D39E1">
           <End Role="tb_News" Type="Self.tb_News" Multiplicity="0..1" />
           <End Role="tb_NewsImages" Type="Self.tb_NewsImages" Multiplicity="*" />
           <ReferentialConstraint>
@@ -229,7 +229,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tb_Packag__packa__7A672E12">
+        <Association Name="FK__tb_Packag__packa__3587F3E0">
           <End Role="tb_Package" Type="Self.tb_Package" Multiplicity="0..1" />
           <End Role="tb_PackageFeature" Type="Self.tb_PackageFeature" Multiplicity="*" />
           <ReferentialConstraint>
@@ -241,7 +241,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tb_Produc__categ__6D0D32F4">
+        <Association Name="FK__tb_Produc__categ__03F0984C">
           <End Role="tb_ProductCategory" Type="Self.tb_ProductCategory" Multiplicity="0..1" />
           <End Role="tb_Product" Type="Self.tb_Product" Multiplicity="*" />
           <ReferentialConstraint>
@@ -267,19 +267,19 @@
           <EntitySet Name="tb_Product" EntityType="Self.tb_Product" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tb_ProductCategory" EntityType="Self.tb_ProductCategory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tb_Service" EntityType="Self.tb_Service" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__tb_MenuCa__menuI__5EBF139D" Association="Self.FK__tb_MenuCa__menuI__5EBF139D">
+          <AssociationSet Name="FK__tb_MenuCa__menuI__4F47C5E3" Association="Self.FK__tb_MenuCa__menuI__4F47C5E3">
             <End Role="tb_Menu" EntitySet="tb_Menu" />
             <End Role="tb_MenuCategory" EntitySet="tb_MenuCategory" />
           </AssociationSet>
-          <AssociationSet Name="FK__tb_NewsIm__NewsI__02FC7413" Association="Self.FK__tb_NewsIm__NewsI__02FC7413">
+          <AssociationSet Name="FK__tb_NewsIm__NewsI__3E1D39E1" Association="Self.FK__tb_NewsIm__NewsI__3E1D39E1">
             <End Role="tb_News" EntitySet="tb_News" />
             <End Role="tb_NewsImages" EntitySet="tb_NewsImages" />
           </AssociationSet>
-          <AssociationSet Name="FK__tb_Packag__packa__7A672E12" Association="Self.FK__tb_Packag__packa__7A672E12">
+          <AssociationSet Name="FK__tb_Packag__packa__3587F3E0" Association="Self.FK__tb_Packag__packa__3587F3E0">
             <End Role="tb_Package" EntitySet="tb_Package" />
             <End Role="tb_PackageFeature" EntitySet="tb_PackageFeature" />
           </AssociationSet>
-          <AssociationSet Name="FK__tb_Produc__categ__6D0D32F4" Association="Self.FK__tb_Produc__categ__6D0D32F4">
+          <AssociationSet Name="FK__tb_Produc__categ__03F0984C" Association="Self.FK__tb_Produc__categ__03F0984C">
             <End Role="tb_ProductCategory" EntitySet="tb_ProductCategory" />
             <End Role="tb_Product" EntitySet="tb_Product" />
           </AssociationSet>

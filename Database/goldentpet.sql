@@ -93,17 +93,7 @@ GO
 
 select * from dbo.tb_Img
 
-CREATE TABLE dbo.tb_ProductCategory(
-    id INT IDENTITY(1,1) NOT NULL PRIMARY KEY,        
-    name NVARCHAR(150) NULL,  
-	description NTEXT NULL,
-    link NVARCHAR(MAX) NULL,              
-    meta NVARCHAR(MAX) NULL,             
-    hide BIT NULL,                       
-    [order] INT NULL,                    
-    createdDate SMALLDATETIME DEFAULT CURRENT_TIMESTAMP,         
-);
-GO
+
 --drop table dbo.tb_Product
 
 CREATE TABLE dbo.tb_Product(
