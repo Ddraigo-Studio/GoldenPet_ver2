@@ -14,6 +14,12 @@ namespace GoldenPet.Models
     
     public partial class tb_Service
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public tb_Service()
+        {
+            this.tb_ImgService = new HashSet<tb_ImgService>();
+        }
+    
         public int id { get; set; }
         public string name { get; set; }
         public string description { get; set; }
@@ -34,5 +40,8 @@ namespace GoldenPet.Models
         public Nullable<System.DateTime> modifidedDate { get; set; }
         public string modifidedBy { get; set; }
         public string title { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tb_ImgService> tb_ImgService { get; set; }
     }
 }

@@ -154,6 +154,25 @@ CREATE TABLE dbo.tb_Service (
 	modifidedBy NVARCHAR(150) NULL,
 );
 GO
+
+CREATE TABLE dbo.tb_ImgService (
+    id INT IDENTITY(1,1) NOT NULL PRIMARY KEY, 
+    title NVARCHAR(150) NULL,
+    description NTEXT NULL,
+    img NVARCHAR(MAX) NULL, 
+	id_Service INT NULL,
+	link NVARCHAR(150) NULL, 
+	meta NVARCHAR(100) NULL,             
+    hide BIT NULL,                       
+    [order] INT NULL,                    
+    createdDate SMALLDATETIME DEFAULT CURRENT_TIMESTAMP,    
+	createdBy NVARCHAR(150) NULL,
+	FOREIGN KEY (id_Service) REFERENCES tb_Service(id),
+);
+GO
+
+
+
 --drop table dbo.tb_Service
 
 CREATE TABLE dbo.tb_Contact (
@@ -221,24 +240,6 @@ VALUES
     (1, 'Boarding', 1, GETDATE()),
     (1, 'Spa & Grooming', 0, GETDATE()),
     (1, 'Veterinary Medicine', 0, GETDATE());
-GO
-
--- drop table dbo.tb_Img
-
-CREATE TABLE dbo.tb_Img (
-    id INT IDENTITY(1,1) NOT NULL PRIMARY KEY, 
-	link NVARCHAR(100) NOT NULL,
-    type NVARCHAR(100) NOT NULL,
-	title NVARCHAR(150) NULL,
-    description NTEXT NULL,
-	meta NVARCHAR(MAX) NULL,             
-    hide BIT NULL,                       
-    [order] INT NULL,                    
-    createdDate SMALLDATETIME DEFAULT CURRENT_TIMESTAMP,    
-	createdBy NVARCHAR(150) NULL,
-	modifidedDate SMALLDATETIME NULL,
-	modifidedBy NVARCHAR(150) NULL,
-);
 GO
 
 
@@ -518,6 +519,39 @@ VALUES
      </div>',  
      NULL, 39.99, 60, 'nutrition1.png', 'nutrition2.png', N'<h3 class="flaticon-food display-3 font-weight-normal text-secondary mb-3"></h3>', NULL, NULL, 'tu-van-dinh-duong-suc-khoe', 1, 2, 'Admin', NULL, NULL);
 GO
---delete from tb_Service
+--delete from tb_ImgService
+-- DBCC CHECKIDENT ('tb_ImgService', RESEED, 0);
+
+INSERT INTO dbo.tb_ImgService (
+    title,
+    description,
+    img,
+    id_Service,
+    link,
+    meta,
+    hide,
+    [order],
+    createdBy
+) VALUES 
+(N'Hình ảnh Pet yêu làm đẹp tại GoldenPet', N'<div class="row">
+        <div class="col-md-2 mb-3">
+            <img class="img-fluid" src="https://vpets.vn/wp-content/uploads/2024/05/Anh-pet-yeu-lam-dep-tai-vpet-spa-1.jpg.webp" alt="Grooming 1">
+        </div>
+        <div class="col-md-2 mb-3">
+            <img class="img-fluid" src="https://vpets.vn/wp-content/uploads/2024/05/Anh-pet-yeu-lam-dep-tai-vpet-spa-3s.jpg.webp" alt="Grooming 2">
+        </div>
+        <div class="col-md-2 mb-3">
+            <img class="img-fluid" src="https://vpets.vn/wp-content/uploads/2024/05/spa-poodle-1.png.webp" alt="Grooming 3">
+        </div>
+        <div class="col-md-2 mb-3">
+            <img class="img-fluid" src="https://vpets.vn/wp-content/uploads/2024/05/spa-phoc-soc.png.webp" alt="Grooming 4">
+        </div>
+        <div class="col-md-2 mb-3">
+            <img class="img-fluid" src="https://vpets.vn/wp-content/uploads/2024/05/spa-meo.png.webp" alt="Grooming 5">
+        </div>
+        <div class="col-md-2 mb-3">
+            <img class="img-fluid" src="https://vpets.vn/wp-content/uploads/2024/05/Anh-pet-yeu-lam-dep-tai-vpet-spa-13.jpg" alt="Grooming 6">
+        </div>
+    </div>',NULL , 7, NULL, NULL, 1, 1, 'Admin');
 
 

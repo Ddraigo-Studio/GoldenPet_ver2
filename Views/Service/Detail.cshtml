@@ -30,28 +30,7 @@
 
         <!-- Row 3 -->
         <div class="col-12 mb-5">
-            <h2 class="des-text mb-4">Hình ảnh Pet yêu làm đẹp tại GoldenPet</h2>
-            <div class="row">
-                <!-- Sử dụng col-md-2 để chia đều 6 hình trên mỗi hàng -->
-                <div class="col-md-2 mb-3">
-                    <img class="img-fluid" src="img/price-1.jpg" alt="Grooming 1">
-                </div>
-                <div class="col-md-2 mb-3">
-                    <img class="img-fluid" src="img/price-1.jpg" alt="Grooming 2">
-                </div>
-                <div class="col-md-2 mb-3">
-                    <img class="img-fluid" src="img/price-1.jpg" alt="Grooming 3">
-                </div>
-                <div class="col-md-2 mb-3">
-                    <img class="img-fluid" src="img/price-1.jpg" alt="Grooming 4">
-                </div>
-                <div class="col-md-2 mb-3">
-                    <img class="img-fluid" src="img/price-1.jpg" alt="Grooming 5">
-                </div>
-                <div class="col-md-2 mb-3">
-                    <img class="img-fluid" src="img/price-1.jpg" alt="Grooming 6">
-                </div>
-            </div>
+            @{ Html.RenderAction("getImgService", "Service", new { id = Model.id});}
         </div>
     </div>
 </div>
