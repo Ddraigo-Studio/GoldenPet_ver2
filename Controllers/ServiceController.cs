@@ -17,15 +17,26 @@ namespace GoldenPet.Controllers
             return View();
         }
 
-        public ActionResult Detail(string meta)
+
+        public ActionResult Detail(long id)
         {
-            var service = _db.tb_Service.FirstOrDefault(t => t.meta == meta);
-            if (service == null)
-            {
-                return HttpNotFound(); // Return 404 error if no service is found
-            }
-            return View(service);
+            var v = from t in _db.tb_Service
+                    where t.id == id
+                    select t;
+            return View(v.FirstOrDefault());
         }
+
+
+        public ActionResult getServiceCategory()
+        {
+            ViewBag.meta = "cac-dich-vu";
+            var v = from t in _db.tb_Service
+                    where t.hide == true
+                    orderby t.order ascending
+                    select t;
+            return PartialView(v.ToList());
+        }
+
 
     }
 }
