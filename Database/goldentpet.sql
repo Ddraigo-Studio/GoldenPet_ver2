@@ -87,8 +87,8 @@ GO
 INSERT INTO dbo.tb_Img (link, type, title, description, meta, hide, [order], createdBy, modifidedDate, modifidedBy)
 VALUES
 ('about-1.jpg', 'about', Null, Null, null, 1, 1, null, NULL, NULL),
-('team-1.jpg', 'team', 'Huy Dương', 'CEO', null, 1, 1, 'Huy', NULL, NULL)
-('carousel-1.jpg', 'carousel', 'HHA', 'Huy dep trai vai o', null, 1, 1, 'User1', NULL, NULL),
+('team-1.jpg', 'team', 'Huy Dương', 'CEO', null, 1, 1, 'Huy', NULL, NULL),
+('carousel-1.jpg', 'carousel', 'HHA', 'Huy dep trai vai o', null, 1, 1, 'User1', NULL, NULL);
 GO
 
 select * from dbo.tb_Img
@@ -126,42 +126,17 @@ CREATE TABLE dbo.tb_Product(
 	FOREIGN KEY (categoryID) REFERENCES tb_ProductCategory(id),
 );
 GO
-INSERT INTO dbo.tb_Service (name, description, description_1, description_2, description_3, price, duration, img, img2, img3, img4, link, meta, hide, [order], createdBy, modifidedDate, modifidedBy)
-Values
-
-    ('Pet Service',N'<div class="col-lg-6 mb-5">
-    <h2 class=" des-text mb-3">PET SPA VÀ GROMMING</h2>
-    <p>Bộ lông và da không chỉ giúp cho thú cưng có ngoại hình ưa nhìn mà còn đóng vai trò quan trọng đối với sức khỏe của thú cưng.</p>
-    <p>Việc vệ sinh bộ lông thường xuyên và cắt tỉa bớt sẽ giúp cho thú cưng giảm nguy cơ mắc các bệnh về da, vận động một cách thoải mái và dạo phố trông thật đáng yêu và sành điệu.</p>
-    <p>Dịch vụ Spa &amp; Grooming của GoldenPet sẽ thay bạn chăm sóc và bảo vệ những người bạn nhỏ.</p>
-    <p>Với các bước chăm sóc chu đáo, tận tình, tạo cho các bé thú cưng cảm giác thư thái.</p>
-    <p>Để đảm bảo chất lượng trải nghiệm dịch vụ tốt nhất, Quý khách hàng có thể đặt lịch hẹn với GoldenPet trước.</p>
-</div>',  N'<div class="col-lg-6 mb-5">
-    <h2 class=" des-text mb-4">QUY TRÌNH LÀM ĐẸP THÚ CƯNG TẠI GoldenPet</h2>
-    <p>Với mong muốn đem lại sự tận hưởng và hạnh phúc cho các bé cưng trong quá trình làm đẹp và một chất lượng xứng đáng với sự tin tưởng của các chủ Pet. Quy trình cho các bé sẽ diễn ra theo từng bước và có những quy tắc riêng. Điều này sẽ giúp Vpet’s dễ dàng hơn trong việc và đảm bảo sự an toàn cho những chú chó, mèo khác đang được chăm sóc tại đây. Quy trình làm đẹp cho Pet yêu sẽ diễn ra theo thứ tự:</p>
-    <ul>
-        <li>Thú cưng sẽ được kiểm tra tình trạng da lông và chọn loại dầu tắm phù hợp</li>
-        <li>Vệ sinh và nhổ lông tai</li>
-        <li>Cạo lông vùng bụng, bàn chân và hậu môn</li>
-        <li>Cắt dũa móng</li>
-        <li>Vắt tuyến hôi</li>
-        <li>Tắm spa kết hợp massage giúp bé thư giãn</li>
-        <li>Cắt tỉa/ cạo tạo kiểu theo yêu cầu</li>
-        <li>Sấy khô, chải lông</li>
-        <li>Thoa dưỡng lông và xịt nước hoa</li>
-        <li>Sau khi hoàn thành, các bé sẽ được bác sĩ kiểm tra lại tình trang da lông lần nữa và hướng dẫn cách chăm sóc bé tại nhà</li>
-    </ul>
-</div>','Hair cutting',N'A', 49.99, 90, 'img1.jpg', 'img2.jpg', 'img3.jpg', 'img4.jpg', 'https://example.com/pet-grooming', 'Meta information', 0, 1, 'Admin', NULL, NULL)
+--drop table tb_Product
 
 select * from dbo.tb_Service
---drop table tb_Product
+
 CREATE TABLE dbo.tb_Service (
     id INT IDENTITY(1,1) NOT NULL PRIMARY KEY, 
     name NVARCHAR(150) NULL,
+	title NTEXT NULL,
     description NTEXT NULL,
 	description_1 NTEXT NULL,
     description_2 NTEXT NULL,
-    description_3 NTEXT NULL,
     price DECIMAL(18, 2) NULL,
     duration INT, -- In minutes
     img NVARCHAR(100) NULL, 
@@ -179,7 +154,7 @@ CREATE TABLE dbo.tb_Service (
 	modifidedBy NVARCHAR(150) NULL,
 );
 GO
-drop table dbo.tb_Service
+--drop table dbo.tb_Service
 
 CREATE TABLE dbo.tb_Contact (
     id INT IDENTITY(1,1) NOT NULL PRIMARY KEY, 
@@ -229,11 +204,11 @@ GO
 
 
 INSERT INTO dbo.tb_Package (name,img, price, description, duration, createdAt)
-VALUES    ('Basic','price-1.jpg', 49.00, 'Basic pet care services including feeding and boarding.', 'Per Month', GETDATE()),
-    ('Standard','price-2.jpg', 99.00, 'Standard pet care services including feeding, boarding, and spa & grooming.', 'Per Month', GETDATE()),
-    ('Premium','price-3.jpg', 149.00, 'Premium pet care services including feeding, boarding, spa & grooming, and veterinary medicine.', 'Per Month', GETDATE()),
+VALUES    (N'Gói cơ bản','price-1.jpg', 49.00, N'Gói cơ bản bảo gồm cho bé ăn và trông nội trú', N'/Tháng', GETDATE()),
+    (N'Gói tiêu chuẩn','price-2.jpg', 99.00, N'Gói tiêu chuẩn bao gồm cho ăn, trông nội trú, spa & grooming.', N'/Tháng', GETDATE()),
+    (N'Gói cao cấp','price-3.jpg', 149.00, N'Gói cao cấp bao gồm cho ăn, trông nội trú, spa & grooming và huẩn luyện', N'/Tháng', GETDATE()),
 	(N'Đây là phần mô tả','about-1.jpg', null, null, null, null);
-
+GO
 
 -- Insert data for 'Basic' package
 INSERT INTO dbo.tb_PackageFeature (packageId, featureName, isIncluded, createdAt)
@@ -488,18 +463,17 @@ GO
 
 INSERT INTO dbo.tb_Contact(phonenumber,location,email,createdDate)
 values
-('0961305436','Quan 7, Tp.HCM','Huyduong110082004@gmail.com',GETDATE())
+('0961305436', N'Quận 7, Tp.HCM','Huyduong110082004@gmail.com',GETDATE())
 GO
 
 INSERT INTO dbo.tb_Logo (name, img, meta, hide, [order], datebegin) VALUES
 ('GoldentPet', 'LogoPet.png', NULL, 1, 1, GETDATE());
 GO
 
-INSERT INTO dbo.tb_Service (name, description, description_1, description_2, description_3, price, duration, img, img2, img3, img4, link, meta, hide, [order], createdBy, modifidedDate, modifidedBy)
+INSERT INTO dbo.tb_Service (name,title, description, description_1, description_2, price, duration, img, img2, img3, img4, link, meta, hide, [order], createdBy, modifidedDate, modifidedBy)
 VALUES
-    
-
-    ('Pet Service',N'<div class="col-lg-6 mb-5">
+    (N'Grooming', N'Chúng tôi tự hào mang đến dịch vụ grooming toàn diện cho thú cưng, giúp chúng không chỉ trông xinh đẹp mà còn khỏe mạnh và thoải mái. Đội ngũ chuyên gia yêu thú cưng của chúng tôi sẽ chăm sóc từng chi tiết, đảm bảo rằng mỗi lần ghé thăm là một trải nghiệm thú vị cho bạn và thú cưng.',
+	N'<div class="col-lg-6 mb-5">
     <h2 class=" des-text mb-3">PET SPA VÀ GROMMING</h2>
     <p>Bộ lông và da không chỉ giúp cho thú cưng có ngoại hình ưa nhìn mà còn đóng vai trò quan trọng đối với sức khỏe của thú cưng.</p>
     <p>Việc vệ sinh bộ lông thường xuyên và cắt tỉa bớt sẽ giúp cho thú cưng giảm nguy cơ mắc các bệnh về da, vận động một cách thoải mái và dạo phố trông thật đáng yêu và sành điệu.</p>
@@ -521,6 +495,29 @@ VALUES
         <li>Thoa dưỡng lông và xịt nước hoa</li>
         <li>Sau khi hoàn thành, các bé sẽ được bác sĩ kiểm tra lại tình trang da lông lần nữa và hướng dẫn cách chăm sóc bé tại nhà</li>
     </ul>
-</div>', Null 'Hair cutting', 49.99, 90, 'img1.jpg', 'img2.jpg', 'img3.jpg', 'img4.jpg', 'https://example.com/pet-grooming', 'Meta information', 0, 1, 'Admin', NULL, NULL),
-    --('Spa Service', 'Relaxing spa treatments for pets', 'Aromatherapy', 'Gentle massage', 'Special bath products', 69.99, 120, 'spa1.jpg', 'spa2.jpg', 'spa3.jpg', 'spa4.jpg', 'https://example.com/spa-service', 'Meta spa', 0, 2, 'Admin', NULL, NULL),
-    --('Nail Clipping', 'Basic nail clipping service', NULL, NULL, NULL, 19.99, 30, 'nail1.jpg', NULL, NULL, NULL, 'https://example.com/nail-clipping', 'Meta nail', 1, 3, 'Admin', NULL, NULL);
+</div>', Null, 49.99, 90, 'grooming1.png', 'grooming2.png', N'<h3 class="flaticon-house display-3 font-weight-normal text-secondary mb-3"></h3>', NULL, NULL, 'dich-vu-grooming', 1, 1, 'Admin', NULL, NULL); 
+GO
+
+
+INSERT INTO dbo.tb_Service (name, title, description, description_1, description_2, price, duration, img, img2, img3, img4, link, meta, hide, [order], createdBy, modifidedDate, modifidedBy)
+VALUES
+    (N'Tư vấn dinh dưỡng và sức khỏe', 
+     N'Chúng tôi hiểu rằng chế độ dinh dưỡng là yếu tố quan trọng hàng đầu trong việc duy trì sức khỏe và sự phát triển của thú cưng. Đội ngũ chuyên gia dinh dưỡng của chúng tôi sẵn sàng cung cấp những lời khuyên hữu ích để giúp bạn chăm sóc tốt nhất cho người bạn bốn chân của mình.', 
+     N'<div class="col-lg-6 mb-5">
+        <h2 class=" des-text mb-3">TƯ VẤN DINH DƯỠNG VÀ SỨC KHỎE CHO THÚ CƯNG</h2>
+        <p>Chế độ dinh dưỡng ảnh hưởng lớn đến sức khỏe tổng thể và sự phát triển của thú cưng. Việc cung cấp dinh dưỡng hợp lý không chỉ giúp thú cưng có vẻ ngoài tươi tắn mà còn tăng cường hệ miễn dịch và sức bền.</p>
+        <p>Với dịch vụ tư vấn dinh dưỡng của GoldenPet, bạn sẽ nhận được những lời khuyên chuyên sâu về chế độ ăn uống phù hợp với từng giống loài, độ tuổi và tình trạng sức khỏe của thú cưng.</p>
+        <p>Chúng tôi giúp bạn lựa chọn thức ăn, bổ sung dinh dưỡng hợp lý để thú cưng có thể phát triển khỏe mạnh, phòng tránh các bệnh lý và duy trì năng lượng trong suốt cuộc sống hàng ngày.</p>
+        <p>Để đảm bảo thú cưng của bạn có chế độ dinh dưỡng tối ưu, bạn có thể đặt lịch hẹn tư vấn với đội ngũ chuyên gia của GoldenPet ngay hôm nay.</p>
+     </div>',  
+     N'<div class="col-lg-6 mb-5">
+        <h2 class=" des-text mb-4">CHUYÊN GIA TƯ VẤN DINH DƯỠNG CHO THÚ CƯNG</h2>
+        <p>Đội ngũ chuyên gia của GoldenPet luôn tận tâm giúp bạn hiểu rõ hơn về nhu cầu dinh dưỡng của thú cưng. Chúng tôi cung cấp các dịch vụ tư vấn từ cơ bản đến chuyên sâu, nhằm mang lại chế độ ăn uống tốt nhất cho từng loại thú cưng.</p>
+        <p>Bằng cách đánh giá toàn diện tình trạng sức khỏe của thú cưng, chúng tôi sẽ đề xuất những thực phẩm phù hợp nhất, giúp cải thiện sức khỏe và nâng cao chất lượng sống cho thú cưng của bạn.</p>
+        <p>Đến với dịch vụ tư vấn của GoldenPet, bạn có thể hoàn toàn yên tâm rằng thú cưng của mình sẽ nhận được sự chăm sóc tốt nhất và chế độ dinh dưỡng hợp lý nhất.</p>
+     </div>',  
+     NULL, 39.99, 60, 'nutrition1.png', 'nutrition2.png', N'<h3 class="flaticon-food display-3 font-weight-normal text-secondary mb-3"></h3>', NULL, NULL, 'tu-van-dinh-duong-suc-khoe', 1, 2, 'Admin', NULL, NULL);
+GO
+--delete from tb_Service
+
+

@@ -4,10 +4,13 @@
 {
     <div class="col-md-6 col-lg-4 mb-4 d-flex">
         <div class=" d-flex flex-column text-center bg-white mb-2 p-3 p-sm-5 w-100">
-            <h3 class="flaticon-house display-3 font-weight-normal text-secondary mb-3"></h3>
+            @Html.Raw(i.img3)
             <h3 class="mb-3">@i.name</h3>
             <p>@i.title</p>
             <a class="text-uppercase font-weight-bold" href="@Url.Action("Detail", "Service", new { id = i.id })" style="margin-top: auto;">Tìm hiểu thêm</a>
         </div>
     </div>
 }
+
+
+

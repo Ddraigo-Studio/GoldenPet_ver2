@@ -17,6 +17,8 @@ namespace GoldenPet.Models
         public int id { get; set; }
         public string name { get; set; }
         public string description { get; set; }
+        public string description_1 { get; set; }
+        public string description_2 { get; set; }
         public Nullable<decimal> price { get; set; }
         public Nullable<int> duration { get; set; }
         public string img { get; set; }
@@ -31,8 +33,6 @@ namespace GoldenPet.Models
         public string createdBy { get; set; }
         public Nullable<System.DateTime> modifidedDate { get; set; }
         public string modifidedBy { get; set; }
-        public string description_1 { get; set; }
-        public string description_2 { get; set; }
-        public string description_3 { get; set; }
+        public string title { get; set; }
     }
 }

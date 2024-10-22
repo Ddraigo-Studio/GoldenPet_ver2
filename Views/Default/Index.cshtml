@@ -128,93 +128,102 @@
 </div>
 <!-- About End -->
 <!-- Services Start -->
-        @{ Html.RenderAction("getService");}
-
-
-<!-- Services End -->
-<!-- Product Start -->
-<div class="container mt-5 pt-5 pb-3">
-    <div class="d-flex flex-column text-center">
-        <h4 class="text-secondary mb-3">Các sản phẩm mới</h4>
-    </div>
-    @{ Html.RenderAction("getCategory");}
-</div>
-<!-- Product End -->
-<!-- Features Start -->
-<div class="container">
-    <div class="row align-items-center">
-        <div class="col-lg-5">
-            <img class="img-fluid w-100" src="~/Content/img/feature.jpg" alt="">
+<div class="container-fluid bg-light pt-5">
+    <div class="container py-5">
+        <div class="d-flex flex-column text-center mb-5">
+            <h4 class="text-secondary mb-3"> Các dịch vụ</h4>
+            <h1 class="display-4 m-0"><span class="text-primary">Cao cấp</span> cho thú cưng</h1>
         </div>
-        <div class="col-lg-7 py-5 py-lg-0 px-3 px-lg-5">
-            <h4 class="text-secondary mb-3">Tại sao nên chọn chúng tôi?</h4>
-            <h1 class="display-4 mb-4"><span class="text-primary">Sự chăm sóc tốt nhất</span> dành cho pet yêu</h1>
-            <p class="mb-4">Tự tin vào những kiến thức - kinh nghiệm - trải nghiệm, GoldenPet muốn mang lại một dịch vụ chăm sóc tốt nhất dành cho các bé iu. Đảm bảo Boss vui, sen cũng vui!"</p>
-            <div class="row py-2">
-                <div class="col-6">
-                    <div class="d-flex align-items-center mb-4">
-                        <h1 class="flaticon-cat font-weight-normal text-secondary m-0 mr-3"></h1>
-                        <h5 class="text-truncate m-0">Tận tâm</h5>
+        <div class="row pb-3">
+            @{Html.RenderAction("getServiceCategory", "Service");}
+            
+        </div>
+    </div>
+
+
+    <!-- Services End -->
+    <!-- Product Start -->
+    <div class="container mt-5 pt-5 pb-3">
+        <div class="d-flex flex-column text-center">
+            <h4 class="text-secondary mb-3">Các sản phẩm mới</h4>
+        </div>
+        @{ Html.RenderAction("getCategory");}
+    </div>
+    <!-- Product End -->
+    <!-- Features Start -->
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-5">
+                <img class="img-fluid w-100" src="~/Content/img/feature.jpg" alt="">
+            </div>
+            <div class="col-lg-7 py-5 py-lg-0 px-3 px-lg-5">
+                <h4 class="text-secondary mb-3">Tại sao nên chọn chúng tôi?</h4>
+                <h1 class="display-4 mb-4"><span class="text-primary">Sự chăm sóc tốt nhất</span> dành cho pet yêu</h1>
+                <p class="mb-4">Tự tin vào những kiến thức - kinh nghiệm - trải nghiệm, GoldenPet muốn mang lại một dịch vụ chăm sóc tốt nhất dành cho các bé iu. Đảm bảo Boss vui, sen cũng vui!"</p>
+                <div class="row py-2">
+                    <div class="col-6">
+                        <div class="d-flex align-items-center mb-4">
+                            <h1 class="flaticon-cat font-weight-normal text-secondary m-0 mr-3"></h1>
+                            <h5 class="text-truncate m-0">Tận tâm</h5>
+                        </div>
                     </div>
-                </div>
-                <div class="col-6">
-                    <div class="d-flex align-items-center mb-4">
-                        <h1 class="flaticon-doctor font-weight-normal text-secondary m-0 mr-3"></h1>
-                        <h5 class="text-truncate m-0">Chuyên nghiệp</h5>
+                    <div class="col-6">
+                        <div class="d-flex align-items-center mb-4">
+                            <h1 class="flaticon-doctor font-weight-normal text-secondary m-0 mr-3"></h1>
+                            <h5 class="text-truncate m-0">Chuyên nghiệp</h5>
+                        </div>
                     </div>
-                </div>
-                <div class="col-6">
-                    <div class="d-flex align-items-center">
-                        <h1 class="flaticon-care font-weight-normal text-secondary m-0 mr-3"></h1>
-                        <h5 class="text-truncate m-0">Kiến thức</h5>
+                    <div class="col-6">
+                        <div class="d-flex align-items-center">
+                            <h1 class="flaticon-care font-weight-normal text-secondary m-0 mr-3"></h1>
+                            <h5 class="text-truncate m-0">Kiến thức</h5>
+                        </div>
                     </div>
-                </div>
-                <div class="col-6">
-                    <div class="d-flex align-items-center">
-                        <h1 class="flaticon-dog font-weight-normal text-secondary m-0 mr-3"></h1>
-                        <h5 class="text-truncate m-0">Trải nghiệm</h5>
+                    <div class="col-6">
+                        <div class="d-flex align-items-center">
+                            <h1 class="flaticon-dog font-weight-normal text-secondary m-0 mr-3"></h1>
+                            <h5 class="text-truncate m-0">Trải nghiệm</h5>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<!-- Features End -->
-<!-- Pricing Plan Start -->
-<div class="container-fluid bg-light pt-5 pb-4">
-    <div class="container py-5">
+    <!-- Features End -->
+    <!-- Pricing Plan Start -->
+    <div class="container-fluid bg-light pt-5 pb-4">
+        <div class="container py-5">
+            <div class="d-flex flex-column text-center mb-5">
+                <h4 class="text-secondary mb-3">Các gói dịch vụ</h4>
+                <h1 class="display-4 m-0">Sự lựa chọn <span class="text-primary">phù hợp nhất</span></h1>
+            </div>
+            <div class="row">
+                @{Html.RenderAction("getPricingPlan", "Default"); }
+
+            </div>
+        </div>
+    </div>
+    <!-- Pricing Plan End -->
+    <!-- Team Start -->
+    <div class="container mt-5 pt-5 pb-3">
         <div class="d-flex flex-column text-center mb-5">
-            <h4 class="text-secondary mb-3">Các gói dịch vụ</h4>
-            <h1 class="display-4 m-0">Sự lựa chọn <span class="text-primary">phù hợp nhất</span></h1>
+            <h4 class="text-secondary mb-3">Đội ngũ tại GoldenPet</h4>
+            <h1 class="display-4 m-0">Gặp gỡ <span class="text-primary">các chuyên gia</span></h1>
         </div>
         <div class="row">
-            @{Html.RenderAction("getPricingPlan", "Default"); }
+            @{Html.RenderAction("getImg", "Default", new { type = "team" });}
+        </div>
+    </div>
+    <!-- Team End -->
+    <!-- Blog Start -->
+    <div class="container pt-5">
+        <div class="d-flex flex-column text-center mb-5">
+            <h4 class="text-secondary mb-3">Pet Blog</h4>
+            <h1 class="display-4 m-0"><span class="text-primary">Cập nhật</span> các tin mới</h1>
+        </div>
+        <div class="row pb-3">
+            @{ Html.RenderAction("getNews", "Default");}
 
         </div>
     </div>
-</div>
-<!-- Pricing Plan End -->
-<!-- Team Start -->
-<div class="container mt-5 pt-5 pb-3">
-    <div class="d-flex flex-column text-center mb-5">
-        <h4 class="text-secondary mb-3">Đội ngũ tại GoldenPet</h4>
-        <h1 class="display-4 m-0">Gặp gỡ <span class="text-primary">các chuyên gia</span></h1>
-    </div>
-    <div class="row">
-        @{Html.RenderAction("getImg", "Default", new { type = "team" });}
-    </div>
-</div>
-<!-- Team End -->
-
-<!-- Blog Start -->
-<div class="container pt-5">
-    <div class="d-flex flex-column text-center mb-5">
-        <h4 class="text-secondary mb-3">Pet Blog</h4>
-        <h1 class="display-4 m-0"><span class="text-primary">Cập nhật</span> các tin mới</h1>
-    </div>
-    <div class="row pb-3">
-        @{ Html.RenderAction("getNews", "Default");}
-
-    </div>
-</div>
-<!-- Blog End -->
+    <!-- Blog End -->
