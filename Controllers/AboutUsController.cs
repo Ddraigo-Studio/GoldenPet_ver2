@@ -15,23 +15,27 @@ namespace GoldenPet.Controllers
         // GET: AboutUs
         public ActionResult Index()
         {
+            return View();
+        }
+        public ActionResult getAboutUs()
+        {
             var packages = _db.tb_Package
-                             .Select(p => new PackagePricing
-                             {
-                                 PackageName = p.name,
-                                 PackagePrice = p.price,
-                                 Imglink = p.img,
-                                 Features = _db.tb_PackageFeature
-                                               .Where(f => f.packageId == p.id)
-                                               .Select(f => new FeatureModel
-                                               {
-                                                   FeatureName = f.featureName,
-                                                   IsIncluded = f.isIncluded ?? false
+                  .Select(p => new PackagePricing
+                  {
+                      PackageName = p.name,
+                      PackagePrice = p.price,
+                      Imglink = p.img,
+                      Features = _db.tb_PackageFeature
+                                    .Where(f => f.packageId == p.id)
+                                    .Select(f => new FeatureModel
+                                    {
+                                        FeatureName = f.featureName,
+                                        IsIncluded = f.isIncluded ?? false
 
-                                               }).ToList()
-                             }).ToList();
+                                    }).ToList()
+                  }).ToList();
 
-            return View(packages);
+            return PartialView(packages);
         }
     }
 }

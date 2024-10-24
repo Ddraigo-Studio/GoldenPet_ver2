@@ -17,6 +17,7 @@ namespace GoldenPet.Controllers
             return View();
         }
 
+
         public ActionResult Detail(long id)
         {
             var v = from t in _db.tb_Service
@@ -35,6 +36,7 @@ namespace GoldenPet.Controllers
                     select t;
             return PartialView(v.ToList());
         }
+
 
         public ActionResult getImgService(long id)
         {
