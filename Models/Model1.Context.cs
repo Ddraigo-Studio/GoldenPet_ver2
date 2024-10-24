@@ -38,5 +38,6 @@ namespace GoldenPet.Models
         public virtual DbSet<tb_MenuCategory> tb_MenuCategory { get; set; }
         public virtual DbSet<tb_Logo> tb_Logo { get; set; }
         public virtual DbSet<tb_Service> tb_Service { get; set; }
+        public virtual DbSet<tb_ImgService> tb_ImgService { get; set; }
     }
 }

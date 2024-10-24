@@ -113,9 +113,9 @@ namespace GoldenPet.Controllers
 
         public ActionResult getNews()
         {
-            var v = from t in _db.tb_News
-                    select t;
-
+            var v = (from t in _db.tb_News
+                     orderby t.NewsID descending
+                     select t).Take(3);
             return PartialView(v.ToList());
         }
 

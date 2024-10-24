@@ -160,6 +160,9 @@
     <Compile Include="Models\tb_Img.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\tb_ImgService.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\tb_Logo.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -3720,6 +3723,7 @@
     <Content Include="Views\Default\getNews.cshtml" />
     <Content Include="Views\Service\Detail.cshtml" />
     <Content Include="Views\Service\getServiceCategory.cshtml" />
+    <Content Include="Views\Service\getImgService.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

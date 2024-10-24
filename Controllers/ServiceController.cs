@@ -29,7 +29,7 @@ namespace GoldenPet.Controllers
 
         public ActionResult getServiceCategory()
         {
-            ViewBag.meta = "cac-dich-vu";
+            ViewBag.meta = "dich-vu";
             var v = from t in _db.tb_Service
                     where t.hide == true
                     orderby t.order ascending
@@ -37,6 +37,14 @@ namespace GoldenPet.Controllers
             return PartialView(v.ToList());
         }
 
+
+        public ActionResult getImgService(long id)
+        {
+            var v = from t in _db.tb_ImgService
+                    where t.hide == true && t.id_Service == id
+                    select t;
+            return PartialView(v.FirstOrDefault());
+        }
 
     }
 }
