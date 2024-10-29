@@ -1,0 +1,122 @@
+﻿@model IEnumerable<GoldenPet.Models.tb_News>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_MyLayout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+@{ Html.RenderAction("Top", "Layout");}
+
+<th>
+    @Html.DisplayNameFor(model => model.Title)
+</th>
+<th>
+    @Html.DisplayNameFor(model => model.Content)
+</th>
+<th>
+    @Html.DisplayNameFor(model => model.Slug)
+</th>
+<th>
+    @Html.DisplayNameFor(model => model.AuthorName)
+</th>
+<th>
+    @Html.DisplayNameFor(model => model.CategoryName)
+</th>
+<th>
+    @Html.DisplayNameFor(model => model.PublishedDate)
+</th>
+<th>
+    @Html.DisplayNameFor(model => model.LastModifiedDate)
+</th>
+<th>
+    @Html.DisplayNameFor(model => model.Status)
+</th>
+<th>
+    @Html.DisplayNameFor(model => model.Summary)
+</th>
+<th>
+    @Html.DisplayNameFor(model => model.ThumbnailImageURL)
+</th>
+<th>
+    @Html.DisplayNameFor(model => model.MetaTitle)
+</th>
+<th></th>
+@{ Html.RenderAction("MIddle", "Layout");}
+@{var Number = 1; }
+
+@foreach (var item in Model)
+{
+    <tr>
+        <td>
+            @Html.Raw(Number++)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Content)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Slug)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AuthorName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CategoryName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PublishedDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastModifiedDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Status)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Summary)
+        </td>
+        <td>
+            <img src="~/Content/img/@item.ThumbnailImageURL" width="50px" />
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MetaTitle)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.NewsID }) |
+            @Html.ActionLink("Details", "Details", new { id = item.NewsID }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.NewsID })
+        </td>
+    </tr>
+}
+
+        </table>
+        </div>
+<script>
+    $(function () {
+        console.log("DataTable script is running.");
+        $('#dataTables-example').DataTable({
+            responsive: true,
+            columns: [
+                { data: 'title' },
+                { data: 'content' },
+                { data: 'slug' },
+                { data: 'AuthorName' },
+                { data: 'CategoryName' },
+                { data: 'LastModifiedDate' },
+                { data: 'Status' },
+                { data: 'Summary' },
+                { data: 'ThumbnailImageURL' },
+                { data: 'MetaTitle' },
+                { data: 'actions' } // for the action links
+
+            ]
+        });
+    });
+</script>
