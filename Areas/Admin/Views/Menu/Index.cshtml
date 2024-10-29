@@ -10,31 +10,36 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.link)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.meta)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.hide)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.order)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.datebegin)
-        </th>
-        <th></th>
-    </tr>
+@{ Html.RenderAction("Top", "Layout");}
 
-@foreach (var item in Model) {
+<th>
+    @Html.DisplayNameFor(model => model.name)
+</th>
+<th>
+    @Html.DisplayNameFor(model => model.link)
+</th>
+<th>
+    @Html.DisplayNameFor(model => model.meta)
+</th>
+<th>
+    @Html.DisplayNameFor(model => model.hide)
+</th>
+<th>
+    @Html.DisplayNameFor(model => model.order)
+</th>
+<th>
+    @Html.DisplayNameFor(model => model.datebegin)
+</th>
+<th></th>
+@{ Html.RenderAction("Middle", "Layout");}
+@{var Number = 1; }
+@foreach (var item in Model)
+{
     <tr>
+        <td>
+            @Html.Raw(Number++)
+        </td>
+
         <td>
             @Html.DisplayFor(modelItem => item.name)
         </td>
@@ -54,11 +59,31 @@
             @Html.DisplayFor(modelItem => item.datebegin)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.id })
+            @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
+            @Html.ActionLink("Details", "Details", new { id = item.id }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.id })
         </td>
     </tr>
 }
 
-</table>
+        </table>
+    </div>
+</div>
+<script>
+    $(function () {
+        console.log(Number.toString());
+        $('#dataTables-example').DataTable({
+            responsive: true,
+            columns: [
+                { data: 'STT' },
+                { data: 'name' },
+                { data: 'link' },
+                { data: 'meta' },
+                { data: 'hide' },
+                { data: 'order' },
+                { data: 'datebegin' },
+                { data: 'actions' } // for the action links
+            ]
+        });
+    });
+</script>

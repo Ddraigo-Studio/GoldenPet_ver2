@@ -10,107 +10,107 @@ using GoldenPet.Models;
 
 namespace GoldenPet.Areas.Admin.Controllers
 {
-    public class MenuController : Controller
+    public class NewsController : Controller
     {
         private GoldenPetEntities db = new GoldenPetEntities();
 
-        // GET: Admin/Menu
+        // GET: Admin/News
         public ActionResult Index()
         {
-            return View(db.tb_Menu.ToList());
+            return View(db.tb_News.ToList());
         }
 
-        // GET: Admin/Menu/Details/5
+        // GET: Admin/News/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            tb_Menu tb_Menu = db.tb_Menu.Find(id);
-            if (tb_Menu == null)
+            tb_News tb_News = db.tb_News.Find(id);
+            if (tb_News == null)
             {
                 return HttpNotFound();
             }
-            return View(tb_Menu);
+            return View(tb_News);
         }
 
-        // GET: Admin/Menu/Create
+        // GET: Admin/News/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Admin/Menu/Create
+        // POST: Admin/News/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "id,name,link,meta,hide,order,datebegin")] tb_Menu tb_Menu)
+        public ActionResult Create([Bind(Include = "NewsID,Title,Content,Slug,AuthorName,CategoryName,PublishedDate,LastModifiedDate,Status,Summary,ThumbnailImageURL,MetaTitle")] tb_News tb_News)
         {
             if (ModelState.IsValid)
             {
-                db.tb_Menu.Add(tb_Menu);
+                db.tb_News.Add(tb_News);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(tb_Menu);
+            return View(tb_News);
         }
 
-        // GET: Admin/Menu/Edit/5
+        // GET: Admin/News/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            tb_Menu tb_Menu = db.tb_Menu.Find(id);
-            if (tb_Menu == null)
+            tb_News tb_News = db.tb_News.Find(id);
+            if (tb_News == null)
             {
                 return HttpNotFound();
             }
-            return View(tb_Menu);
+            return View(tb_News);
         }
 
-        // POST: Admin/Menu/Edit/5
+        // POST: Admin/News/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "id,name,link,meta,hide,order,datebegin")] tb_Menu tb_Menu)
+        public ActionResult Edit([Bind(Include = "NewsID,Title,Content,Slug,AuthorName,CategoryName,PublishedDate,LastModifiedDate,Status,Summary,ThumbnailImageURL,MetaTitle")] tb_News tb_News)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(tb_Menu).State = System.Data.Entity.EntityState.Modified;
+                db.Entry(tb_News).State = System.Data.Entity.EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(tb_Menu);
+            return View(tb_News);
         }
 
-        // GET: Admin/Menu/Delete/5
+        // GET: Admin/News/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            tb_Menu tb_Menu = db.tb_Menu.Find(id);
-            if (tb_Menu == null)
+            tb_News tb_News = db.tb_News.Find(id);
+            if (tb_News == null)
             {
                 return HttpNotFound();
             }
-            return View(tb_Menu);
+            return View(tb_News);
         }
 
-        // POST: Admin/Menu/Delete/5
+        // POST: Admin/News/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            tb_Menu tb_Menu = db.tb_Menu.Find(id);
-            db.tb_Menu.Remove(tb_Menu);
+            tb_News tb_News = db.tb_News.Find(id);
+            db.tb_News.Remove(tb_News);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

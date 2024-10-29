@@ -121,7 +121,9 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\DefaultController.cs" />
+    <Compile Include="Areas\Admin\Controllers\LayoutController.cs" />
     <Compile Include="Areas\Admin\Controllers\MenuController.cs" />
+    <Compile Include="Areas\Admin\Controllers\NewsController.cs" />
     <Compile Include="Controllers\AboutUsController.cs" />
     <Compile Include="Controllers\CardController.cs" />
     <Compile Include="Controllers\DefaultController.cs" />
@@ -3718,6 +3720,15 @@
     <Content Include="Areas\Admin\Views\Menu\Details.cshtml" />
     <Content Include="Areas\Admin\Views\Menu\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Menu\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\News\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\News\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\News\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\News\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\News\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Layout\Top.cshtml" />
+    <Content Include="Areas\Admin\Views\Layout\Middle.cshtml" />
+    <Content Include="Areas\Admin\Views\Layout\Bottom.cshtml" />
+    <Content Include="Areas\Admin\Views\Layout\Middle_2.cshtml" />
     <None Include="packages.config" />
     <Content Include="Views\Menu\GetLogo.cshtml" />
     <Content Include="Views\Default\getNews.cshtml" />
