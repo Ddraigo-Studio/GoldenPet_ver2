@@ -4,25 +4,25 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="ec7fe250eec0429c8d366f120e5ae720" Name="Diagram1" ZoomLevel="72">
-        <EntityTypeShape EntityType="GoldenPetModel.tb_Advertisement" Width="1.5" PointX="5.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="GoldenPetModel.tb_Contact" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="GoldenPetModel.tb_Img" Width="1.5" PointX="2.75" PointY="6.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="GoldenPetModel.tb_Menu" Width="1.5" PointX="7.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="GoldenPetModel.tb_Product" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="GoldenPetModel.tb_ProductCategory" Width="1.5" PointX="0.75" PointY="1.75" IsExpanded="true" />
+      <Diagram DiagramId="ec7fe250eec0429c8d366f120e5ae720" Name="Diagram1" ZoomLevel="69">
+        <EntityTypeShape EntityType="GoldenPetModel.tb_Advertisement" Width="1.5" PointX="6.75" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="GoldenPetModel.tb_Contact" Width="1.5" PointX="0.875" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="GoldenPetModel.tb_Img" Width="1.5" PointX="9.125" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="GoldenPetModel.tb_Menu" Width="1.5" PointX="13.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GoldenPetModel.tb_Product" Width="1.5" PointX="3" PointY="0.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="GoldenPetModel.tb_ProductCategory" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <AssociationConnector Association="GoldenPetModel.FK__tb_Produc__categ__0A9D95DB" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="GoldenPetModel.tb_Package" Width="1.5" PointX="5.375" PointY="1" />
-        <EntityTypeShape EntityType="GoldenPetModel.tb_PackageFeature" Width="1.5" PointX="7.625" PointY="1.125" />
+        <EntityTypeShape EntityType="GoldenPetModel.tb_Package" Width="1.5" PointX="5" PointY="0.625" />
+        <EntityTypeShape EntityType="GoldenPetModel.tb_PackageFeature" Width="1.5" PointX="6.75" PointY="0.625" />
         <AssociationConnector Association="GoldenPetModel.FK__tb_Packag__packa__74AE54BC" />
-        <EntityTypeShape EntityType="GoldenPetModel.tb_News" Width="1.5" PointX="10.375" PointY="1" />
-        <EntityTypeShape EntityType="GoldenPetModel.tb_NewsImages" Width="1.5" PointX="12.625" PointY="1.5" />
+        <EntityTypeShape EntityType="GoldenPetModel.tb_News" Width="1.5" PointX="8.875" PointY="0.5" />
+        <EntityTypeShape EntityType="GoldenPetModel.tb_NewsImages" Width="1.5" PointX="10.75" PointY="0.5" />
         <AssociationConnector Association="GoldenPetModel.FK__tb_NewsIm__NewsI__19DFD96B" />
-        <EntityTypeShape EntityType="GoldenPetModel.tb_MenuCategory" Width="1.5" PointX="10" PointY="5.625" />
+        <EntityTypeShape EntityType="GoldenPetModel.tb_MenuCategory" Width="1.5" PointX="15.375" PointY="0.75" />
         <AssociationConnector Association="GoldenPetModel.FK__tb_MenuCa__menuI__756D6ECB" />
-        <EntityTypeShape EntityType="GoldenPetModel.tb_Logo" Width="1.5" PointX="10.375" PointY="9.75" />
-        <EntityTypeShape EntityType="GoldenPetModel.tb_Service" Width="1.5" PointX="5.375" PointY="9.75" />
-        <EntityTypeShape EntityType="GoldenPetModel.tb_ImgService" Width="1.5" PointX="7.625" PointY="10.625" />
+        <EntityTypeShape EntityType="GoldenPetModel.tb_Logo" Width="1.5" PointX="4.375" PointY="5.5" />
+        <EntityTypeShape EntityType="GoldenPetModel.tb_Service" Width="1.5" PointX="11.5" PointY="3.25" />
+        <EntityTypeShape EntityType="GoldenPetModel.tb_ImgService" Width="1.5" PointX="14.25" PointY="3.75" />
         <AssociationConnector Association="GoldenPetModel.FK__tb_ImgSer__id_Se__17036CC0" />
       </Diagram>
     </edmx:Diagrams>
