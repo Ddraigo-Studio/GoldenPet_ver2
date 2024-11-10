@@ -144,6 +144,8 @@ CREATE TABLE dbo.tb_Service (
 	modifidedBy NVARCHAR(150) NULL,
 );
 GO
+drop table dbo.tb_Service
+select * from dbo.tb_ImgService
 
 CREATE TABLE dbo.tb_ImgService (
     id INT IDENTITY(1,1) NOT NULL PRIMARY KEY, 
@@ -246,7 +248,8 @@ CREATE TABLE dbo.tb_News
     Status NVARCHAR(50),                        -- Draft, Published, or Archived
     Summary NVARCHAR(500),                      -- Short summary of the news
     ThumbnailImageURL NVARCHAR(500),            -- URL of the main thumbnail image
-
+	 hide BIT NULL,                       
+    [order] INT NULL
     -- Meta fields for SEO
     MetaTitle NVARCHAR(255),                    -- Custom meta title for SEO
 );
@@ -263,6 +266,56 @@ CREATE TABLE dbo.tb_NewsImages
     IsPrimary BIT,                               -- Indicates if this image is the main image
     UploadedDate DATETIME DEFAULT GETDATE(),     -- Date and time the image was uploaded
     FOREIGN KEY (NewsID) REFERENCES dbo.tb_News(NewsID)  -- Foreign key constraint to link to the News table
+);
+GO
+
+CREATE TABLE Carts (
+    CartID INT IDENTITY(1,1) PRIMARY KEY,
+    UserID INT,
+    CreatedAt Datetime DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (UserID) REFERENCES dbo.tb_Customer(id) ON DELETE CASCADE
+);
+
+-- Create the CartItems table
+CREATE TABLE CartItems (
+    CartItemID INT IDENTITY(1,1) PRIMARY KEY,
+    CartID INT,
+    ProductID INT,
+    Quantity INT NOT NULL,
+    AddedAt Datetime DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (CartID) REFERENCES Carts(CartID) ON DELETE CASCADE,
+    FOREIGN KEY (ProductID) REFERENCES dbo.tb_Product(id) ON DELETE CASCADE
+);
+
+-- Create the Orders table
+CREATE TABLE Orders (
+    OrderID INT  IDENTITY(1,1) PRIMARY KEY,
+    UserID INT,
+    OrderDate Datetime DEFAULT CURRENT_TIMESTAMP,
+    TotalAmount DECIMAL(10, 2) NOT NULL,
+    Status VARCHAR(20) DEFAULT 'Pending',
+    FOREIGN KEY (UserID) REFERENCES dbo.tb_Customer(id) ON DELETE SET NULL
+);
+
+-- Create the OrderItems table
+CREATE TABLE OrderItems (
+    OrderItemID INT  IDENTITY(1,1) PRIMARY KEY,
+    OrderID INT,
+    ProductID INT,
+    Quantity INT NOT NULL,
+    Price DECIMAL(10, 2) NOT NULL,  -- Price at the time of order
+    FOREIGN KEY (OrderID) REFERENCES Orders(OrderID) ON DELETE CASCADE,
+    FOREIGN KEY (ProductID) REFERENCES dbo.tb_Product(id) ON DELETE SET NULL
+);
+CREATE TABLE dbo.tb_ProductCategory(
+    id INT IDENTITY(1,1) NOT NULL PRIMARY KEY,        
+    name NVARCHAR(150) NULL,  
+	description NTEXT NULL,
+    link NVARCHAR(MAX) NULL,              
+    meta NVARCHAR(MAX) NULL,             
+    hide BIT NULL,                       
+    [order] INT NULL,                    
+    createdDate SMALLDATETIME DEFAULT CURRENT_TIMESTAMP,         
 );
 GO
 --drop table dbo.tb_NewsImages,dbo.tb_News
@@ -289,10 +342,11 @@ VALUES
 -------------- CUSTOMER DATA --------------
 CREATE TABLE dbo.tb_Customer (
     id INT IDENTITY(1,1) NOT NULL PRIMARY KEY, 
+	password Varchar(50),
     customerName NVARCHAR(150) NOT NULL,
 	email VARCHAR(150) UNIQUE,
     phone VARCHAR(15) UNIQUE,
-    createdDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    createdDate Datetime DEFAULT CURRENT_TIMESTAMP
 );
 GO
 
@@ -303,6 +357,7 @@ CREATE TABLE dbo.tb_Pet(
 	FOREIGN KEY (customerId) REFERENCES tb_Customer(id),
 );
 GO
+
 
 
 CREATE TABLE dbo.tb_Booking (
@@ -509,8 +564,8 @@ VALUES
      </div>',  
      NULL, 39.99, 60, 'nutrition1.png', 'nutrition2.png', N'<h3 class="flaticon-food display-3 font-weight-normal text-secondary mb-3"></h3>', NULL, NULL, 'tu-van-dinh-duong-suc-khoe', 1, 2, 'Admin', NULL, NULL);
 GO
---delete from tb_ImgService
--- DBCC CHECKIDENT ('tb_ImgService', RESEED, 0);
+delete from tb_ImgService
+ DBCC CHECKIDENT ('tb_ImgService', RESEED, 0);
 
 INSERT INTO dbo.tb_ImgService (
     title,
@@ -542,6 +597,6 @@ INSERT INTO dbo.tb_ImgService (
         <div class="col-md-2 mb-3">
             <img class="img-fluid" src="https://vpets.vn/wp-content/uploads/2024/05/Anh-pet-yeu-lam-dep-tai-vpet-spa-13.jpg" alt="Grooming 6">
         </div>
-    </div>',NULL , 7, NULL, NULL, 1, 1, 'Admin');
+    </div>',NULL , 1, NULL, NULL, 1, 1, 'Admin');
 
 

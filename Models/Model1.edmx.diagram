@@ -4,26 +4,42 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="ec7fe250eec0429c8d366f120e5ae720" Name="Diagram1" ZoomLevel="72">
-        <EntityTypeShape EntityType="GoldenPetModel.tb_Advertisement" Width="1.5" PointX="5.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="GoldenPetModel.tb_Contact" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="GoldenPetModel.tb_Img" Width="1.5" PointX="2.75" PointY="6.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="GoldenPetModel.tb_Menu" Width="1.5" PointX="7.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="GoldenPetModel.tb_Product" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="GoldenPetModel.tb_ProductCategory" Width="1.5" PointX="0.75" PointY="1.75" IsExpanded="true" />
-        <AssociationConnector Association="GoldenPetModel.FK__tb_Produc__categ__0A9D95DB" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="GoldenPetModel.tb_Package" Width="1.5" PointX="5.375" PointY="1" />
-        <EntityTypeShape EntityType="GoldenPetModel.tb_PackageFeature" Width="1.5" PointX="7.625" PointY="1.125" />
-        <AssociationConnector Association="GoldenPetModel.FK__tb_Packag__packa__74AE54BC" />
-        <EntityTypeShape EntityType="GoldenPetModel.tb_News" Width="1.5" PointX="10.375" PointY="1" />
-        <EntityTypeShape EntityType="GoldenPetModel.tb_NewsImages" Width="1.5" PointX="12.625" PointY="1.5" />
-        <AssociationConnector Association="GoldenPetModel.FK__tb_NewsIm__NewsI__19DFD96B" />
-        <EntityTypeShape EntityType="GoldenPetModel.tb_MenuCategory" Width="1.5" PointX="10" PointY="5.625" />
-        <AssociationConnector Association="GoldenPetModel.FK__tb_MenuCa__menuI__756D6ECB" />
-        <EntityTypeShape EntityType="GoldenPetModel.tb_Logo" Width="1.5" PointX="10.375" PointY="9.75" />
-        <EntityTypeShape EntityType="GoldenPetModel.tb_Service" Width="1.5" PointX="5.375" PointY="9.75" />
-        <EntityTypeShape EntityType="GoldenPetModel.tb_ImgService" Width="1.5" PointX="7.625" PointY="10.625" />
-        <AssociationConnector Association="GoldenPetModel.FK__tb_ImgSer__id_Se__17036CC0" />
+      <Diagram DiagramId="a756a60d0e9d49c99ab032c7970696ab" Name="Diagram1" ZoomLevel="59">
+        <EntityTypeShape EntityType="goldenpetModel.tb_Advertisement" Width="1.5" PointX="0.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="goldenpetModel.tb_Contact" Width="1.5" PointX="2.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="goldenpetModel.tb_Img" Width="1.5" PointX="4.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="goldenpetModel.tb_ImgService" Width="1.5" PointX="3" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="goldenpetModel.tb_Logo" Width="1.5" PointX="6.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="goldenpetModel.tb_Menu" Width="1.5" PointX="10.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="goldenpetModel.tb_MenuCategory" Width="1.5" PointX="13" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="goldenpetModel.tb_News" Width="1.5" PointX="7.75" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="goldenpetModel.tb_NewsImages" Width="1.5" PointX="10" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="goldenpetModel.tb_Package" Width="1.5" PointX="2.75" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="goldenpetModel.tb_PackageFeature" Width="1.5" PointX="5" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="goldenpetModel.tb_Product" Width="1.5" PointX="8" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="goldenpetModel.tb_ProductCategory" Width="1.5" PointX="5.75" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="goldenpetModel.tb_Service" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
+        <AssociationConnector Association="goldenpetModel.FK__tb_ImgSer__id_Se__1F63A897" ManuallyRouted="false" />
+        <AssociationConnector Association="goldenpetModel.FK__tb_MenuCa__menuI__4F47C5E3" ManuallyRouted="false" />
+        <AssociationConnector Association="goldenpetModel.FK__tb_NewsIm__NewsI__3E1D39E1" ManuallyRouted="false" />
+        <AssociationConnector Association="goldenpetModel.FK__tb_Packag__packa__3587F3E0" ManuallyRouted="false" />
+        <AssociationConnector Association="goldenpetModel.FK__tb_Produc__categ__03F0984C" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="goldenpetModel.CartItem" Width="1.5" PointX="13.875" PointY="13.25" />
+        <EntityTypeShape EntityType="goldenpetModel.Cart" Width="1.5" PointX="11.625" PointY="23.75" />
+        <EntityTypeShape EntityType="goldenpetModel.OrderItem" Width="1.5" PointX="14.875" PointY="9.625" />
+        <EntityTypeShape EntityType="goldenpetModel.Order" Width="1.5" PointX="11.625" PointY="18.125" />
+        <EntityTypeShape EntityType="goldenpetModel.tb_Booking" Width="1.5" PointX="12.625" PointY="8.875" />
+        <EntityTypeShape EntityType="goldenpetModel.tb_Customer" Width="1.5" PointX="9.375" PointY="16.875" />
+        <EntityTypeShape EntityType="goldenpetModel.tb_Pet" Width="1.5" PointX="11.625" PointY="21.25" />
+        <AssociationConnector Association="goldenpetModel.FK__CartItems__CartI__4D2A7347" />
+        <AssociationConnector Association="goldenpetModel.FK__CartItems__Produ__4E1E9780" />
+        <AssociationConnector Association="goldenpetModel.FK__Carts__UserID__3FD07829" />
+        <AssociationConnector Association="goldenpetModel.FK__OrderItem__Order__55BFB948" />
+        <AssociationConnector Association="goldenpetModel.FK__OrderItem__Produ__56B3DD81" />
+        <AssociationConnector Association="goldenpetModel.FK__Orders__UserID__52E34C9D" />
+        <AssociationConnector Association="goldenpetModel.FK__tb_Bookin__custo__3B0BC30C" />
+        <AssociationConnector Association="goldenpetModel.FK__tb_Bookin__servi__3BFFE745" />
+        <AssociationConnector Association="goldenpetModel.FK__tb_Pet__customer__36470DEF" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

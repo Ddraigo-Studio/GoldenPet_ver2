@@ -12,24 +12,20 @@ namespace GoldenPet.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class tb_Package
+    public partial class Cart
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public tb_Package()
+        public Cart()
         {
-            this.tb_PackageFeature = new HashSet<tb_PackageFeature>();
+            this.CartItems = new HashSet<CartItem>();
         }
     
-        public int id { get; set; }
-        public string name { get; set; }
-        public string img { get; set; }
-        public Nullable<decimal> price { get; set; }
-        public string description { get; set; }
-        public string duration { get; set; }
-        public Nullable<System.DateTime> createdAt { get; set; }
-        public Nullable<System.DateTime> updatedAt { get; set; }
+        public int CartID { get; set; }
+        public Nullable<int> UserID { get; set; }
+        public Nullable<System.DateTime> CreatedAt { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tb_PackageFeature> tb_PackageFeature { get; set; }
+        public virtual ICollection<CartItem> CartItems { get; set; }
+        public virtual tb_Customer tb_Customer { get; set; }
     }
 }

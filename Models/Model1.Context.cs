@@ -13,10 +13,10 @@ namespace GoldenPet.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class GoldenPetEntities : DbContext
+    public partial class goldenpetEntities : DbContext
     {
-        public GoldenPetEntities()
-            : base("name=GoldenPetEntities")
+        public goldenpetEntities()
+            : base("name=goldenpetEntities")
         {
         }
     
@@ -28,16 +28,23 @@ namespace GoldenPet.Models
         public virtual DbSet<tb_Advertisement> tb_Advertisement { get; set; }
         public virtual DbSet<tb_Contact> tb_Contact { get; set; }
         public virtual DbSet<tb_Img> tb_Img { get; set; }
+        public virtual DbSet<tb_ImgService> tb_ImgService { get; set; }
+        public virtual DbSet<tb_Logo> tb_Logo { get; set; }
         public virtual DbSet<tb_Menu> tb_Menu { get; set; }
-        public virtual DbSet<tb_Product> tb_Product { get; set; }
-        public virtual DbSet<tb_ProductCategory> tb_ProductCategory { get; set; }
-        public virtual DbSet<tb_Package> tb_Package { get; set; }
-        public virtual DbSet<tb_PackageFeature> tb_PackageFeature { get; set; }
+        public virtual DbSet<tb_MenuCategory> tb_MenuCategory { get; set; }
         public virtual DbSet<tb_News> tb_News { get; set; }
         public virtual DbSet<tb_NewsImages> tb_NewsImages { get; set; }
-        public virtual DbSet<tb_MenuCategory> tb_MenuCategory { get; set; }
-        public virtual DbSet<tb_Logo> tb_Logo { get; set; }
+        public virtual DbSet<tb_Package> tb_Package { get; set; }
+        public virtual DbSet<tb_PackageFeature> tb_PackageFeature { get; set; }
+        public virtual DbSet<tb_Product> tb_Product { get; set; }
+        public virtual DbSet<tb_ProductCategory> tb_ProductCategory { get; set; }
         public virtual DbSet<tb_Service> tb_Service { get; set; }
-        public virtual DbSet<tb_ImgService> tb_ImgService { get; set; }
+        public virtual DbSet<CartItem> CartItems { get; set; }
+        public virtual DbSet<Cart> Carts { get; set; }
+        public virtual DbSet<OrderItem> OrderItems { get; set; }
+        public virtual DbSet<Order> Orders { get; set; }
+        public virtual DbSet<tb_Booking> tb_Booking { get; set; }
+        public virtual DbSet<tb_Customer> tb_Customer { get; set; }
+        public virtual DbSet<tb_Pet> tb_Pet { get; set; }
     }
 }

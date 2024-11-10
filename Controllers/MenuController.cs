@@ -1,12 +1,13 @@
 ﻿using GoldenPet.Models;
 using System.Linq;
 using System.Web.Mvc;
+using GoldenPet.Models;
 
 namespace GoldenPet.Controllers
 {
     public class MenuController : Controller
     {
-        GoldenPetEntities _db = new GoldenPetEntities();
+        goldenpetEntities _db = new goldenpetEntities();
 
         public ActionResult GetMenu()
         {

@@ -4,12 +4,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using GoldenPet.Models;
 
 namespace GoldenPet.Controllers
 {
     public class ServiceController : Controller
     {
-        GoldenPetEntities _db = new GoldenPetEntities();
+        goldenpetEntities _db = new goldenpetEntities();
 
         // GET: Service
         public ActionResult Index()
@@ -18,10 +19,10 @@ namespace GoldenPet.Controllers
         }
 
 
-        public ActionResult Detail(long id)
+        public ActionResult Detail(string meta)
         {
             var v = from t in _db.tb_Service
-                    where t.id == id
+                    where t.meta == meta
                     select t;
             return View(v.FirstOrDefault());
         }

@@ -7,7 +7,7 @@ namespace GoldenPet.Controllers
 {
     public class NewsController : Controller
     {
-        GoldenPetEntities _db = new GoldenPetEntities();
+        goldenpetEntities _db = new goldenpetEntities();
 
         public ActionResult getNews_Index(int page = 1, int pageSize = 6)
         {
