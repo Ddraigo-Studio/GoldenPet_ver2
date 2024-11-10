@@ -9,7 +9,7 @@ namespace GoldenPet.Controllers
 {
     public class ProductController : Controller
     {
-        GoldenPetEntities _db = new GoldenPetEntities();
+        goldenpetEntities _db = new goldenpetEntities();
 
         public ActionResult Index(string metatitle)
         {

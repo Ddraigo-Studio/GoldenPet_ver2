@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -12,7 +13,7 @@ namespace GoldenPet.Areas.Admin.Controllers
 {
     public class NewsController : Controller
     {
-        private GoldenPetEntities db = new GoldenPetEntities();
+        private goldenpetEntities db = new goldenpetEntities();
 
         // GET: Admin/News
         public ActionResult Index()
@@ -46,10 +47,28 @@ namespace GoldenPet.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "NewsID,Title,Content,Slug,AuthorName,CategoryName,PublishedDate,LastModifiedDate,Status,Summary,ThumbnailImageURL,MetaTitle")] tb_News tb_News)
+        [ValidateInput(false)]
+        public ActionResult Create([Bind(Include = "NewsID,Title,Content,Slug,AuthorName,CategoryName,PublishedDate,LastModifiedDate,Status,Summary,ThumbnailImageURL,MetaTitle")] tb_News tb_News, HttpPostedFileBase img)
         {
+            var path = "";
+            var filename = "";
+
             if (ModelState.IsValid)
             {
+                if (img != null)
+                {
+                    filename = Path.GetFileName(img.FileName);  // Ensure filename is sanitized
+
+                    path = Path.Combine(Server.MapPath("~/Areas/Admin/Content/img"), filename);
+
+                    img.SaveAs(path);
+                    tb_News.ThumbnailImageURL =  filename;  // Set the image URL
+                }
+                else
+                {
+                    tb_News.ThumbnailImageURL = "logo.png";  // Default image if none uploaded
+                }
+
                 db.tb_News.Add(tb_News);
                 db.SaveChanges();
                 return RedirectToAction("Index");

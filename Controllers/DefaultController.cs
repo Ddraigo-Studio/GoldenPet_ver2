@@ -11,7 +11,7 @@ namespace GoldenPet.Controllers
 {
     public class DefaultController : Controller
     {
-        GoldenPetEntities _db = new GoldenPetEntities();
+        goldenpetEntities _db = new goldenpetEntities();
         // GET: Default
         public ActionResult Index()
         {

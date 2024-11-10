@@ -1,48 +1,102 @@
-﻿
+﻿@model GoldenPet.Models.tb_Customer
+
 @{
     ViewBag.Title = "Đăng ký";
     Layout = "~/Views/Shared/LoginLayout .cshtml";
 }
 
-<div class="form">
-    <span class="title">Đăng ký</span>
 
-    <div class="login-form">
-        <span class="usuario-correo-electronico">Tên đăng nhập</span>
-        <input type="text" class="form-control input-field " />
 
-        <div class="pass d-flex justify-content-between align-items-center">
-            <span class="contrasena">Mật khẩu</span>
+
+@using (Html.BeginForm())
+{
+
+    @Html.AntiForgeryToken()
+
+
+    <div class="form">
+        <span class="title">Đăng ký</span>
+
+        <div class="form-horizontal ">
+            <h4>tb_Customer</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <!-- Username Field -->
+            <div class="form-group">
+                @Html.LabelFor(model => model.customerName, "Tên đăng nhập", htmlAttributes: new { @class = "usuario-correo-electronico control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.customerName, new { htmlAttributes = new { @class = "form-control input-field" } })
+                    @Html.ValidationMessageFor(model => model.customerName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <!-- Email Field -->
+            <div class="form-group">
+                @Html.LabelFor(model => model.email, "Email", htmlAttributes: new { @class = "usuario-correo-electronico control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "form-control input-field", type = "email" } })
+                    @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <!-- Phone Number Field -->
+            <div class="form-group">
+                @Html.LabelFor(model => model.phone, "SDT", htmlAttributes: new { @class = "usuario-correo-electronico control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.phone, new { htmlAttributes = new { @class = "form-control input-field" } })
+                    @Html.ValidationMessageFor(model => model.phone, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <!-- Password Field -->
+            <div class="form-group">
+                @Html.LabelFor(model => model.password, "Mật Khẩu", htmlAttributes: new { @class = "usuario-correo-electronico control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.password, new { htmlAttributes = new { @class = "form-control input-field" } })
+                    @Html.ValidationMessageFor(model => model.password, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group ">
+                @Html.Label("Nhập lại mật khẩu", htmlAttributes: new { @class = "contrasena control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.Password("confirmPassword", null, new { @class = "form-control input-field" })
+                    @Html.ValidationMessage("confirmPassword", "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="form-group">
+                <div class="empty"></div>
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Đăng ký" class="login-text btn btn-default" />
+                </div>
+            </div>
+
+            <!-- Optional Social Login Section -->
+            @*<div class="login-separator">
+                    <div class="line col-md-5"></div>
+                    <span class="o-inicia-sesion col-md-2 text-center">Hoặc đăng ký bằng</span>
+                    <div class="line-2 col-md-5"></div>
+                </div>*@
+
+            <!-- Footer Section -->
+            <div class="footer">
+                <div class="vector-3"></div>
+                <span class="devmiguelfg">devmiguelfg</span>
+            </div>
         </div>
-        <input type="password" class="form-control input-field" />
-
-        <div class="pass d-flex justify-content-between align-items-center">
-            <span class="contrasena">Nhập lại mật khẩu</span>
-        </div>
-        <input type="password" class="form-control input-field" />
-
-        <div class="empty"></div>
-        <button class="submit-button">
-            <span class="login-text">Đăng ký</span>
-        </button>
-
     </div>
 
-    <div class="login-separator">
-        <div class="line"></div>
-        <span class="o-inicia-sesion">Hoặc đăng ký bằng</span>
-        <div class="line-2"></div>
-    </div>
 
-    <div class="external-login">
-        <button class="button"><div class="google"></div></button>
-        <button class="button"><div class="facebook"></div></button>
-        <button class="button"><div class="vector"></div></button>
 
-    </div>
-    <div class="footer">
-        <div class="vector-3"></div>
-        <span class="devmiguelfg">devmiguelfg</span>
-    </div>
-</div>
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div> @*<div class="external-login">
+            <button class="button"><div class="google"></div></button>
+            <button class="button"><div class="facebook"></div></button>
+            <button class="button"><div class="vector"></div></button>
 
+        </div>*@
+}

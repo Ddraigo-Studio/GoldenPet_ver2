@@ -12,39 +12,31 @@ namespace GoldenPet.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class tb_Service
+    public partial class tb_Customer
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public tb_Service()
+        public tb_Customer()
         {
-            this.tb_ImgService = new HashSet<tb_ImgService>();
+            this.Carts = new HashSet<Cart>();
+            this.Orders = new HashSet<Order>();
             this.tb_Booking = new HashSet<tb_Booking>();
+            this.tb_Pet = new HashSet<tb_Pet>();
         }
     
         public int id { get; set; }
-        public string name { get; set; }
-        public string title { get; set; }
-        public string description { get; set; }
-        public string description_1 { get; set; }
-        public string description_2 { get; set; }
-        public Nullable<decimal> price { get; set; }
-        public Nullable<int> duration { get; set; }
-        public string img { get; set; }
-        public string img2 { get; set; }
-        public string img3 { get; set; }
-        public string img4 { get; set; }
-        public string link { get; set; }
-        public string meta { get; set; }
-        public Nullable<bool> hide { get; set; }
-        public Nullable<int> order { get; set; }
+        public string customerName { get; set; }
+        public string email { get; set; }
+        public string phone { get; set; }
         public Nullable<System.DateTime> createdDate { get; set; }
-        public string createdBy { get; set; }
-        public Nullable<System.DateTime> modifidedDate { get; set; }
-        public string modifidedBy { get; set; }
+        public string password { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tb_ImgService> tb_ImgService { get; set; }
+        public virtual ICollection<Cart> Carts { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Order> Orders { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tb_Booking> tb_Booking { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tb_Pet> tb_Pet { get; set; }
     }
 }

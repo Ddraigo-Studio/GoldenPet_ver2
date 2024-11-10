@@ -14,8 +14,16 @@ namespace GoldenPet.Models
     
     public partial class tb_Product
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public tb_Product()
+        {
+            this.CartItems = new HashSet<CartItem>();
+            this.OrderItems = new HashSet<OrderItem>();
+        }
+    
         public int id { get; set; }
         public string name { get; set; }
+        public string brand { get; set; }
         public Nullable<decimal> price { get; set; }
         public Nullable<decimal> priceSale { get; set; }
         public string img { get; set; }
@@ -29,8 +37,11 @@ namespace GoldenPet.Models
         public Nullable<bool> hide { get; set; }
         public Nullable<int> order { get; set; }
         public Nullable<System.DateTime> createdDate { get; set; }
-        public string brand { get; set; }
     
         public virtual tb_ProductCategory tb_ProductCategory { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CartItem> CartItems { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<OrderItem> OrderItems { get; set; }
     }
 }

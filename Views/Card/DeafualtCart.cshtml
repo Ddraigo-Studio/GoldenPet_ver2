@@ -1,0 +1,27 @@
+﻿@model GoldenPet.Models.Cart
+
+@foreach (var i in Model.CartItems)
+{
+    <li class="shopping__cart-item">
+        <img src="https://bizweb.dktcdn.net/thumb/large/100/484/752/products/mousepad-spy-x-family-anya-edition.jpg?v=1707409571893"
+             alt="" class="shopping__cart-img">
+        <div class="shopping__cart-item-info">
+            <div class="shopping__cart-item-head">
+                <h5 class="shopping__cart-item-name">@i.tb_Product.name</h5>
+                <div class="shopping__cart-item-price-wrap">
+                    <span class="shopping__cart-item-price">@i.tb_Product.price</span>
+                    <span class="shopping__cart-item-multiply">x</span>
+                    <span class="shopping__cart-item-qnt">@i.Quantity</span>
+                </div>
+            </div>
+
+            <div class="shopping__cart-item-body">
+                <span class="shopping__cart-item-description">
+                    Phân loại: @i.tb_Product.tb_ProductCategory.name
+                </span>
+                <span class="shopping__cart-item-remove">Xóa</span>
+            </div>
+        </div>
+    </li>
+}
+

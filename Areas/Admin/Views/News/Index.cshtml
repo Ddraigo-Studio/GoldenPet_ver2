@@ -1,5 +1,5 @@
 ﻿@model IEnumerable<GoldenPet.Models.tb_News>
-
+@using GoldenPet.Help
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_MyLayout.cshtml";
@@ -16,12 +16,6 @@
     @Html.DisplayNameFor(model => model.Title)
 </th>
 <th>
-    @Html.DisplayNameFor(model => model.Content)
-</th>
-<th>
-    @Html.DisplayNameFor(model => model.Slug)
-</th>
-<th>
     @Html.DisplayNameFor(model => model.AuthorName)
 </th>
 <th>
@@ -36,16 +30,12 @@
 <th>
     @Html.DisplayNameFor(model => model.Status)
 </th>
-<th>
-    @Html.DisplayNameFor(model => model.Summary)
-</th>
+
 <th>
     @Html.DisplayNameFor(model => model.ThumbnailImageURL)
 </th>
-<th>
-    @Html.DisplayNameFor(model => model.MetaTitle)
-</th>
-<th></th>
+
+<th>Action</th>
 @{ Html.RenderAction("MIddle", "Layout");}
 @{var Number = 1; }
 
@@ -58,12 +48,8 @@
         <td>
             @Html.DisplayFor(modelItem => item.Title)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Content)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Slug)
-        </td>
+
+
         <td>
             @Html.DisplayFor(modelItem => item.AuthorName)
         </td>
@@ -71,27 +57,30 @@
             @Html.DisplayFor(modelItem => item.CategoryName)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.PublishedDate)
+            @(item.PublishedDate?.ToString("dd/MM/yyyy") ?? "No date available")
+
+
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.LastModifiedDate)
+        @(item.LastModifiedDate?.ToString("dd/MM/yyyy") ?? "No date available")
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Status)
         </td>
+
         <td>
-            @Html.DisplayFor(modelItem => item.Summary)
+            <img src="~/Content/img/@item.ThumbnailImageURL" width="100px" />
         </td>
+
         <td>
-            <img src="~/Content/img/@item.ThumbnailImageURL" width="50px" />
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.MetaTitle)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.NewsID }) |
+            @Html.NoEncodeActionLink("<span class='glyphicon glyphicon-pencil'></span>", "Edit", "Edit", "News", routeValues: new { id = item.NewsID }, htmlAttributes: new { data_modal = "", @class = "btn btn-default" })
+            @Html.NoEncodeActionLink("<span class='glyphicon glyphicon-zoom-in'></span>", "Detail", "Details", "News", routeValues: new { id = item.NewsID }, htmlAttributes: new { data_modal = "", @class = "btn btn-primary" })
+            @Html.NoEncodeActionLink("<span class='glyphicon glyphicon-trash'></span>", "Delete", "Delete", "News", routeValues: new { id = item.NewsID }, htmlAttributes: new { data_modal = "", @class = "btn btn-danger" })
+
+            @*@Html.ActionLink("Edit", "Edit", new { id = item.NewsID }) |
             @Html.ActionLink("Details", "Details", new { id = item.NewsID }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.NewsID })
+            @Html.ActionLink("Delete", "Delete", new { id = item.NewsID })*@
+
         </td>
     </tr>
 }

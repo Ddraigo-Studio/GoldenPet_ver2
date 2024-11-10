@@ -6,55 +6,98 @@
 
 <!-- Product Detail Start -->
 <link href="~/Content/css/product_detail.css" rel="stylesheet" />
+@using (Html.BeginForm("Create", "Card", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
 
-<div class="main-container">
-    <div class="container">
-        <div class="frame">
-            <img class="img-fluid w-100 mb-4" src="/Content/img/@Model.img" alt="Product Image">
-            <div class="ellipse-2"></div>
-        </div>
-        <div class="flex-column-fdc">
-            <span class="product_name">@Model.name</span>
-            <div class="frame-3">
-                <div class="frame-4"><span class="brand">@Model.brand</span></div>
-                <div class="line"></div>
-                <div class="frame-5"><span class="allaf">ALLAF</span></div>
-            </div>
-            <div class="frame-6">
-                <div class="frame-7">
-                    <span class="description-detail">Mô tả:</span>
-                    <span class="complete-nutrition">@Model.description</span>
-                </div>
-                @{ Html.RenderAction("getImageProduct");}
+    <!-- Hidden fields for product id and price -->
+    @Html.Hidden("ProductID", Model.id) <!-- Product ID -->
+    @Html.Hidden("price", @Model.price)
 
-                @*<div class="frame-b">
-                    <span class="size-label">Trọng lượng:</span>
-                    <div class="frame-c">
-                        <button class="frame-button"><span class="weight-1-5kg">1.5 kg</span></button>
-                        <button class="frame-button-d"><span class="weight-1kg">1 kg</span></button>
-                        <button class="button-frame"><span class="span-gr">500 gr</span></button>
-                        <button class="button-frame-e"><span class="span-gr-f">250 gr</span></button>
-                    </div>
-                </div>*@
-                <div class="div-frame">
-                    <span class="span-ingrendients">Ingredients:</span>
-                    <span class="span-nutrisi">Nutrisi<br />Vitamin E<br />Protein</span>
-                </div>
+    <!-- Hidden input with the current server date and time -->
+    @Html.Hidden("AddedAt", DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss"))
+
+
+    <div class="main-container">
+        <div class="container">
+            <div class="frame">
+                <img class="img-fluid w-100 mb-4" src="/Content/img/@Model.img" alt="Product Image">
+                <div class="ellipse-2"></div>
             </div>
-            <div class="div-frame-10">
-                <div class="div-frame-11">
-                    <div class="div-frame-12">
-                        <span class="span-quantity">Số lượng:</span>
-                        <div class="minus-square"></div>
-                        <button class="button-group">
-                            <div class="frame-13"><span class="span-1">1</span></div>
-                        </button>
-                        <div class="plus-square"></div>
+            <div class="flex-column-fdc">
+                <span class="product_name">@Model.name</span>
+                <div class="frame-3">
+                    <div class="frame-4"><span class="brand">@Model.brand</span></div>
+                    <div class="line"></div>
+                    <div class="frame-5"><span class="allaf">ALLAF</span></div>
+                </div>
+                <div class="frame-6">
+                    <div class="frame-7">
+                        <span class="description-detail">Mô tả:</span>
+                        <span class="complete-nutrition">@Model.description</span>
                     </div>
-                    <button class="button-frame-14"><span class="add-to-card">THÊM VÀO GIỎ HÀNG</span></button>
+                    @{ Html.RenderAction("getImageProduct"); }
+
+                    <!-- Ingredients and other product details go here -->
+
+                </div>
+                <div class="div-frame-10">
+                    <div class="div-frame-11">
+                        <div class="div-frame-12">
+                            <span class="span-quantity">Số lượng:</span>
+                            <div class="minus-square"></div>
+                            <button type="button" class="button-group">
+                                <div class="frame-13"><span class="span-1">1</span></div>
+                            </button>
+                            <div class="plus-square"></div>
+                        </div>
+
+                        <!-- Hidden input to submit quantity -->
+                        <input type="hidden" name="quantity" id="quantity" value="1" />
+
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <input type="submit" value="THÊM VÀO GIỎ HÀNG" class="btn btn-primary button-frame-14" />
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Select elements
+            const minusSquare = document.querySelector(".minus-square");
+            const plusSquare = document.querySelector(".plus-square");
+            const counterSpan = document.querySelector(".span-1");
+            const quantityInput = document.getElementById("quantity");
+
+            // Initialize counter
+            let counter = parseInt(counterSpan.textContent);
+
+            // Function to update the display
+            function updateDisplay() {
+                counterSpan.textContent = counter;
+                quantityInput.value = counter; // Update hidden quantity input
+            }
+
+            // Event listener for decrement
+            minusSquare.addEventListener("click", function () {
+                if (counter > 1) {  // Prevent going below 1
+                    counter--;
+                    updateDisplay();
+                }
+            });
+
+            // Event listener for increment
+            plusSquare.addEventListener("click", function () {
+                counter++;
+                updateDisplay();
+            });
+        });
+    </script>
+}
+
 <!-- Product Detail End -->

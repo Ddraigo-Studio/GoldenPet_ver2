@@ -1,4 +1,5 @@
-﻿
+﻿@model GoldenPet.Models.Cart
+
 @{
     ViewBag.Title = "Giỏ hàng và thanh toán";
     Layout = null;
@@ -16,38 +17,42 @@
     <link href="~/Content/css/card.css" rel="stylesheet" />
 
 </head>
+
+
 <body>
     <div class="main-container">
         <div class="flex-column-b">
             <div class="line"></div>
-            <span class="shopping-cart">Giỏ hàng</span><span class="cart-items">Bạn có 3 sản phẩm trong giỏ hàng</span>
-            <div class="rectangle">
-                <div class="rectangle-1"></div>
-                <span class="italy-pizza">Italy Pizza</span>
-                <button class="trash-can"></button>
-                <span class="price">$681</span><span class="quantity">1</span>
-                <div class="rectangle-2"></div>
-                <div class="rectangle-3"></div>
-                <span class="topping">Extra cheese and toping</span>
-            </div>
-            <div class="rectangle-4">
-                <div class="rectangle-5"></div>
-                <span class="combo-plate">Combo Plate</span>
-                <button class="trash-can"></button>
-                <span class="dollar-sign">$681</span><span class="number-one">1</span>
-                <div class="rectangle-7"></div>
-                <div class="rectangle-8"></div>
-                <span class="extra-cheese-topping">Extra cheese and toping</span>
-            </div>
-            <div class="rectangle-9">
-                <div class="rectangle-a"></div>
-                <span class="spanish-rice">Spanish Rice</span>
-                <button class="trash-can"></button>
-                <span class="dollar-sign-c">$681</span><span class="span">1</span>
-                <div class="rectangle-d"></div>
-                <div class="rectangle-e"></div>
-                <span class="span-f">Extra garllic</span>
-            </div>
+            @if (Model?.CartItems != null && Model.CartItems.Any())
+            {
+                <span class="cart-items">Bạn có @Model.CartItems.Count() sản phẩm trong giỏ hàng</span>
+                foreach (var i in Model.CartItems)
+                {
+                    <div class="rectangle">
+                        <img class="img-fluid w-100 mb-4" src="/Content/img/@i.tb_Product.img" alt="Product Image">
+                        <span>@i.tb_Product.name</span>
+                        <button class="trash-can"></button>
+                        <span class="price">@(@i.tb_Product.price * i.Quantity)</span>
+                        <span class="quantity" id="quantity-@i.ProductID">@i.Quantity</span>
+                        <div class="rectangle-2" data-action="increase" data-product-id="@i.ProductID"></div>
+                        <div class="rectangle-3" data-action="decrease" data-product-id="@i.ProductID"></div>
+                        <span>@i.tb_Product.description</span>
+                    </div>
+
+                }
+            }
+            @*else if (Model?.CartItems == null)
+        {
+            <span class="cart-items">alo1.</span>
+        }
+        else if (Model.CartItems.Count()==0)
+        {
+            <span class="cart-items">alo2.</span>
+        }*@
+            else
+            {
+                <span class="cart-items">Giỏ hàng của bạn hiện đang trống.</span>
+            }
             <div class="arrow"></div>
             <span class="span-10">TIếp tục mua sắm</span>
         </div>
@@ -86,7 +91,42 @@
     </div>
 
 </body>
+
 </html>
+<script>document.addEventListener("DOMContentLoaded", function () {
+        document.querySelectorAll(".rectangle-2, .rectangle-3").forEach(button => {
+            button.addEventListener("click", function () {
+                const productId = this.getAttribute("data-product-id");
+                const action = this.getAttribute("data-action");
+                const quantityElement = document.getElementById("quantity-" + productId);
+                let currentQuantity = parseInt(quantityElement.textContent);
+
+                // Update quantity based on action
+                if (action === "increase") {
+                    currentQuantity++;
+                } else if (action === "decrease" && currentQuantity > 1) {
+                    currentQuantity--;
+                }
+
+                // Update quantity in UI
+                quantityElement.textContent = currentQuantity;
+
+                // Make an AJAX request to update the quantity in the backend
+                fetch(`/Cart/UpdateQuantity`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({ productId: productId, quantity: currentQuantity })
+                }).then(response => {
+                    if (!response.ok) {
+                        alert("Failed to update quantity.");
+                    }
+                }).catch(error => console.error("Error:", error));
+            });
+        });
+    });
+</script>
 
 
 

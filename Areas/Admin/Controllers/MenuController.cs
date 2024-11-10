@@ -12,7 +12,7 @@ namespace GoldenPet.Areas.Admin.Controllers
 {
     public class MenuController : Controller
     {
-        private GoldenPetEntities db = new GoldenPetEntities();
+        private goldenpetEntities db = new goldenpetEntities();
 
         // GET: Admin/Menu
         public ActionResult Index()

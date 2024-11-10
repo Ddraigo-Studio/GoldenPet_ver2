@@ -12,30 +12,22 @@ namespace GoldenPet.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class tb_News
+    public partial class Order
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public tb_News()
+        public Order()
         {
-            this.tb_NewsImages = new HashSet<tb_NewsImages>();
+            this.OrderItems = new HashSet<OrderItem>();
         }
     
-        public int NewsID { get; set; }
-        public string Title { get; set; }
-        public string Content { get; set; }
-        public string Slug { get; set; }
-        public string AuthorName { get; set; }
-        public string CategoryName { get; set; }
-        public Nullable<System.DateTime> PublishedDate { get; set; }
-        public Nullable<System.DateTime> LastModifiedDate { get; set; }
+        public int OrderID { get; set; }
+        public Nullable<int> UserID { get; set; }
+        public Nullable<System.DateTime> OrderDate { get; set; }
+        public decimal TotalAmount { get; set; }
         public string Status { get; set; }
-        public string Summary { get; set; }
-        public string ThumbnailImageURL { get; set; }
-        public string MetaTitle { get; set; }
-        public Nullable<bool> hide { get; set; }
-        public Nullable<int> order { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tb_NewsImages> tb_NewsImages { get; set; }
+        public virtual ICollection<OrderItem> OrderItems { get; set; }
+        public virtual tb_Customer tb_Customer { get; set; }
     }
 }
