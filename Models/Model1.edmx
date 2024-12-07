@@ -43,6 +43,16 @@
           <Property Name="TotalAmount" Type="decimal" Precision="10" Scale="2" Nullable="false" />
           <Property Name="Status" Type="varchar" MaxLength="20" />
         </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
         <EntityType Name="tb_Advertisement">
           <Key>
             <PropertyRef Name="id" />
@@ -68,10 +78,9 @@
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="customerID" Type="int" />
           <Property Name="serviceID" Type="int" />
-          <Property Name="petName" Type="nvarchar" MaxLength="100" />
           <Property Name="bookingDate" Type="smalldatetime" />
-          <Property Name="appoINTmentDate" Type="date" />
-          <Property Name="appoINTmentTime" Type="time" Precision="7" />
+          <Property Name="appoINTmentDate" Type="datetime" />
+          <Property Name="petNumber" Type="int" />
           <Property Name="status" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="tb_Contact">
@@ -79,17 +88,9 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="name" Type="nvarchar" MaxLength="150" />
           <Property Name="phonenumber" Type="nvarchar" MaxLength="10" />
           <Property Name="location" Type="nvarchar" MaxLength="150" />
           <Property Name="email" Type="nvarchar" MaxLength="150" />
-          <Property Name="subject" Type="nvarchar(max)" />
-          <Property Name="message" Type="ntext" />
-          <Property Name="isRead" Type="bit" />
-          <Property Name="createdDate" Type="smalldatetime" />
-          <Property Name="createdBy" Type="nvarchar" MaxLength="150" />
-          <Property Name="modifidedDate" Type="smalldatetime" />
-          <Property Name="modifidedBy" Type="nvarchar" MaxLength="150" />
         </EntityType>
         <EntityType Name="tb_Customer">
           <Key>
@@ -225,14 +226,6 @@
           <Property Name="featureName" Type="nvarchar" MaxLength="150" />
           <Property Name="isIncluded" Type="bit" />
           <Property Name="createdAt" Type="smalldatetime" />
-        </EntityType>
-        <EntityType Name="tb_Pet">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="name" Type="nvarchar" MaxLength="100" Nullable="false" />
-          <Property Name="customerId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="tb_Product">
           <Key>
@@ -373,7 +366,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tb_Bookin__custo__3B0BC30C">
+        <Association Name="FK__tb_Bookin__custo__15A53433">
           <End Role="tb_Customer" Type="Self.tb_Customer" Multiplicity="0..1" />
           <End Role="tb_Booking" Type="Self.tb_Booking" Multiplicity="*" />
           <ReferentialConstraint>
@@ -385,7 +378,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tb_Bookin__servi__3BFFE745">
+        <Association Name="FK__tb_Bookin__servi__1699586C">
           <End Role="tb_Service" Type="Self.tb_Service" Multiplicity="0..1" />
           <End Role="tb_Booking" Type="Self.tb_Booking" Multiplicity="*" />
           <ReferentialConstraint>
@@ -445,18 +438,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tb_Pet__customer__36470DEF">
-          <End Role="tb_Customer" Type="Self.tb_Customer" Multiplicity="1" />
-          <End Role="tb_Pet" Type="Self.tb_Pet" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tb_Customer">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="tb_Pet">
-              <PropertyRef Name="customerId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__tb_Produc__categ__03F0984C">
           <End Role="tb_ProductCategory" Type="Self.tb_ProductCategory" Multiplicity="0..1" />
           <End Role="tb_Product" Type="Self.tb_Product" Multiplicity="*" />
@@ -469,11 +450,43 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="goldenpetModelStoreContainer">
           <EntitySet Name="CartItems" EntityType="Self.CartItems" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Carts" EntityType="Self.Carts" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="OrderItems" EntityType="Self.OrderItems" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tb_Advertisement" EntityType="Self.tb_Advertisement" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tb_Booking" EntityType="Self.tb_Booking" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tb_Contact" EntityType="Self.tb_Contact" Schema="dbo" store:Type="Tables" />
@@ -487,7 +500,6 @@
           <EntitySet Name="tb_NewsImages" EntityType="Self.tb_NewsImages" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tb_Package" EntityType="Self.tb_Package" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tb_PackageFeature" EntityType="Self.tb_PackageFeature" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="tb_Pet" EntityType="Self.tb_Pet" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tb_Product" EntityType="Self.tb_Product" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tb_ProductCategory" EntityType="Self.tb_ProductCategory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tb_Service" EntityType="Self.tb_Service" Schema="dbo" store:Type="Tables" />
@@ -515,11 +527,11 @@
             <End Role="tb_Customer" EntitySet="tb_Customer" />
             <End Role="Orders" EntitySet="Orders" />
           </AssociationSet>
-          <AssociationSet Name="FK__tb_Bookin__custo__3B0BC30C" Association="Self.FK__tb_Bookin__custo__3B0BC30C">
+          <AssociationSet Name="FK__tb_Bookin__custo__15A53433" Association="Self.FK__tb_Bookin__custo__15A53433">
             <End Role="tb_Customer" EntitySet="tb_Customer" />
             <End Role="tb_Booking" EntitySet="tb_Booking" />
           </AssociationSet>
-          <AssociationSet Name="FK__tb_Bookin__servi__3BFFE745" Association="Self.FK__tb_Bookin__servi__3BFFE745">
+          <AssociationSet Name="FK__tb_Bookin__servi__1699586C" Association="Self.FK__tb_Bookin__servi__1699586C">
             <End Role="tb_Service" EntitySet="tb_Service" />
             <End Role="tb_Booking" EntitySet="tb_Booking" />
           </AssociationSet>
@@ -538,10 +550,6 @@
           <AssociationSet Name="FK__tb_Packag__packa__3587F3E0" Association="Self.FK__tb_Packag__packa__3587F3E0">
             <End Role="tb_Package" EntitySet="tb_Package" />
             <End Role="tb_PackageFeature" EntitySet="tb_PackageFeature" />
-          </AssociationSet>
-          <AssociationSet Name="FK__tb_Pet__customer__36470DEF" Association="Self.FK__tb_Pet__customer__36470DEF">
-            <End Role="tb_Customer" EntitySet="tb_Customer" />
-            <End Role="tb_Pet" EntitySet="tb_Pet" />
           </AssociationSet>
           <AssociationSet Name="FK__tb_Produc__categ__03F0984C" Association="Self.FK__tb_Produc__categ__03F0984C">
             <End Role="tb_ProductCategory" EntitySet="tb_ProductCategory" />
@@ -565,23 +573,6 @@
           <Property Name="meta" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="hide" Type="Boolean" />
           <Property Name="order" Type="Int32" />
-          <Property Name="createdDate" Type="DateTime" Precision="0" />
-          <Property Name="createdBy" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-          <Property Name="modifidedDate" Type="DateTime" Precision="0" />
-          <Property Name="modifidedBy" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="tb_Contact">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-          <Property Name="phonenumber" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="location" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-          <Property Name="email" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-          <Property Name="subject" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="message" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="isRead" Type="Boolean" />
           <Property Name="createdDate" Type="DateTime" Precision="0" />
           <Property Name="createdBy" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
           <Property Name="modifidedDate" Type="DateTime" Precision="0" />
@@ -781,7 +772,7 @@
           <Property Name="modifidedDate" Type="DateTime" Precision="0" />
           <Property Name="modifidedBy" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="tb_ImgService" Relationship="Self.FK__tb_ImgSer__id_Se__1F63A897" FromRole="tb_Service" ToRole="tb_ImgService" />
-          <NavigationProperty Name="tb_Booking" Relationship="goldenpetModel.FK__tb_Bookin__servi__3BFFE745" FromRole="tb_Service" ToRole="tb_Booking" />
+          <NavigationProperty Name="tb_Booking" Relationship="goldenpetModel.FK__tb_Bookin__servi__1699586C" FromRole="tb_Service" ToRole="tb_Booking" />
         </EntityType>
         <Association Name="FK__tb_ImgSer__id_Se__1F63A897">
           <End Role="tb_Service" Type="Self.tb_Service" Multiplicity="0..1" />
@@ -845,7 +836,6 @@
         </Association>
         <EntityContainer Name="goldenpetEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="tb_Advertisement" EntityType="Self.tb_Advertisement" />
-          <EntitySet Name="tb_Contact" EntityType="Self.tb_Contact" />
           <EntitySet Name="tb_Img" EntityType="Self.tb_Img" />
           <EntitySet Name="tb_ImgService" EntityType="Self.tb_ImgService" />
           <EntitySet Name="tb_Logo" EntityType="Self.tb_Logo" />
@@ -882,9 +872,7 @@
           <EntitySet Name="Carts" EntityType="goldenpetModel.Cart" />
           <EntitySet Name="OrderItems" EntityType="goldenpetModel.OrderItem" />
           <EntitySet Name="Orders" EntityType="goldenpetModel.Order" />
-          <EntitySet Name="tb_Booking" EntityType="goldenpetModel.tb_Booking" />
           <EntitySet Name="tb_Customer" EntityType="goldenpetModel.tb_Customer" />
-          <EntitySet Name="tb_Pet" EntityType="goldenpetModel.tb_Pet" />
           <AssociationSet Name="FK__CartItems__CartI__4D2A7347" Association="goldenpetModel.FK__CartItems__CartI__4D2A7347">
             <End Role="Cart" EntitySet="Carts" />
             <End Role="CartItem" EntitySet="CartItems" />
@@ -909,17 +897,46 @@
             <End Role="tb_Customer" EntitySet="tb_Customer" />
             <End Role="Order" EntitySet="Orders" />
           </AssociationSet>
-          <AssociationSet Name="FK__tb_Bookin__custo__3B0BC30C" Association="goldenpetModel.FK__tb_Bookin__custo__3B0BC30C">
+          <EntitySet Name="sysdiagrams" EntityType="goldenpetModel.sysdiagram" />
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(goldenpetModel.sp_helpdiagramdefinition_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(goldenpetModel.sp_helpdiagrams_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
+          <EntitySet Name="tb_Contact" EntityType="goldenpetModel.tb_Contact" />
+          <EntitySet Name="tb_Booking" EntityType="goldenpetModel.tb_Booking" />
+          <AssociationSet Name="FK__tb_Bookin__custo__15A53433" Association="goldenpetModel.FK__tb_Bookin__custo__15A53433">
             <End Role="tb_Customer" EntitySet="tb_Customer" />
             <End Role="tb_Booking" EntitySet="tb_Booking" />
           </AssociationSet>
-          <AssociationSet Name="FK__tb_Bookin__servi__3BFFE745" Association="goldenpetModel.FK__tb_Bookin__servi__3BFFE745">
+          <AssociationSet Name="FK__tb_Bookin__servi__1699586C" Association="goldenpetModel.FK__tb_Bookin__servi__1699586C">
             <End Role="tb_Service" EntitySet="tb_Service" />
             <End Role="tb_Booking" EntitySet="tb_Booking" />
-          </AssociationSet>
-          <AssociationSet Name="FK__tb_Pet__customer__36470DEF" Association="goldenpetModel.FK__tb_Pet__customer__36470DEF">
-            <End Role="tb_Customer" EntitySet="tb_Customer" />
-            <End Role="tb_Pet" EntitySet="tb_Pet" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="CartItem">
@@ -968,21 +985,6 @@
           <NavigationProperty Name="OrderItems" Relationship="goldenpetModel.FK__OrderItem__Order__55BFB948" FromRole="Order" ToRole="OrderItem" />
           <NavigationProperty Name="tb_Customer" Relationship="goldenpetModel.FK__Orders__UserID__52E34C9D" FromRole="Order" ToRole="tb_Customer" />
         </EntityType>
-        <EntityType Name="tb_Booking">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="customerID" Type="Int32" />
-          <Property Name="serviceID" Type="Int32" />
-          <Property Name="petName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="bookingDate" Type="DateTime" Precision="0" />
-          <Property Name="appoINTmentDate" Type="DateTime" Precision="0" />
-          <Property Name="appoINTmentTime" Type="Time" Precision="7" />
-          <Property Name="status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="tb_Customer" Relationship="goldenpetModel.FK__tb_Bookin__custo__3B0BC30C" FromRole="tb_Booking" ToRole="tb_Customer" />
-          <NavigationProperty Name="tb_Service" Relationship="goldenpetModel.FK__tb_Bookin__servi__3BFFE745" FromRole="tb_Booking" ToRole="tb_Service" />
-        </EntityType>
         <EntityType Name="tb_Customer">
           <Key>
             <PropertyRef Name="id" />
@@ -994,18 +996,8 @@
           <Property Name="createdDate" Type="DateTime" Precision="3" />
           <NavigationProperty Name="Carts" Relationship="goldenpetModel.FK__Carts__UserID__3FD07829" FromRole="tb_Customer" ToRole="Cart" />
           <NavigationProperty Name="Orders" Relationship="goldenpetModel.FK__Orders__UserID__52E34C9D" FromRole="tb_Customer" ToRole="Order" />
-          <NavigationProperty Name="tb_Booking" Relationship="goldenpetModel.FK__tb_Bookin__custo__3B0BC30C" FromRole="tb_Customer" ToRole="tb_Booking" />
-          <NavigationProperty Name="tb_Pet" Relationship="goldenpetModel.FK__tb_Pet__customer__36470DEF" FromRole="tb_Customer" ToRole="tb_Pet" />
           <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="tb_Pet">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="customerId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="tb_Customer" Relationship="goldenpetModel.FK__tb_Pet__customer__36470DEF" FromRole="tb_Pet" ToRole="tb_Customer" />
+          <NavigationProperty Name="tb_Booking" Relationship="goldenpetModel.FK__tb_Bookin__custo__15A53433" FromRole="tb_Customer" ToRole="tb_Booking" />
         </EntityType>
         <Association Name="FK__CartItems__CartI__4D2A7347">
           <End Type="goldenpetModel.Cart" Role="Cart" Multiplicity="0..1">
@@ -1087,7 +1079,51 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tb_Bookin__custo__3B0BC30C">
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
+        <EntityType Name="tb_Contact">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="phonenumber" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="location" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tb_Booking">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="customerID" Type="Int32" />
+          <Property Name="serviceID" Type="Int32" />
+          <Property Name="bookingDate" Type="DateTime" Precision="0" />
+          <Property Name="appoINTmentDate" Type="DateTime" Precision="3" />
+          <Property Name="petNumber" Type="Int32" />
+          <Property Name="status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tb_Customer" Relationship="goldenpetModel.FK__tb_Bookin__custo__15A53433" FromRole="tb_Booking" ToRole="tb_Customer" />
+          <NavigationProperty Name="tb_Service" Relationship="goldenpetModel.FK__tb_Bookin__servi__1699586C" FromRole="tb_Booking" ToRole="tb_Service" />
+        </EntityType>
+        <Association Name="FK__tb_Bookin__custo__15A53433">
           <End Type="goldenpetModel.tb_Customer" Role="tb_Customer" Multiplicity="0..1" />
           <End Type="goldenpetModel.tb_Booking" Role="tb_Booking" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1099,7 +1135,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tb_Bookin__servi__3BFFE745">
+        <Association Name="FK__tb_Bookin__servi__1699586C">
           <End Type="goldenpetModel.tb_Service" Role="tb_Service" Multiplicity="0..1" />
           <End Type="goldenpetModel.tb_Booking" Role="tb_Booking" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1108,18 +1144,6 @@
             </Principal>
             <Dependent Role="tb_Booking">
               <PropertyRef Name="serviceID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__tb_Pet__customer__36470DEF">
-          <End Type="goldenpetModel.tb_Customer" Role="tb_Customer" Multiplicity="1" />
-          <End Type="goldenpetModel.tb_Pet" Role="tb_Pet" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tb_Customer">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="tb_Pet">
-              <PropertyRef Name="customerId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1141,24 +1165,6 @@
                 <ScalarProperty Name="meta" ColumnName="meta" />
                 <ScalarProperty Name="hide" ColumnName="hide" />
                 <ScalarProperty Name="order" ColumnName="order" />
-                <ScalarProperty Name="createdDate" ColumnName="createdDate" />
-                <ScalarProperty Name="createdBy" ColumnName="createdBy" />
-                <ScalarProperty Name="modifidedDate" ColumnName="modifidedDate" />
-                <ScalarProperty Name="modifidedBy" ColumnName="modifidedBy" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tb_Contact">
-            <EntityTypeMapping TypeName="goldenpetModel.tb_Contact">
-              <MappingFragment StoreEntitySet="tb_Contact">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="phonenumber" ColumnName="phonenumber" />
-                <ScalarProperty Name="location" ColumnName="location" />
-                <ScalarProperty Name="email" ColumnName="email" />
-                <ScalarProperty Name="subject" ColumnName="subject" />
-                <ScalarProperty Name="message" ColumnName="message" />
-                <ScalarProperty Name="isRead" ColumnName="isRead" />
                 <ScalarProperty Name="createdDate" ColumnName="createdDate" />
                 <ScalarProperty Name="createdBy" ColumnName="createdBy" />
                 <ScalarProperty Name="modifidedDate" ColumnName="modifidedDate" />
@@ -1403,20 +1409,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="tb_Booking">
-            <EntityTypeMapping TypeName="goldenpetModel.tb_Booking">
-              <MappingFragment StoreEntitySet="tb_Booking">
-                <ScalarProperty Name="status" ColumnName="status" />
-                <ScalarProperty Name="appoINTmentTime" ColumnName="appoINTmentTime" />
-                <ScalarProperty Name="appoINTmentDate" ColumnName="appoINTmentDate" />
-                <ScalarProperty Name="bookingDate" ColumnName="bookingDate" />
-                <ScalarProperty Name="petName" ColumnName="petName" />
-                <ScalarProperty Name="serviceID" ColumnName="serviceID" />
-                <ScalarProperty Name="customerID" ColumnName="customerID" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="tb_Customer">
             <EntityTypeMapping TypeName="goldenpetModel.tb_Customer">
               <MappingFragment StoreEntitySet="tb_Customer">
@@ -1429,11 +1421,60 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="tb_Pet">
-            <EntityTypeMapping TypeName="goldenpetModel.tb_Pet">
-              <MappingFragment StoreEntitySet="tb_Pet">
-                <ScalarProperty Name="customerId" ColumnName="customerId" />
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="goldenpetModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
                 <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="goldenpetModel.Store.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="goldenpetModel.Store.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="goldenpetModel.Store.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="goldenpetModel.Store.sp_helpdiagramdefinition">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="goldenpetModel.sp_helpdiagramdefinition_Result">
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="goldenpetModel.Store.sp_helpdiagrams">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="goldenpetModel.sp_helpdiagrams_Result">
+                <ScalarProperty Name="Database" ColumnName="Database" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="goldenpetModel.Store.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="goldenpetModel.Store.sp_upgraddiagrams" />
+          <EntitySetMapping Name="tb_Contact">
+            <EntityTypeMapping TypeName="goldenpetModel.tb_Contact">
+              <MappingFragment StoreEntitySet="tb_Contact">
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="location" ColumnName="location" />
+                <ScalarProperty Name="phonenumber" ColumnName="phonenumber" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_Booking">
+            <EntityTypeMapping TypeName="goldenpetModel.tb_Booking">
+              <MappingFragment StoreEntitySet="tb_Booking">
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="petNumber" ColumnName="petNumber" />
+                <ScalarProperty Name="appoINTmentDate" ColumnName="appoINTmentDate" />
+                <ScalarProperty Name="bookingDate" ColumnName="bookingDate" />
+                <ScalarProperty Name="serviceID" ColumnName="serviceID" />
+                <ScalarProperty Name="customerID" ColumnName="customerID" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>

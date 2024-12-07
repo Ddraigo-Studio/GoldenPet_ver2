@@ -1,0 +1,22 @@
+﻿@model GoldenPet.Models.tb_Product
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_MyLayout.cshtml";
+}
+
+
+<h3>Bạn có chắc xóa sản phẩm này?</h3>
+<div>
+    <h4>@Model.name</h4>
+    <hr />
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Yes" class="btn btn-default" /> 
+            @Html.ActionLink("No", "Index")
+        </div>
+    }
+</div>

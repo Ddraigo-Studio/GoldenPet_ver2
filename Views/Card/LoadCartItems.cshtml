@@ -1,0 +1,112 @@
+﻿@model IEnumerable<GoldenPet.Models.CartItem>
+
+
+@foreach (var i in Model)
+{
+
+    <li class="shopping__cart-item">
+        <img src="/Content/img/@i.tb_Product.img"
+             alt="" class="shopping__cart-img">
+        <div class="shopping__cart-item-info">
+            <div class="shopping__cart-item-head">
+                <h5 class="shopping__cart-item-name">@i.tb_Product.name</h5>
+                <div class="shopping__cart-item-price-wrap">
+                    <span class="shopping__cart-item-price">@i.tb_Product.price đ</span>
+                    <span class="shopping__cart-item-qnt">x</span>
+
+                    <span class="shopping__cart-item-qnt">@i.Quantity</span>
+                </div>
+            </div>
+
+            <div class="shopping__cart-item-body">
+                <span class="shopping__cart-item-description">
+                    Phân loại: @i.tb_Product.tb_ProductCategory.name
+                </span>
+                <span class="shopping__cart-item-remove"
+                      data-items-id="@i.ProductID"
+                      data-cart-id="@i.CartID"
+                      onclick="deleteCartItem(this)">Xóa</span>            </div>
+        </div>
+    </li>
+}
+<script>
+    // Event delegation to handle dynamically loaded elements
+    document.addEventListener('click', function (event) {
+        if (event.target.matches('.delete-cart-item-button')) {
+            deleteCartItem(event.target);
+        }
+    });
+
+    function deleteCartItem(element) {
+        const itemsID = element.getAttribute('data-items-id');
+        const cartID = element.getAttribute('data-cart-id');
+
+        if (confirm('Bạn có chắc chắn muốn xóa mục này không?')) {
+            // Send DELETE request to the server
+            fetch('/Card/deleteItemsCart', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ ItemsID: itemsID, CartID: cartID })
+            })
+                .then(response => {
+                    // Check if the response status indicates success
+                    if (response.ok) {
+                        // Assume deletion was successful
+                        alert('Mục đã được xóa thành công!');
+                        const cartItem = element.closest('.shopping__cart-item');
+                        if (cartItem) {
+                            cartItem.remove();
+                        } else {
+                            console.error('Không tìm thấy mục trong giỏ hàng để xóa.');
+                        }
+                    } else {
+                        alert('Không thể xóa mục. Thử lại sau!');
+                    }
+                })
+                .catch(error => {
+                    console.error('Lỗi:', error);
+                    alert('Đã xảy ra lỗi. Vui lòng thử lại!');
+                });
+        }
+    }
+// Event delegation to handle dynamically loaded elements
+document.addEventListener('click', function (event) {
+    if (event.target.matches('.delete-cart-item-button')) {
+        deleteCartItem(event.target);
+    }
+});
+
+function deleteCartItem(element) {
+    const itemsID = element.getAttribute('data-items-id');
+    const cartID = element.getAttribute('data-cart-id');
+
+    if (confirm('Bạn có chắc chắn muốn xóa mục này không?')) {
+        // Send DELETE request to the server
+        fetch('/Card/deleteItemsCart', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ ItemsID: itemsID, CartID: cartID })
+        })
+        .then(response => {
+            // Check if the response status indicates success
+            if (response.ok) {
+                // Assume deletion was successful
+                alert('Mục đã được xóa thành công!');
+                const cartItem = element.closest('.shopping__cart-item');
+                if (cartItem) {
+                    cartItem.remove();
+                } else {
+                    console.error('Không tìm thấy mục trong giỏ hàng để xóa.');
+                }
+            } else {
+                alert('Không thể xóa mục. Thử lại sau!');
+            }
+        })
+        .catch(error => {
+            console.error('Lỗi:', error);
+            alert('Đã xảy ra lỗi. Vui lòng thử lại!');
+        });
+    }
+}
+
+</script>

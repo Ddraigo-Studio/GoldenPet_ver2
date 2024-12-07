@@ -75,6 +75,114 @@ namespace GoldenPet.Controllers
 
         //    return View(cart);
         //}
+        [HttpPost]
+        public JsonResult UpdateQuantity(int productId, int quantity)
+        {
+            var cartId = Convert.ToInt32(Session["CartID"]);
+            var cartItem = _db.CartItems.FirstOrDefault(ci => ci.CartID == cartId && ci.ProductID == productId);
+
+            if (cartItem != null)
+            {
+                // Update the quantity
+                cartItem.Quantity = quantity;
+                _db.SaveChanges();
+                return Json(new { success = true });
+            }
+
+            return Json(new { success = false, message = "Item not found in cart" });
+        }
+
+        public static IEnumerable<CartItem> GetItemsByUserId(goldenpetEntities _db, int userId)
+        {
+            // Find the cart for the given user ID
+            var cart = _db.Carts.SingleOrDefault(c => c.UserID == userId);
+
+            if (cart == null)
+            {
+                throw new Exception("No cart found for the given user ID.");
+            }
+
+            // Get all items that belong to the found cart
+            var items = _db.CartItems.Where(ci => ci.CartID == cart.CartID).ToList();
+
+            if (!items.Any())
+            {
+                throw new Exception("No items found in the cart for the given user ID.");
+            }
+
+            return items; // Return the items
+        }
+        public static void ClearCartByUserIdandChangeOrderStatus(goldenpetEntities _db, int userId)
+        {
+            // Tìm cart của người dùng
+            var cart = _db.Carts.SingleOrDefault(c => c.UserID == userId);
+            var order = _db.Orders
+                .Where(c => c.UserID == userId)
+                .OrderByDescending(o => o.OrderDate) // Lấy order mới nhất
+                .FirstOrDefault();
+            if (cart == null)
+            {
+                throw new Exception("No cart found for the given user ID.");
+            }
+
+            // Tìm các CartItems liên quan đến cart này
+            var cartItems = _db.CartItems.Where(ci => ci.CartID == cart.CartID).ToList();
+
+            if (!cartItems.Any())
+            {
+                Console.WriteLine("The cart is already empty.");
+                return;
+            }
+            order.Status = "Finish";
+            // Xóa tất cả các CartItems
+            _db.CartItems.RemoveRange(cartItems);
+
+            // Lưu thay đổi vào database
+            _db.SaveChanges();
+
+        }
+        public void deleteItemsCart(int ItemsID,int CartID)
+        {
+            var cartId= _db.Carts.FirstOrDefault(ci=> ci.CartID == CartID);
+            var cartItem = _db.CartItems.FirstOrDefault(ci => ci.tb_Product.id == ItemsID && ci.CartID == CartID);
+         
+            // Remove the item from the cart
+            _db.CartItems.Remove(cartItem);
+
+            // Save changes to the database
+            _db.SaveChanges();
+        }
+        public int CartItemsCount(int CartID)
+        {
+            // Kiểm tra nếu _db không được khởi tạo
+            if (_db == null)
+            {
+                throw new Exception("Database context (_db) is not initialized.");
+            }
+
+            // Lấy danh sách CartItems
+            var cartItems = _db.CartItems.Where(c => c.CartID == CartID).ToList();
+            // Kiểm tra nếu CartID không hợp lệ (không có CartItems nào)
+            if (cartItems == null || !cartItems.Any())
+            {
+                return 0;
+            }
+
+            // Trả về số lượng
+            return cartItems.Count();
+        }
+        public ActionResult LoadCartItems()
+        {
+            
+                
+                    int CartID = (int)Session["CartID"];
+                    var cartItems = _db.CartItems.Where(c => c.CartID == CartID).ToList();
+                    return PartialView(cartItems);
+                
+            
+          
+        }
+
 
     }
 }

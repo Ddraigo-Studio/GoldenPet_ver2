@@ -1,0 +1,228 @@
+﻿@model GoldenPet.Models.tb_Product
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_MyLayout.cshtml";
+}
+
+<h2>Create</h2>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-red">
+            <div class="panel-heading">
+                Thêm mới Sản phẩm
+            </div>
+            <!-- /.panel-heading -->
+            <div class="panel-body">
+                @using (Html.BeginForm("Create", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-horizontal">
+
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                        <!-- Product Name -->
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.name, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-4">
+                                @Html.EditorFor(model => model.name, new { htmlAttributes = new { @class = "form-control", id = "nameField" } })
+                                @Html.ValidationMessageFor(model => model.name, "", new { @class = "text-danger" })
+                            </div>
+                            <!-- Brand -->
+                            @Html.LabelFor(model => model.brand, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-4">
+                                @Html.EditorFor(model => model.brand, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.brand, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                      
+                      
+
+                        <!-- Price -->
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.price, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-4">
+                                @Html.EditorFor(model => model.price, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.price, "", new { @class = "text-danger" })
+                            </div>
+                            <!-- Sale Price -->
+                            @Html.LabelFor(model => model.priceSale, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-4">
+                                @Html.EditorFor(model => model.priceSale, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.priceSale, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                     
+
+                        <!-- Images -->
+                        <div class="form-group">
+                            @Html.Label("Hình đại diện", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-4">
+                                <input type="file" name="img" id="img" accept=".jpg,.png,.gif,.jpeg,.bmp" onchange="previewImage(event)" />
+
+                                <img id="imagePreview" src="" alt="Image Preview" style="display: none; max-width: 300px; max-height: 300px; margin-top: 10px;">
+                            </div>
+                            <!-- Category -->
+                            @Html.LabelFor(model => model.categoryID, "Category", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-4">
+                                @Html.DropDownListFor(model => model.categoryID, (SelectList)ViewBag.CategoryList, "Select a Category", new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.categoryID, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                     
+
+                        <!-- Description -->
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.description, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.TextAreaFor(model => model.description, new { @class = "form-control", @rows = 5 })
+                                @Html.ValidationMessageFor(model => model.description, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <!-- Link -->
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.link, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-4">
+                                @Html.EditorFor(model => model.link, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.link, "", new { @class = "text-danger" })
+                            </div>
+                            @Html.LabelFor(model => model.meta, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-4">
+                                @Html.EditorFor(model => model.meta, new { htmlAttributes = new { @class = "form-control", id = "metaField" } })
+                                @Html.ValidationMessageFor(model => model.meta, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                      
+
+                        <!-- Hide -->
+                        <div class="form-group">
+                            @Html.Label("Hiển thị", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+
+                                @{
+                                    bool hide = true;
+                                }
+                                @Html.CheckBoxFor(model => hide)
+
+                            </div>
+                        </div>
+
+                        <!-- Order -->
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.order, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-4">
+                                @Html.EditorFor(model => model.order, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.order, "", new { @class = "text-danger" })
+                            </div>
+                            @Html.LabelFor(model => model.createdDate, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-4">
+                                @Html.EditorFor(model => model.createdDate, new { htmlAttributes = new { @class = "form-control", id = "dateField" } })
+                                @Html.ValidationMessageFor(model => model.createdDate, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                     
+
+                        <!-- Submit Button -->
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <input type="submit" value="Create" class="btn btn-primary" />
+                            </div>
+                        </div>
+                    </div>
+                }
+                <div>
+                    @Html.ActionLink("Quay lại", "Index", "Product")
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section _Footer
+{
+    <script src="~/Areas/admin/Content/ckfinder/ckfinder.js"></script>
+    <script src="~/Areas/admin/Content/ckeditor/ckeditor.js"></script>
+    <script type="text/javascript">
+        var editor = CKEDITOR.replace("description");
+        editor.config.height = 400;
+        editor.config.customConfig = '/Areas/admin/Content/ckeditor/config.js';
+    </script>
+
+    <script>
+        function previewImage(event) {
+            var imagePreview = document.getElementById('imagePreview');
+            var file = event.target.files[0];  // Get the file from input
+
+            if (file) {
+                // Check if file is an image
+
+                // Use FileReader to read the file as data URL for preview
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    imagePreview.src = e.target.result;  // Set image src to preview
+                    imagePreview.style.display = 'block';  // Make image visible
+                };
+                reader.readAsDataURL(file);
+
+            } else {
+                // Hide preview if no file is selected
+                imagePreview.style.display = 'none';
+                imagePreview.src = "";
+            }
+        }
+    </script>
+
+
+    <script>
+        $(document).ready(function () {
+            // Auto-generate the meta field based on name field
+            $("#nameField").on("keyup", function () {
+                var text = $.trim($(this).val().toLowerCase());
+                var meta = "san-pham/" + text.replace(/[\s]+/g, '-') // Replace spaces with dashes
+                    .replace(/[^\w\-]+/g, '') // Remove non-alphanumeric characters
+                    .replace(/\-\-+/g, '-')  // Replace multiple dashes with a single dash
+                    .replace(/^-+/, '')      // Remove leading dashes
+                    .replace(/-+$/, '');     // Remove trailing dashes
+
+                // Update the meta field value
+                $("#metaField").val(meta);
+            });
+        });
+    </script>
+    <script>
+
+        $(document).ready(function () {
+            var now = new Date();
+            var formattedDate = now.getFullYear() + '-' +
+                ('0' + (now.getMonth() + 1)).slice(-2) + '-' +
+                ('0' + now.getDate()).slice(-2) + ' ' +
+                ('0' + now.getHours()).slice(-2) + ':' +
+                ('0' + now.getMinutes()).slice(-2) + ':' +
+                ('0' + now.getSeconds()).slice(-2);
+
+            $("#dateField").val(formattedDate);
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            // Set the current date and time in the createdDate field
+            var now = new Date();
+            var formattedDate = now.getFullYear() + '-' +
+                ('0' + (now.getMonth() + 1)).slice(-2) + '-' +
+                ('0' + now.getDate()).slice(-2) + ' ' +
+                ('0' + now.getHours()).slice(-2) + ':' +
+                ('0' + now.getMinutes()).slice(-2) + ':' +
+                ('0' + now.getSeconds()).slice(-2);
+
+            // Set the value of the createdDate field
+            $("#dateField").val(formattedDate);
+        });
+    </script>
+}

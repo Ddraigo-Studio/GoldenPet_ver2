@@ -1,0 +1,111 @@
+﻿@model GoldenPet.Models.tb_Booking
+
+@{
+    ViewBag.Title = "Đặt Lịch";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid bg-light">
+    <div class="container">
+        <br />
+
+        <!-- Start of form for booking -->
+        @using (Html.BeginForm("BookAppointment", "Booking", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+
+            <!-- Hidden fields to send product info -->
+            @Html.Hidden("customerID", Session["UserId"]) 
+            @Html.Hidden("bookingDate", DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss"))
+
+
+
+            <!-- Start of booking form -->
+            <div class="row align-items-center">
+                <div class="col-lg-5">
+                    <div class="bg-primary py-5 px-4 px-sm-5">
+                        <form class="py-5">
+                            <div class="form-group">
+                                <input type="text" class="form-control border-0 p-4" name="Tên Đăng Nhập" placeholder="Tên Đăng Nhập" required="required" />
+                            </div>
+                            <div class="form-group">
+                                <input type="number" class="form-control border-0 p-4" name="Số Lượng Pet" placeholder="Số Lượng Pet" required="required" />
+                            </div>
+                            <div class="form-group">
+                                <div class="date" id="date" data-target-input="nearest">
+                                    <input type="datetime-local" class="form-control border-0 p-4 datetimepicker-input" name="appoINTmentDate" placeholder="Ngày hẹn" data-target="#date" data-toggle="datetimepicker" required="required" />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <select class="custom-select border-0 px-4" name="Service" style="height: 47px;" required="required">
+                                    <option value="" selected>Chọn dịch vụ</option>
+                                    <option value="1">Chăm sóc nội trú</option>
+                                    <option value="2">Tư vấn dinh dưỡng và sức khỏe</option>
+                                    <option value="3">Grooming</option>
+                                    <option value="4">Huấn luyện</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                @if (Session["UserId"] != null)
+                                {
+                                    <button class="btn btn-dark btn-block border-0 py-3" type="submit">Đặt lịch ngay</button>
+
+                                }
+                                else
+                                { <button class="btn btn-dark btn-block border-0 py-3" type="button" onclick="window.location.href='@Url.Action("Login", "UserAccount")'">Đặt lịch ngay</button>}
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="col-lg-7 py-5 py-lg-0 px-3 px-lg-5">
+                    <h4 class="text-secondary mb-3">Phải đi du lịch sao?</h4>
+                    <h1 class="display-4 mb-4">Đặt Lịch Ngay Cho <span class="text-primary">Thú Cưng Của Bạn</span></h1>
+                    <p>Labore vero lorem eos sed aliquy ipsum aliquy sed. Vero dolore dolore takima ipsum lorem rebum</p>
+                    <div class="row py-2">
+                        <div class="col-sm-6">
+                            <div class="d-flex flex-column">
+                                <div class="d-flex align-items-center mb-2">
+                                    <h1 class="flaticon-house font-weight-normal text-secondary m-0 mr-3"></h1>
+                                    <h5 class="text-truncate m-0">Trông giữ thú cưng</h5>
+                                </div>
+                                <p>Cung cấp dịch vụ chăm sóc thú cưng khi bạn vắng nhà.</p>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="d-flex flex-column">
+                                <div class="d-flex align-items-center mb-2">
+                                    <h1 class="flaticon-food font-weight-normal text-secondary m-0 mr-3"></h1>
+                                    <h5 class="text-truncate m-0">Cho ăn thú cưng</h5>
+                                </div>
+                                <p>Dịch vụ cho ăn đúng giờ và theo chế độ dinh dưỡng của thú cưng.</p>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="d-flex flex-column">
+                                <div class="d-flex align-items-center mb-2">
+                                    <h1 class="flaticon-grooming font-weight-normal text-secondary m-0 mr-3"></h1>
+                                    <h5 class="text-truncate m-0">Chăm sóc lông thú cưng</h5>
+                                </div>
+                                <p class="m-0">Dịch vụ tắm rửa, cắt tỉa lông và làm đẹp cho thú cưng</p>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="d-flex flex-column">
+                                <div class="d-flex align-items-center mb-2">
+                                    <h1 class="flaticon-toy font-weight-normal text-secondary m-0 mr-3"></h1>
+                                    <h5 class="text-truncate m-0">Huấn luyện thú cưng</h5>
+                                </div>
+                                <p class="m-0">Giúp thú cưng của bạn ngoan ngoãn và nghe lời hơn.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+
+    </div>
+ </div>
+

@@ -554,40 +554,34 @@ button:active {
   z-index: 41;
 }
 .rectangle-14 {
-  flex-shrink: 0;
-  position: relative;
-  width: 93.857px;
-  height: 55px;
-  background: rgba(217, 217, 217, 0.06)
-    url(./assets/images/2b1333f948b7fdaadc244abf2a5f763ad94d833c.png) no-repeat
-    center;
-  background-size: contain;
-  z-index: 39;
-  border-radius: 5px;
+    flex-shrink: 0;
+    position: relative;
+    width: 100px;
+    height: 80px;
+    background: rgba(217, 217, 217, 0.06) url(./assets/images/2b1333f948b7fdaadc244abf2a5f763ad94d833c.png) no-repeat center;
+    background-size: contain;
+    z-index: 39;
+    border-radius: 5px;
 }
 .rectangle-15 {
-  flex-shrink: 0;
-  position: relative;
-  width: 93.857px;
-  height: 55px;
-  background: rgba(217, 217, 217, 0.06)
-    url(./assets/images/7de61cab42ca064544385ad78a91fcb69b618032.png) no-repeat
-    center;
-  background-size: cover;
-  z-index: 40;
-  border-radius: 5px;
+    flex-shrink: 0;
+    position: relative;
+    width: 100px;
+    height: 80px;
+    background: rgba(217, 217, 217, 0.06) url(./assets/images/VNPay.png) no-repeat center;
+    background-size: cover;
+    z-index: 40;
+    border-radius: 5px;
 }
 .rectangle-16 {
-  flex-shrink: 0;
-  position: relative;
-  width: 93.857px;
-  height: 55px;
-  background: rgba(217, 217, 217, 0.06)
-    url(./assets/images/565c50292f467ed37bc56d503d74830c8b6eae21.png) no-repeat
-    center;
-  background-size: cover;
-  z-index: 41;
-  border-radius: 5px;
+    flex-shrink: 0;
+    position: relative;
+    width: 100px;
+    height: 80px;
+    background: rgba(217, 217, 217, 0.06) url(./assets/images/565c50292f467ed37bc56d503d74830c8b6eae21.png) no-repeat center;
+    background-size: cover;
+    z-index: 41;
+    border-radius: 5px;
 }
 .span-17 {
   display: block;

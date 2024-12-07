@@ -17,10 +17,9 @@ namespace GoldenPet.Models
         public int id { get; set; }
         public Nullable<int> customerID { get; set; }
         public Nullable<int> serviceID { get; set; }
-        public string petName { get; set; }
         public Nullable<System.DateTime> bookingDate { get; set; }
         public Nullable<System.DateTime> appoINTmentDate { get; set; }
-        public Nullable<System.TimeSpan> appoINTmentTime { get; set; }
+        public Nullable<int> petNumber { get; set; }
         public string status { get; set; }
     
         public virtual tb_Customer tb_Customer { get; set; }

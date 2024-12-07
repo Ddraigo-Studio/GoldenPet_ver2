@@ -1,0 +1,199 @@
+﻿@model GoldenPet.Models.tb_Product
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_MyLayout.cshtml";
+}
+
+<h2>Edit</h2>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-red">
+            <div class="panel-heading">
+                Thay Đổi Sản phẩm
+            </div>
+            <!-- /.panel-heading -->
+            <div class="panel-body">
+
+                @using (Html.BeginForm("Edit", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-horizontal">
+                        <h4>tb_Product</h4>
+                        <hr />
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        @Html.HiddenFor(model => model.id)
+
+                        <!-- Name -->
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.name, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-4">
+                            @Html.EditorFor(model => model.name, new { htmlAttributes = new { @class = "form-control", id = "nameField" } })
+                            @Html.ValidationMessageFor(model => model.name, "", new { @class = "text-danger" })
+                        </div>
+                        @Html.LabelFor(model => model.brand, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-4">
+                            @Html.EditorFor(model => model.brand, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.brand, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                      
+
+                        <!-- Price -->
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.price, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-4">
+                            @Html.EditorFor(model => model.price, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.price, "", new { @class = "text-danger" })
+                        </div>
+                        @Html.LabelFor(model => model.priceSale, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-4">
+                            @Html.EditorFor(model => model.priceSale, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.priceSale, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                        <!-- Sale Price -->
+                      
+
+                        <!-- Image Upload with Preview -->
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.img, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-4">
+                                <input type="file" name="img" id="imgField" accept=".jpg,.png,.gif,.jpeg,.bmp" onchange="previewImage(event, 'imagePreview')" />
+                                @if (!string.IsNullOrEmpty(Model.img))
+                                {
+                                    <img id="imagePreview" src="~/Content/img/@Url.Content(Model.img)" alt="Product Image" style="max-width: 300px; max-height: 300px; margin-top: 10px;" />
+                                }
+                                else
+                                {
+                                    <img id="imagePreview" src="" alt="Image Preview" style="display: none; max-width: 300px; max-height: 300px; margin-top: 10px;" />
+                                }
+                                @Html.ValidationMessageFor(model => model.img, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <!-- Category -->
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.categoryID, "Category", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-4">
+                                @Html.DropDownListFor(model => model.categoryID, (SelectList)ViewBag.Categories, "Select a category", new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.categoryID, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <!-- Description with CKEditor -->
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.description, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.TextAreaFor(model => model.description, new { @class = "form-control", @rows = 5 })
+                                @Html.ValidationMessageFor(model => model.description, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+
+
+                        <!-- Meta -->
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.meta, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-4">
+                                @Html.EditorFor(model => model.meta, new { htmlAttributes = new { @class = "form-control", id = "metaField" } })
+                                @Html.ValidationMessageFor(model => model.meta, "", new { @class = "text-danger" })
+                            </div>
+                            @Html.LabelFor(model => model.order, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-4">
+                                @Html.EditorFor(model => model.order, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.order, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <!-- Hide -->
+                        <div class="form-group">
+                            @Html.Label("Hiển thị", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+
+                                @{
+                                    bool hide = true;
+                                }
+                                @Html.CheckBoxFor(model => hide)
+
+                            </div>
+                        </div>
+
+                     
+
+                        <!-- Submit Button -->
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <input type="submit" value="Save" class="btn btn-primary" />
+                            </div>
+                        </div>
+                    </div>
+                }
+
+                <div>
+                    @Html.ActionLink("Back to List", "Index", new { area = "" }, new { @class = "btn btn-secondary" })
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section _Footer
+{
+    <script src="~/Areas/admin/Content/ckfinder/ckfinder.js"></script>
+    <script src="~/Areas/admin/Content/ckeditor/ckeditor.js"></script>
+    <script type="text/javascript">
+        var editor = CKEDITOR.replace("description");
+        editor.config.height = 400;
+        editor.config.customConfig = '/Areas/admin/Content/ckeditor/config.js';
+    </script>
+
+    <script>
+        function previewImage(event, previewId) {
+            var imagePreview = document.getElementById(previewId);
+            var file = event.target.files[0];
+
+            if (file) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    imagePreview.src = e.target.result;
+                    imagePreview.style.display = 'block';
+                };
+                reader.readAsDataURL(file);
+            } else {
+                imagePreview.style.display = 'none';
+            }
+        }
+    </script>
+    <script>
+        $(document).ready(function () {
+            $("#nameField").on("keyup", function () {
+                var text = $.trim($(this).val().toLowerCase());
+                var meta = "san-pham/" + text.replace(/[\s]+/g, '-') // Replace spaces with dashes
+                    .replace(/[^\w\-]+/g, '') // Remove non-alphanumeric characters
+                    .replace(/\-\-+/g, '-')  // Replace multiple dashes with a single dash
+                    .replace(/^-+/, '')      // Remove leading dashes
+                    .replace(/-+$/, '');     // Remove trailing dashes
+                $("#metaField").val(meta);
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            // Auto-fill the createdDate field with the current date and time
+            var now = new Date();
+            var formattedDate = now.getFullYear() + '-' +
+                ('0' + (now.getMonth() + 1)).slice(-2) + '-' +
+                ('0' + now.getDate()).slice(-2) + ' ' +
+                ('0' + now.getHours()).slice(-2) + ':' +
+                ('0' + now.getMinutes()).slice(-2) + ':' +
+                ('0' + now.getSeconds()).slice(-2);
+
+            // Set the value of the date field
+            $("#dateField").val(formattedDate);
+        });
+    </script>
+}
