@@ -20,7 +20,6 @@ namespace GoldenPet.Models
             this.Carts = new HashSet<Cart>();
             this.Orders = new HashSet<Order>();
             this.tb_Booking = new HashSet<tb_Booking>();
-            this.tb_Pet = new HashSet<tb_Pet>();
         }
     
         public int id { get; set; }
@@ -36,7 +35,5 @@ namespace GoldenPet.Models
         public virtual ICollection<Order> Orders { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tb_Booking> tb_Booking { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tb_Pet> tb_Pet { get; set; }
     }
 }

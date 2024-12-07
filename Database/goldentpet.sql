@@ -169,21 +169,17 @@ GO
 
 CREATE TABLE dbo.tb_Contact (
     id INT IDENTITY(1,1) NOT NULL PRIMARY KEY, 
-    name NVARCHAR(150) NULL,
 	phonenumber NVARCHAR(10),
 	location NVARCHAR(150),
     email NVARCHAR(150) NULL,
-	subject NVARCHAR(MAX) NULL,
-	message NTEXT NULL, 
-	isRead BIT NULL,                  
-    createdDate SMALLDATETIME DEFAULT CURRENT_TIMESTAMP,    
-	createdBy NVARCHAR(150) NULL,
-	-- Co the xem xet
-	modifidedDate SMALLDATETIME NULL,
-	modifidedBy NVARCHAR(150) NULL,
+	                 
+
 );
 GO
---drop table dbo.tb_Contact
+INSERT INTO dbo.tb_Contact (phonenumber,location, email)
+VALUES
+('0961305436','VietNam','Huyduong11082004@gmail.com')
+drop table dbo.tb_Contact
 
 select * from dbo.tb_Contact
 
@@ -357,23 +353,21 @@ CREATE TABLE dbo.tb_Pet(
 	FOREIGN KEY (customerId) REFERENCES tb_Customer(id),
 );
 GO
-
-
+drop table dbo.tb_Booking
+select * from dbo.tb_service
 
 CREATE TABLE dbo.tb_Booking (
     id INT IDENTITY(1,1) NOT NULL PRIMARY KEY, 
     customerID INT,
     serviceID INT,
-	petName NVARCHAR(100) NULL,
     bookingDate SMALLDATETIME DEFAULT CURRENT_TIMESTAMP,
-	appoINTmentDate date,
-	appoINTmentTime time, 
+	appoINTmentDate Datetime,
+	petNumber INT,
     status NVARCHAR(50) DEFAULT 'Pending' , -- e.g., 'Pending', 'Confirmed', 'Cancelled'
     FOREIGN KEY (customerID) REFERENCES tb_Customer(id),
     FOREIGN KEY (serviceID) REFERENCES tb_Service(id)
 );
 GO
-
 
 -------------------------  INSERT DATA ---------------------
 

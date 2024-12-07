@@ -14,7 +14,10 @@ namespace GoldenPet.Areas.Admin.Controllers
     public class NewsController : Controller
     {
         private goldenpetEntities db = new goldenpetEntities();
-
+        public int newsCount()
+        {
+            return db.tb_News.Count();
+        }
         // GET: Admin/News
         public ActionResult Index()
         {
@@ -78,6 +81,7 @@ namespace GoldenPet.Areas.Admin.Controllers
         }
 
         // GET: Admin/News/Edit/5
+        [ValidateInput(false)]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -97,6 +101,7 @@ namespace GoldenPet.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [ValidateInput(false)]
         public ActionResult Edit([Bind(Include = "NewsID,Title,Content,Slug,AuthorName,CategoryName,PublishedDate,LastModifiedDate,Status,Summary,ThumbnailImageURL,MetaTitle")] tb_News tb_News)
         {
             if (ModelState.IsValid)

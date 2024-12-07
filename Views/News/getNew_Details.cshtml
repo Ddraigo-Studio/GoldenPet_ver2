@@ -17,7 +17,7 @@
 
                 <div class="mb-5">
                     <img class="img-fluid w-100 mb-4" src="@($"/Content/img/{@i.ThumbnailImageURL}")" alt="Image">
-                    <p>@i.Content</p>
+                    <p>@Html.Raw(@i.Content)</p>
                 </div>
             </div>
 

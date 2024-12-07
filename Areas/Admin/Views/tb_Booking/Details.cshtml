@@ -1,0 +1,67 @@
+﻿@model GoldenPet.Models.tb_Booking
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_MyLayout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>tb_Booking</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.bookingDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.bookingDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.appoINTmentDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.appoINTmentDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.petNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.petNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.status)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tb_Customer.customerName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tb_Customer.customerName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tb_Service.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tb_Service.name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

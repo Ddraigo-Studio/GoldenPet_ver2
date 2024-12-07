@@ -13,6 +13,10 @@ namespace GoldenPet.Areas.Admin.Controllers
     public class MenuController : Controller
     {
         private goldenpetEntities db = new goldenpetEntities();
+        public int menuCount()
+        {
+            return db.tb_Menu.Count();
+        }
 
         // GET: Admin/Menu
         public ActionResult Index()

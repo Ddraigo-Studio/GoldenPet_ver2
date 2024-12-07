@@ -1,0 +1,64 @@
+﻿@model IEnumerable<GoldenPet.Models.tb_Booking>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_MyLayout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.bookingDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.appoINTmentDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.petNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tb_Customer.customerName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tb_Service.name)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.bookingDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.appoINTmentDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.petNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.status)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tb_Customer.customerName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tb_Service.name)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿
+<!DOCTYPE html>
 <html lang="vi">
 
 <head>
@@ -27,7 +28,7 @@
 
     <!-- Customized Bootstrap Stylesheet -->
     @Styles.Render("~/css/layout")
-    
+
 </head>
 
 <body>
@@ -108,96 +109,52 @@
                                 <i class="fa-regular fa-user fa-lg" style="color: #ffffff;"></i>
                             </div>
                             <div class="account-action">
-                                <a href="@Url.Action("Login","UserAccount")" title="Đăng nhập">Đăng nhập</a>
-                                <a href="@Url.Action("SignUp","UserAccount")" title="Đăng ký">Đăng ký</a>
+                                <a href="@Url.Action("Login", "UserAccount")" title="Đăng nhập">Đăng nhập</a>
+                                <a href="@Url.Action("SignUp", "UserAccount")" title="Đăng ký">Đăng ký</a>
                             </div>
                         </li>
 
                         <li class="nav-item shopping__cart">
+                            @if (Session["UserId"] != null)
+                            {
+                                <a class="nav-link" href="@Url.Action("Index", "Card")">
+                                    <i class="fa-solid fa-cart-shopping fa-lg" style="color: #ffffff;"></i>
+                                    <span class="shopping__cart-notice" id="num-products">
+                                        @Html.Action("CartItemsCount", "Card", new { CartID = Session["CartID"] })
+                                    </span>
 
-                            <a class="nav-link" href="@Url.Action("Index","Card")">
-                                <i class="fa-solid fa-cart-shopping fa-lg" style="color: #ffffff;"></i>
-                                <span class="shopping__cart-notice" id="num-products">3</span>
-                            </a>
+                                </a>
+                                <div class="shopping__cart-list ">
 
-                            <div class="shopping__cart-list ">
-                                <div class="shopping__cart-list--no-cart">
-                                    @*<img src=".\\img\empty-cart.svg" alt="" class="shopping__cart-list--no-cart-img">*@
-                                    <p class="shopping__cart-list--no-cart-msg">Hổng cóa sản phẩm :<<< </p>
+                                    <h4 class="shopping__cart-heading">Sản phẩm đã thêm</h4>
+                                    <div class="shopping__cart-list--no-cart">
+                                        <p class="shopping__cart-list--no-cart-msg">Hổng cóa sản phẩm :<<< </p>
+                                    </div>
+                                    <ul class="shopping__cart-list-item">
+                                            @{ Html.RenderAction("LoadCartItems", "Card"); }
+                                        </ul>
                                 </div>
+                            }
+                            else
+                            {
+                                <a class="nav-link" href="@Url.Action("Login", "UserAccount")">
+                                    <i class="fa-solid fa-cart-shopping fa-lg" style="color: #ffffff;"></i>
+                                    <span class="shopping__cart-notice" id="num-products"></span>
+                                </a>
+                                <div class="shopping__cart-list ">
 
-                                <h4 class="shopping__cart-heading">Sản phẩm đã thêm</h4>
-                                <ul class="shopping__cart-list-item">
-                                    <li class="shopping__cart-item">
-                                        <img src="https://bizweb.dktcdn.net/thumb/large/100/484/752/products/mousepad-spy-x-family-anya-edition.jpg?v=1707409571893"
-                                             alt="" class="shopping__cart-img">
-                                        <div class="shopping__cart-item-info">
-                                            <div class="shopping__cart-item-head">
-                                                <h5 class="shopping__cart-item-name">Mousepad siu cuti</h5>
-                                                <div class="shopping__cart-item-price-wrap">
-                                                    <span class="shopping__cart-item-price">500.000đ</span>
-                                                    <span class="shopping__cart-item-multiply">x</span>
-                                                    <span class="shopping__cart-item-qnt">2</span>
-                                                </div>
-                                            </div>
+                                    <h4 class="shopping__cart-heading">Sản phẩm đã thêm</h4>
+                                    <div class="shopping__cart-list--no-cart">
+                                        <p class="shopping__cart-list--no-cart-msg">Hổng cóa sản phẩm :<<< </p>
+                                    </div>
+                                    
+                                </div>
+                            }
 
-                                            <div class="shopping__cart-item-body">
-                                                <span class="shopping__cart-item-description">
-                                                    Phân loại: Mousepad
-                                                </span>
-                                                <span class="shopping__cart-item-remove">Xóa</span>
-                                            </div>
-                                        </div>
-                                    </li>
 
-                                    <li class="shopping__cart-item">
-                                        <img src="https://bizweb.dktcdn.net/thumb/large/100/484/752/products/mousepad-spy-x-family-anya-edition.jpg?v=1707409571893"
-                                             alt="" class="shopping__cart-img">
-                                        <div class="shopping__cart-item-info">
-                                            <div class="shopping__cart-item-head">
-                                                <h5 class="shopping__cart-item-name">Mousepad siu cuti</h5>
-                                                <div class="shopping__cart-item-price-wrap">
-                                                    <span class="shopping__cart-item-price">500.000đ</span>
-                                                    <span class="shopping__cart-item-multiply">x</span>
-                                                    <span class="shopping__cart-item-qnt">2</span>
-                                                </div>
-                                            </div>
 
-                                            <div class="shopping__cart-item-body">
-                                                <span class="shopping__cart-item-description">
-                                                    Phân loại: Mousepad
-                                                </span>
-                                                <span class="shopping__cart-item-remove">Xóa</span>
-                                            </div>
-                                        </div>
-                                    </li>
-
-                                    <li class="shopping__cart-item">
-                                        <img src="https://bizweb.dktcdn.net/thumb/large/100/484/752/products/mousepad-spy-x-family-anya-edition.jpg?v=1707409571893"
-                                             alt="" class="shopping__cart-img">
-                                        <div class="shopping__cart-item-info">
-                                            <div class="shopping__cart-item-head">
-                                                <h5 class="shopping__cart-item-name">Mousepad siu cuti</h5>
-                                                <div class="shopping__cart-item-price-wrap">
-                                                    <span class="shopping__cart-item-price">500.000đ</span>
-                                                    <span class="shopping__cart-item-multiply">x</span>
-                                                    <span class="shopping__cart-item-qnt">2</span>
-                                                </div>
-                                            </div>
-
-                                            <div class="shopping__cart-item-body">
-                                                <span class="shopping__cart-item-description">
-                                                    Phân loại: Mousepad
-                                                </span>
-                                                <span class="shopping__cart-item-remove">Xóa</span>
-                                            </div>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
                         </li>
                     </ul>
-
                 </div>
             </div>
         </nav>

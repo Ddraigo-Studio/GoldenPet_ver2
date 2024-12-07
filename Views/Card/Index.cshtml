@@ -10,45 +10,161 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Thanh  toán</title>
+    <title>Thanh toán</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;600&display=swap" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&display=swap" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Raleway:wght@600&display=swap" />
     <link href="~/Content/css/card.css" rel="stylesheet" />
+    <style>
+        :root {
+            --default-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", Helvetica, Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft Yahei UI", "Microsoft Yahei", "Source Han Sans CN", sans-serif;
+        }
 
+        .main-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 15px;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .cart-items-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-top: 40px
+        }
+
+        .rectangle {
+            display: flex;
+            align-items: center;
+            padding: 16px;
+            background: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
+            max-width: 600px;
+            gap: 15px;
+        }
+
+            .rectangle img {
+                width: 80px;
+                height: 80px;
+                object-fit: cover;
+                border-radius: 8px;
+                flex-shrink: 0;
+            }
+
+        .product-info {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            max-width: 200px;
+            overflow: hidden;
+        }
+
+        .product-name {
+            font-size: 18px;
+            font-family: Poppins, var(--default-font-family);
+            font-weight: 500;
+            color: #1e1e1e;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            margin-bottom: 5px;
+        }
+
+        .description {
+            font-size: 14px;
+            color: #666;
+            font-family: Nunito, var(--default-font-family);
+            line-height: 1.4;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            margin-bottom: 10px;
+        }
+
+        .price {
+            font-size: 16px;
+            font-weight: 600;
+            color: #393939;
+            margin-right: 10px;
+            white-space: nowrap;
+        }
+
+        .quantity-controls {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .quantity {
+            font-size: 16px;
+            font-weight: 600;
+            text-align: center;
+            min-width: 24px;
+        }
+
+        /*  .rectangle-2,
+        .rectangle-3 {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background-color: #ddd;
+            cursor: pointer;
+            font-weight: bold;
+            color: #555;
+        }
+
+            .rectangle-2:hover,
+            .rectangle-3:hover {
+                background-color: #bbb;
+            }*/
+
+        /*   .trash-can {
+            width: 25px;
+            height: 25px;
+            background: url('/assets/images/trash-icon.png') no-repeat center;
+            background-size: contain;
+            cursor: pointer;
+            margin-left: auto;
+        }*/
+    </style>
 </head>
-
 
 <body>
     <div class="main-container">
-        <div class="flex-column-b">
-            <div class="line"></div>
+        <div class="cart-items-container">
             @if (Model?.CartItems != null && Model.CartItems.Any())
             {
                 <span class="cart-items">Bạn có @Model.CartItems.Count() sản phẩm trong giỏ hàng</span>
                 foreach (var i in Model.CartItems)
                 {
                     <div class="rectangle">
-                        <img class="img-fluid w-100 mb-4" src="/Content/img/@i.tb_Product.img" alt="Product Image">
-                        <span>@i.tb_Product.name</span>
+                        <img src="/Content/img/@i.tb_Product.img" alt="Product Image">
+                        <div class="product-info">
+                            <span class="product-name">@i.tb_Product.name</span>
+                            <span class="description">@i.tb_Product.description</span>
+                        </div>
+                        <span class="price" id="price-@i.ProductID" data-price="@i.tb_Product.price">@(@i.tb_Product.price * i.Quantity)₫</span>
+
+                        <div class="quantity-controls">
+                            <div class="rectangle-2" data-action="increase" data-product-id="@i.ProductID"></div>
+                            <span class="quantity" id="quantity-@i.ProductID">@i.Quantity</span>
+                            <div class="rectangle-3" data-action="decrease" data-product-id="@i.ProductID"></div>
+                        </div>
+
                         <button class="trash-can"></button>
-                        <span class="price">@(@i.tb_Product.price * i.Quantity)</span>
-                        <span class="quantity" id="quantity-@i.ProductID">@i.Quantity</span>
-                        <div class="rectangle-2" data-action="increase" data-product-id="@i.ProductID"></div>
-                        <div class="rectangle-3" data-action="decrease" data-product-id="@i.ProductID"></div>
-                        <span>@i.tb_Product.description</span>
                     </div>
 
                 }
             }
-            @*else if (Model?.CartItems == null)
-        {
-            <span class="cart-items">alo1.</span>
-        }
-        else if (Model.CartItems.Count()==0)
-        {
-            <span class="cart-items">alo2.</span>
-        }*@
             else
             {
                 <span class="cart-items">Giỏ hàng của bạn hiện đang trống.</span>
@@ -60,8 +176,20 @@
             <span class="span-12">Chi tiết thanh toán</span><span class="span-13">Chọn phương thức thanh toán</span>
             <div class="flex-row-cd">
                 <button class="rectangle-14"></button>
-                <button class="rectangle-15"></button>
-                <button class="rectangle-16"></button>
+
+                    @using (Html.BeginForm("CreatePaymentUrlVnpay", "Payment", FormMethod.Post))
+                        {
+                        <input type="hidden" name="OrderType" value="other" />
+                        <input type="hidden" name="Amount" value="" />
+                        <input type="hidden" name="OrderDescription" value="Payment at GoldenPet" />
+                        <input type="hidden" name="Name" value="@Model.tb_Customer.customerName" />
+                        <button class="rectangle-15"  type="submit"></button>
+                        }
+
+                 <button class="rectangle-16" name="PayUrl" type="submit"></button>
+
+ 
+
             </div>
             <span class="span-17">Tên trên thẻ</span>
             <div class="rectangle-18"><input class="group-input" /></div>
@@ -74,17 +202,13 @@
                 <div class="rectangle-1b"><input class="group-input" /></div>
                 <div class="rectangle-1c"><input class="group-input" /></div>
             </div>
-            <div class="wrapper-4">
-                <span class="text-1a">Tổng </span><span class="text-1b">$1,668</span>
-            </div>
-            <div class="box-7">
-                <span class="text-1c">Phí giao hàng</span><span class="text-1d">$4</span>
-            </div>
+           
             <div class="group-3">
-                <span class="text-1e">Tổng hóa đơn (Tax incl.)</span><span class="text-1f">$1,672</span>
+                <span class="text-1e">Tổng hóa đơn (Tax incl.)</span>
+                <span class="text-1f" id="total-bill">$1,672</span>
             </div>
             <button class="section-2">
-                <span class="text-20">Thanh toán</span><span class="text-21">$1,672</span>
+                <span class="text-21">Thanh toán</span>
                 <div class="pic-9"></div>
             </button>
         </div>
@@ -93,40 +217,71 @@
 </body>
 
 </html>
-<script>document.addEventListener("DOMContentLoaded", function () {
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // Calculate and display the total bill initially when the page loads
+        updateTotalBill();
+
         document.querySelectorAll(".rectangle-2, .rectangle-3").forEach(button => {
             button.addEventListener("click", function () {
                 const productId = this.getAttribute("data-product-id");
                 const action = this.getAttribute("data-action");
                 const quantityElement = document.getElementById("quantity-" + productId);
+                const priceElement = document.getElementById("price-" + productId);
+                const unitPrice = parseFloat(priceElement.getAttribute("data-price"));
                 let currentQuantity = parseInt(quantityElement.textContent);
 
-                // Update quantity based on action
+                // Adjust quantity based on action
                 if (action === "increase") {
                     currentQuantity++;
                 } else if (action === "decrease" && currentQuantity > 1) {
                     currentQuantity--;
                 }
 
-                // Update quantity in UI
+                // Update quantity display
                 quantityElement.textContent = currentQuantity;
 
-                // Make an AJAX request to update the quantity in the backend
-                fetch(`/Cart/UpdateQuantity`, {
+                // Calculate and update the price for this item
+                const newTotalPrice = (unitPrice * currentQuantity).toFixed(2);
+                priceElement.textContent = `${newTotalPrice}₫`;
+
+                // Recalculate and update the total bill
+                updateTotalBill();
+
+                // Send updated quantity to the server
+                fetch(`/Card/UpdateQuantity`, {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json"
                     },
                     body: JSON.stringify({ productId: productId, quantity: currentQuantity })
-                }).then(response => {
-                    if (!response.ok) {
-                        alert("Failed to update quantity.");
-                    }
-                }).catch(error => console.error("Error:", error));
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (!data.success) {
+                            alert(data.message || "Failed to update quantity.");
+                        }
+                    })
+                    .catch(error => console.error("Error:", error));
             });
         });
+
+        // Function to calculate and update the total bill
+        function updateTotalBill() {
+            let total = 0;
+            document.querySelectorAll(".price").forEach(priceElement => {
+                // Lấy giá trị và chuyển đổi thành số
+                const price = parseFloat(priceElement.textContent.replace('₫', '').replace(/,/g, ''));
+                if (!isNaN(price)) {
+                    total += price;
+                }
+            });
+
+            // Gán giá trị vào 'total-bill' và input hidden 'Amount'
+            document.getElementById("total-bill").textContent = `${total.toFixed(2)}₫`;
+            document.querySelector('input[name="Amount"]').value = total; // Không sử dụng .toFixed(2) để tránh chuyển thành chuỗi
+        }
+
     });
 </script>
-
-
 

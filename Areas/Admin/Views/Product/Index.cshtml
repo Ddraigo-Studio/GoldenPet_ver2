@@ -1,0 +1,81 @@
+﻿@model IEnumerable<GoldenPet.Models.tb_Product>
+@using GoldenPet.Help
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_MyLayout.cshtml";
+}
+
+<h2>Sản Phẩm của GoldenPet</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary" })
+</p>
+
+<table class="table table-bordered table-hover" id="dataTables-example">
+    <thead>
+        <tr>
+            <th>STT</th>
+            <th>@Html.DisplayNameFor(model => model.name)</th>
+            <th>@Html.DisplayNameFor(model => model.brand)</th>
+            <th>@Html.DisplayNameFor(model => model.price)</th>
+            <th>@Html.DisplayNameFor(model => model.priceSale)</th>
+            <th>@Html.DisplayNameFor(model => model.img)</th>
+            <th>@Html.DisplayNameFor(model => model.hide)</th>
+            <th>@Html.DisplayNameFor(model => model.createdDate)</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{ var Number = 1; }
+        @foreach (var item in Model)
+        { 
+            <tr>
+                <td>
+                    @Html.Raw(Number++)
+                </td>
+                <td>@Html.DisplayFor(modelItem => item.name)</td>
+                <td>@Html.DisplayFor(modelItem => item.brand)</td>
+                <td>@Html.DisplayFor(modelItem => item.price)</td>
+                <td>@Html.DisplayFor(modelItem => item.priceSale)</td>
+                <td>
+                    @if (!string.IsNullOrEmpty(item.img))
+                    {
+                        <img src="~/Content/img/@item.img" width="100px" alt="Product Image" />
+                    }
+                </td>
+                <td>@Html.DisplayFor(modelItem => item.hide)</td>
+
+                <td>@(item.createdDate?.ToString("dd/MM/yyyy") ?? "No date available")</td>
+                <td>
+                    @Html.NoEncodeActionLink("<span class='glyphicon glyphicon-pencil'></span>", "Edit", "Edit", "Product", routeValues: new { id = item.id }, htmlAttributes: new { @class = "btn btn-default" })
+                    @Html.NoEncodeActionLink("<span class='glyphicon glyphicon-zoom-in'></span>", "Details", "Details", "Product", routeValues: new { id = item.id }, htmlAttributes: new { @class = "btn btn-primary" })
+                    @Html.NoEncodeActionLink("<span class='glyphicon glyphicon-trash'></span>", "Delete", "Delete", "Product", routeValues: new { id = item.id }, htmlAttributes: new { @class = "btn btn-danger" })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<script>
+    $(function () {
+        console.log(Number.toString());
+        $('#dataTables-example').DataTable({
+            responsive: true,
+            columns: [
+                { data: 'STT' },
+                { data: 'name' },
+                { data: 'brand' },
+                { data: 'price' },
+                { data: 'priceSale' },
+                { data: 'img' },
+                { data: 'description' },
+                { data: 'meta' }
+                 { data: 'hide' },
+                { data: 'order' },
+                { data: 'createdDate' },
+                { data: 'actions' }                // for the action links
+            ]
+        });
+    });
+</script>
+

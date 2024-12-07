@@ -1,0 +1,209 @@
+﻿@model GoldenPet.Models.Order
+@{
+    ViewBag.Title = "PaymentCallbackVnpay";
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Payment Receipt - Failure</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: "Poppins", Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f9f9f9;
+        }
+
+        .receipt-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 53.29px;
+            padding: 39.97px;
+            position: relative;
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+            .receipt-card .header {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 26.65px;
+                position: relative;
+                width: 100%;
+                background-color: transparent;
+            }
+
+            .receipt-card .failure-icon {
+                position: relative;
+                width: 93.26px;
+                height: 93.26px;
+                background-color: #ff4d4f1f;
+                border-radius: 46.63px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .receipt-card .icon {
+                width: 53px;
+                height: 53px;
+                fill: none;
+                stroke: #ff4d4f;
+                stroke-width: 2px;
+            }
+
+            .receipt-card .header-text {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 13.32px;
+                position: relative;
+                width: 100%;
+            }
+
+            .receipt-card .text-wrapper {
+                font-weight: 400;
+                color: #474747;
+                font-size: 26.6px;
+                text-align: center;
+                line-height: 40px;
+            }
+
+            .receipt-card .div {
+                font-weight: 600;
+                color: #ff4d4f;
+                font-size: 40px;
+                text-align: center;
+                line-height: 53.3px;
+            }
+
+            .receipt-card .line {
+                width: 100%;
+                height: 1.67px;
+                background-color: #e0e0e0;
+            }
+
+            .receipt-card .payment-details {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 26.65px;
+                width: 100%;
+            }
+
+            .receipt-card .div-2 {
+                display: flex;
+                flex-direction: column;
+                gap: 23.32px;
+                width: 100%;
+            }
+
+            .receipt-card .payment-detail {
+                display: flex;
+                justify-content: space-between;
+                width: 100%;
+            }
+
+            .receipt-card .text-wrapper-2 {
+                font-weight: 400;
+                color: #707070;
+                font-size: 21.7px;
+                line-height: 30px;
+            }
+
+            .receipt-card .text-wrapper-3 {
+                font-weight: 500;
+                color: #121212;
+                font-size: 21.7px;
+                text-align: center;
+                line-height: 30px;
+            }
+
+        .home-button {
+            display: block; /* Đảm bảo nút là phần tử khối */
+            padding: 10px 20px;
+            font-size: 18px;
+            font-weight: 600;
+            color: #ffffff;
+            background-color: #ed6436; /* Màu xanh cho nút */
+            border: none;
+            border-radius: 8px;
+            text-decoration: none;
+            text-align: center;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin: 0 auto; /* Căn giữa nút */
+        }
+
+            .home-button:hover {
+                background-color: #c13a0e; /* Màu tối hơn khi hover */
+            }
+
+        .payment-detail {
+            display: flex; /* Sử dụng flexbox */
+            justify-content: center; /* Căn giữa ngang */
+            align-items: center; /* Căn giữa dọc */
+            width: 100%; /* Đảm bảo độ rộng của container */
+        }
+    </style>
+</head>
+<body>
+    <div class="receipt-card">
+        <header class="header">
+            <div class="failure-icon">
+                <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="15" y1="9" x2="9" y2="15"></line>
+                    <line x1="9" y1="9" x2="15" y2="15"></line>
+                </svg>
+            </div>
+            <div class="header-text">
+                <div class="text-wrapper">Payment Failed!</div>
+                <div class="div">Error Code: Failed Payment</div>
+            </div>
+        </header>
+        <div class="line"></div>
+        <div class="payment-details">
+            <div class="div-2">
+                <div class="payment-detail">
+                    <div class="text-wrapper-2">Error Message</div>
+                    <div class="text-wrapper-3">Transaction Declined</div>
+                </div>
+                <div class="payment-detail">
+                    <div class="text-wrapper-2">Payment Time</div>
+                    <div class="text-wrapper-3">@Model.OrderDate</div>
+                </div>
+                <div class="payment-detail">
+                    <div class="text-wrapper-2">Payment Method</div>
+                    <div class="text-wrapper-3">ATM</div>
+                </div>
+                <div class="payment-detail">
+                    <div class="text-wrapper-2">Sender Name</div>
+                    <div class="text-wrapper-3">@Model.tb_Customer.customerName</div>
+                </div>
+            </div>
+            <div class="line"></div>
+            <div class="div-2">
+                <div class="payment-detail">
+                    <div class="text-wrapper-2">Amount</div>
+                    <div class="text-wrapper-3">@Model.TotalAmount Đ</div>
+                </div>
+
+            </div>
+            <div class="payment-detail">
+                <a href="/" class="home-button">Go Back to Home</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
